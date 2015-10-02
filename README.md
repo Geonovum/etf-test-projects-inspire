@@ -9,3 +9,6 @@ This repository contains the code of the test projects.
 
 ## Import projects in SoapUI workspace
 The SoapUI workspace in de src-directory imports all INSPIRE tests projects. To use this workspace in your local SoapUI instance, please change the paths of the project imports to your local setup (a relative path does not seem to work in SoapUI's workspace format).
+
+## Issues and feedback
+Bugs, feedback or other issues about the testprojects? Please use the [issues system](https://github.com/Geonovum/etf-test-projects-inspire/issues).
