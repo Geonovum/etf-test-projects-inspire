@@ -31,8 +31,8 @@ testCase.addPropertiesFromFile(file.path)</script></con:config></con:testStep><c
       <con:sourceType>DS.basicAuthUser</con:sourceType>
       <con:sourceStep>#Global#</con:sourceStep>
       <con:sourcePath xsi:nil="true"/>
-      <con:targetType>DS.serviceEndpoint</con:targetType>
-      <con:targetStep>#Global#</con:targetStep>
+      <con:targetType>authUser</con:targetType>
+      <con:targetStep>#Project#</con:targetStep>
       <con:targetPath xsi:nil="true"/>
     </con:transfers>
     <con:transfers setNullOnMissingSource="false" transferTextContent="true" failOnError="false" disabled="false" entitize="false" ignoreEmpty="true" transferChildNodes="false" transferToAll="false" useXQuery="false">
