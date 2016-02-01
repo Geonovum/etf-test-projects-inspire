@@ -358,7 +358,7 @@ declare namespace xlink='http://www.w3.org/1999/xlink';
 declare namespace inspire_dls='http://inspire.ec.europa.eu/schemas/inspire_dls/1.0';
 declare namespace inspire_common='http://inspire.ec.europa.eu/schemas/common/1.0';
 
-exists(//inspire_dls:ExtendedCapabilities/inspire_common:MetadataUrl/inspire_common:URL)</con:expression><con:targetStep>M-01##M-01-ServiceMD_coupledResourceHref: srv:operatesOn contains a reference to a metadata document</con:targetStep></con:condition></con:config></con:testStep><con:testStep type="httprequest" name="Req 42 (Scenario 2) CapabilitiesServiceMetadata"><con:settings/><con:config method="GET" xsi:type="con:HttpRequest" name="Req 42 (Scenario 2) CapabilitiesServiceMetadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>${#Project#getCapabilitiesURL}</con:endpoint><con:request/><con:assertion type="XQuery Match" name="M-01##M-01-infoFeatureAccessService: INSPIRE Keyword infoFeatureAccessService exists"><con:configuration><path>declare namespace wfs='http://www.opengis.net/wfs/2.0';
+exists(//inspire_dls:ExtendedCapabilities/inspire_common:MetadataUrl/inspire_common:URL)</con:expression><con:targetStep>Req 42 (Scenario 1) ExternalServiceMetadata</con:targetStep></con:condition></con:config></con:testStep><con:testStep type="httprequest" name="Req 42 (Scenario 2) CapabilitiesServiceMetadata"><con:settings/><con:config method="GET" xsi:type="con:HttpRequest" name="Req 42 (Scenario 2) CapabilitiesServiceMetadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>${#Project#getCapabilitiesURL}</con:endpoint><con:request/><con:assertion type="XQuery Match" name="M-01##M-01-infoFeatureAccessService: INSPIRE Keyword infoFeatureAccessService exists"><con:configuration><path>declare namespace wfs='http://www.opengis.net/wfs/2.0';
 declare namespace ows='http://www.opengis.net/ows/1.1';
 declare namespace fes='http://www.opengis.net/fes/2.0';
 declare namespace gml='http://www.opengis.net/gml/3.2';
@@ -972,8 +972,9 @@ declare namespace srv='http://www.isotc211.org/2005/srv';
 &lt;result>AssertionFailures: {
 let $value:=//gmd:MD_Metadata/gmd:identificationInfo/srv:SV_ServiceIdentification/srv:operatesOn
 return
-if (!exists($value))
-then "The metadata of the WFS does not contain any coupled resource (srv:operatesOn)"
+if (exists($value))
+then "" 
+else "The metadata of the WFS does not contain any coupled resource (srv:operatesOn)"
 }
 &lt;/result></path><content>&lt;result>AssertionFailures: &lt;/result></content><allowWildcards>false</allowWildcards></con:configuration></con:assertion><con:assertion type="XQuery Match" name="M-01##M-01-ServiceMD_coupledResourceHref: srv:operatesOn contains a reference to a metadata document"><con:configuration><path>declare namespace gmd='http://www.isotc211.org/2005/gmd';
 declare namespace csw='http://www.opengis.net/cat/csw/2.0.2';
@@ -982,7 +983,7 @@ declare namespace xlink='http://www.w3.org/1999/xlink';
 
 &lt;result>AssertionFailures: {
 for $operatesOn in //gmd:MD_Metadata/gmd:identificationInfo/srv:SV_ServiceIdentification/srv:operatesOn
-where (!exists($operatesOn/@xlink:href))
+where (empty($operatesOn/@xlink:href))
 return 
 concat ("The element srv:operatesOn with the attribute uuidref: ", $operatesOn/@uuidref, " in the metadata of the WFS has no xlink:href attribute. It does not refer to a metadata document.")
 }
