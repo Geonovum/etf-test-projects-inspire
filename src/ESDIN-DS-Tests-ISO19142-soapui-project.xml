@@ -77,7 +77,7 @@ testCase.addPropertiesFromFile(file.path)</script></con:config></con:testStep><c
     
     
   <con:transfers setNullOnMissingSource="false" transferTextContent="true" failOnError="false" ignoreEmpty="true" transferToAll="false" entitize="false" useXQuery="false" transferChildNodes="false"><con:name>excludeFeatureTypes</con:name><con:sourceType>DS.excludeFeatureTypes</con:sourceType><con:sourceStep>#Global#</con:sourceStep><con:targetType>excludeFeatureTypes</con:targetType><con:targetStep>#Project#</con:targetStep></con:transfers></con:config></con:testStep>
-<con:properties/></con:testCase><con:testCase failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="Update Credentials" searchProperties="true" id="2b3a4dcc-4f11-45d7-951b-ad32d5566eee"><con:settings/><con:testStep type="groovy" name="Update Credentials"><con:settings/><con:config><script>import de.interactive_instruments.Util;
+<con:properties/></con:testCase><con:testCase failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="Update Credentials" searchProperties="true" id="2b3a4dcc-4f11-45d7-951b-ad32d5566eee"><con:settings/><con:testStep type="groovy" name="Update Credentials"><con:settings/><con:config><script>import de.interactive_instruments.xtf.Util;
 
 /** Set the credentials only if a username is provided */
 def basicAuthUser = context.expand('${#Project#authUser}');
@@ -901,7 +901,9 @@ if (exists($value))
 then "INSPIRE Unique Resource Identifier exists."
 else "INSPIRE Unique Resource Identifier does not exist for a SpatialDataSet. Check the ExtendedCapabilities for this element."
 }
-&lt;/result></path><content>&lt;result>AssertionFailures: INSPIRE Unique Resource Identifier exists.&lt;/result></content><allowWildcards>false</allowWildcards></con:configuration></con:assertion><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters><entry key="LANGUAGE" value="ENG" xmlns="http://eviware.com/soapui/config"/></con:parameters></con:restRequest></con:config></con:testStep><con:testStep type="groovy" name="RunMetadataDatasetTest"><con:settings/><con:config><script>props = testRunner.testCase.testSteps['Properties']
+&lt;/result></path><content>&lt;result>AssertionFailures: INSPIRE Unique Resource Identifier exists.&lt;/result></content><allowWildcards>false</allowWildcards></con:configuration></con:assertion><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters><entry key="LANGUAGE" value="ENG" xmlns="http://eviware.com/soapui/config"/></con:parameters></con:restRequest></con:config></con:testStep><con:testStep type="groovy" name="RunMetadataDatasetTest"><con:settings/><con:config><script>import com.eviware.soapui.support.types.StringToStringsMap;
+
+props = testRunner.testCase.testSteps['Properties']
 
 // log.info("Caps: " + props.getPropertyValue("Capabilities"))
 //Start parsing of Capabilities
@@ -927,6 +929,16 @@ for( i in metadataUrlNodes )
    i=i.replaceAll("%7D","}")
    log.info("Checking Metadata with URL: " + i)   
    props.setPropertyValue("urlToTest",i)
+   // remove any Authorization header if provided for the service (because this request is for metadata)
+   def newheaders = new StringToStringsMap()
+   def header = testRunner.testCase.testSteps["GetMetadata"].httpRequest.getRequestHeaders()
+	 header.each
+	 {
+	  if (key!="Authorization") {
+	       newheaders.put(key,val)
+	  }
+	 }
+   testRunner.testCase.testSteps["GetMetadata"].getHttpRequest().setRequestHeaders(newheaders);	
    testRunner.runTestStepByName("GetMetadata")
 }</script></con:config></con:testStep><con:testStep type="httprequest" name="GetMetadata"><con:settings/><con:config method="GET" xsi:type="con:HttpRequest" name="GetMetadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>${#urlToTest}</con:endpoint><con:request/><con:assertion type="XPath Match" name="M-01##M-01-MD_Identifier: The MD_Identifier exists in the Metadata" id="f290e535-4226-4b13-b1a4-498ff501122d" disabled="true"><con:configuration><path>declare namespace gmd='http://www.isotc211.org/2005/gmd';
 declare namespace gco='http://www.isotc211.org/2005/gco';
@@ -993,7 +1005,9 @@ concat ("The element srv:operatesOn with the attribute uuidref: ", $operatesOn/@
 &lt;/result></path><content>&lt;result>AssertionFailures: &lt;/result></content><allowWildcards>false</allowWildcards></con:configuration></con:assertion><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:config></con:testStep><con:testStep type="transfer" name="Property Transfer Metadata Identifiers"><con:settings/><con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="false" ignoreEmpty="true" transferToAll="false" useXQuery="false" entitize="false" transferChildNodes="false"><con:name>datasetIdentifiersOperatesOn</con:name><con:sourceType>ResponseAsXml</con:sourceType><con:sourceStep>Req 42 (Scenario 1) ExternalServiceMetadata</con:sourceStep><con:sourcePath>declare namespace gmd='http://www.isotc211.org/2005/gmd';
 declare namespace srv='http://www.isotc211.org/2005/srv';
 declare namespace gco='http://www.isotc211.org/2005/gco';
-string-join(//srv:operatesOn/@uuidref,',')</con:sourcePath><con:targetType>datasetIdentifiersList</con:targetType><con:targetStep>#Project#</con:targetStep></con:transfers><con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false"><con:name>ServiceMetadataRecord</con:name><con:sourceType>ResponseAsXml</con:sourceType><con:sourceStep>Req 42 (Scenario 1) ExternalServiceMetadata</con:sourceStep><con:sourcePath/><con:targetType>ServiceMetadataRecord</con:targetType><con:targetStep>Properties</con:targetStep></con:transfers></con:config></con:testStep><con:testStep type="groovy" name="RunMetadataDatasetFromServiceMetadata"><con:settings/><con:config><script>props = testRunner.testCase.testSteps['Properties']
+string-join(//srv:operatesOn/@uuidref,',')</con:sourcePath><con:targetType>datasetIdentifiersList</con:targetType><con:targetStep>#Project#</con:targetStep></con:transfers><con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false"><con:name>ServiceMetadataRecord</con:name><con:sourceType>ResponseAsXml</con:sourceType><con:sourceStep>Req 42 (Scenario 1) ExternalServiceMetadata</con:sourceStep><con:sourcePath/><con:targetType>ServiceMetadataRecord</con:targetType><con:targetStep>Properties</con:targetStep></con:transfers></con:config></con:testStep><con:testStep type="groovy" name="RunMetadataDatasetFromServiceMetadata"><con:settings/><con:config><script>import com.eviware.soapui.support.types.StringToStringsMap;
+
+props = testRunner.testCase.testSteps['Properties']
 
 // log.info("Caps: " + props.getPropertyValue("Capabilities"))
 //Start parsing of Capabilities
@@ -1018,6 +1032,16 @@ for( i in metadataUrlNodes )
    i=i.replaceAll("%7D","}")
    log.info("Checking Metadata with URL: " + i)   
    props.setPropertyValue("urlToTest",i)
+      // remove any Authorization header if provided for the service (because this request is for metadata)
+   def newheaders = new StringToStringsMap()
+   def header = testRunner.testCase.testSteps["GetMetadataDatasetFromServiceMetadata"].httpRequest.getRequestHeaders()
+	 header.each
+	 {
+	  if (key!="Authorization") {
+	       newheaders.put(key,val)
+	  }
+	 }
+   testRunner.testCase.testSteps["GetMetadataDatasetFromServiceMetadata"].getHttpRequest().setRequestHeaders(newheaders);
    testRunner.runTestStepByName("GetMetadataDatasetFromServiceMetadata")
 }
 testRunner.gotoStepByName("Property Transfer (Finish Goto)");</script></con:config></con:testStep><con:testStep type="httprequest" name="GetMetadataDatasetFromServiceMetadata"><con:settings/><con:config method="GET" xsi:type="con:HttpRequest" name="GetMetadataDatasetFromServiceMetadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>${#urlToTest}</con:endpoint><con:request/><con:assertion type="XQuery Match" name="M-01##M-01-MD_Metadata2: Metadata has root element MD_Metadata"><con:configuration><path><![CDATA[declare namespace gmd='http://www.isotc211.org/2005/gmd';
