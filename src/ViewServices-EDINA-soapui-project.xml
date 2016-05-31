@@ -334,14 +334,7 @@ declare namespace xlink='http://www.w3.org/1999/xlink';
 declare namespace inspire_vs='http://inspire.ec.europa.eu/schemas/inspire_vs/1.0';
 declare namespace inspire_common='http://inspire.ec.europa.eu/schemas/common/1.0';
 
-exists(/wms:WMS_Capabilities/wms:Capability/inspire_vs:ExtendedCapabilities/inspire_common:MetadataUrl/inspire_common:URL)</con:expression><con:targetStep>Req 6 (Scenario 1): The inspire_common:MetadataURL refers to the INSPIRE service metadata available through an INSPIRE Discovery Service</con:targetStep></con:condition></con:config></con:testStep><con:testStep type="httprequest" name="Req 7 (Scenario 2) CapabilitiesServiceMetadata"><con:settings/><con:config method="GET" xsi:type="con:HttpRequest" name="Req 7 (Scenario 2) CapabilitiesServiceMetadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>${#Project#getCapabilitiesURL}</con:endpoint><con:request/><con:assertion type="XPath Match" name="INSPIRE Limitations on Public Access (wms:AccessConstraints)" disabled="true"><con:configuration><path>declare namespace sld='http://www.opengis.net/sld';
-declare namespace wms='http://www.opengis.net/wms';
-declare namespace ms='http://mapserver.gis.umn.edu/mapserver';
-declare namespace xlink='http://www.w3.org/1999/xlink';
-declare namespace inspire_vs='http://inspire.europa.eu/networkservice/view/1.0';
-
-exists(wms:WMS_Capabilities/wms:Service/wms:AccessConstraints)</path><content>true
-</content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:assertion type="XQuery Match" name="M-CR-V01##R.10: WMS Title present"><con:configuration><path>declare namespace wms='http://www.opengis.net/wms';
+exists(/wms:WMS_Capabilities/wms:Capability/inspire_vs:ExtendedCapabilities/inspire_common:MetadataUrl/inspire_common:URL)</con:expression><con:targetStep>Req 6 (Scenario 1): The inspire_common:MetadataURL refers to the INSPIRE service metadata available through an INSPIRE Discovery Service</con:targetStep></con:condition></con:config></con:testStep><con:testStep type="httprequest" name="Req 7 (Scenario 2) CapabilitiesServiceMetadata"><con:settings/><con:config method="GET" xsi:type="con:HttpRequest" name="Req 7 (Scenario 2) CapabilitiesServiceMetadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>${#Project#getCapabilitiesURL}</con:endpoint><con:request/><con:assertion type="XQuery Match" name="M-CR-V01##R.10: WMS Title present"><con:configuration><path>declare namespace wms='http://www.opengis.net/wms';
 declare namespace inspire_vs='http://inspire.ec.europa.eu/schemas/inspire_vs/1.0';
 declare namespace inspire_common='http://inspire.ec.europa.eu/schemas/common/1.0';
 
@@ -678,7 +671,7 @@ for( i in metadataUrlNodes )
 	testRunner.testCase.testSteps[reqName].getHttpRequest().setRequestHeaders(newheaders);
    testRunner.runTestStepByName("GetMetadata")
    testRunner.runTestStepByName("PropertyTransferMD_Identifier")  
-}</script></con:config></con:testStep><con:testStep type="httprequest" name="GetMetadata"><con:settings/><con:config method="GET" xsi:type="con:HttpRequest" name="GetMetadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>${#urlToTest}</con:endpoint><con:request/><con:assertion type="Simple Schema Validator" name="Simple Schema Validator" disabled="true"><con:configuration><pathToXSD>xsi:schemaLocation</pathToXSD></con:configuration></con:assertion><con:assertion type="XQuery Match" name="M-CR-V10##MD_Metadata: Metadata has root element MD_Metadata"><con:configuration><path>declare namespace gmd='http://www.isotc211.org/2005/gmd';
+}</script></con:config></con:testStep><con:testStep type="httprequest" name="GetMetadata"><con:settings/><con:config method="GET" xsi:type="con:HttpRequest" name="GetMetadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>${#urlToTest}</con:endpoint><con:request/><con:assertion type="XQuery Match" name="M-CR-V10##MD_Metadata: Metadata has root element MD_Metadata"><con:configuration><path>declare namespace gmd='http://www.isotc211.org/2005/gmd';
 declare namespace csw='http://www.opengis.net/cat/csw/2.0.2';
 
 &lt;result>AssertionFailures:
