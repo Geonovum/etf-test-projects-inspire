@@ -170,7 +170,7 @@ if (endpoint.getQuery()) {
                 for( testStep in testCase.getTestStepList() ) {
                     if( testStep instanceof HttpTestRequestStep ) {                    
                         // First: cleanup old extra params, if the tests have been saved with aditional params a previous time
-                        if (testStep.getRestMethod().getName()=="GetMap") {
+                        if (testStep.getName()=="GetMap") {
                             // first remove any other params
                             for (prop in testStep.getHttpRequest().getProperties()) {
                                     defaultParam = 0;
