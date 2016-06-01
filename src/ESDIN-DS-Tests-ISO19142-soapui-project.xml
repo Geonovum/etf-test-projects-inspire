@@ -153,7 +153,16 @@ if (endpoint.getQuery()) {
 
 }
 
-</script></con:config></con:testStep><con:properties/></con:testCase><con:properties/></con:testSuite><con:testSuite name="M-01 - PredefinedWFS"><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="SimpleWFS - HTTP GET - Mandatory" searchProperties="true" id="1863b227-0f7f-4d33-8c5b-09b674dc8020"><con:settings/><con:testStep type="properties" name="Properties"><con:settings/><con:config xsi:type="con:PropertiesStep" saveFirst="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:properties><con:property><con:name>Capabilities</con:name><con:value/></con:property><con:property><con:name>DescribeFeatureTypeURL</con:name><con:value/></con:property><con:property><con:name>typeNames</con:name><con:value/></con:property></con:properties></con:config></con:testStep><con:testStep type="httprequest" name="GetCapabilities"><con:settings/><con:config method="GET" xsi:type="con:HttpRequest" name="GetCapabilities" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:endpoint>${#Project#serviceEndpoint}</con:endpoint><con:request/><con:assertion type="XQuery Match" name="M-01##M-01-Warning-01: Check for featureTypes (warning)"><con:configuration><path>declare namespace wfs='http://www.opengis.net/wfs/2.0';
+</script></con:config></con:testStep><con:properties/></con:testCase><con:properties/></con:testSuite><con:testSuite name="M-01 - PredefinedWFS"><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="SimpleWFS - HTTP GET - Mandatory" searchProperties="true" id="1863b227-0f7f-4d33-8c5b-09b674dc8020"><con:settings/><con:testStep type="properties" name="Properties"><con:settings/><con:config xsi:type="con:PropertiesStep" saveFirst="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:properties><con:property><con:name>Capabilities</con:name><con:value/></con:property><con:property><con:name>DescribeFeatureTypeURL</con:name><con:value/></con:property><con:property><con:name>typeNames</con:name><con:value/></con:property></con:properties></con:config></con:testStep><con:testStep type="httprequest" name="GetCapabilities"><con:settings/><con:config method="GET" xsi:type="con:HttpRequest" name="GetCapabilities" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:endpoint>${#Project#serviceEndpoint}</con:endpoint><con:request/><con:assertion type="XQuery Match" name="WFS is version 2.0.0"><con:configuration><path>declare namespace wfs='http://www.opengis.net/wfs/2.0';
+
+&lt;result>AssertionFailures: {
+let $version:=//wfs:WFS_Capabilities[@version='2.0.0']
+return
+if (exists($version))
+then ""
+else "WFS is not version 2.0.0"
+}
+&lt;/result></path><content>&lt;result>AssertionFailures: &lt;/result></content><allowWildcards>false</allowWildcards></con:configuration></con:assertion><con:assertion type="XQuery Match" name="M-01##M-01-Warning-01: Check for featureTypes (warning)"><con:configuration><path>declare namespace wfs='http://www.opengis.net/wfs/2.0';
 declare namespace ows='http://www.opengis.net/ows/1.1';
 declare namespace fes='http://www.opengis.net/fes/2.0';
 declare namespace gml='http://www.opengis.net/gml/3.2';
@@ -169,7 +178,7 @@ if (count($featureTypes) > 0)
 then "The service offers featureTypes."
 else "The service does not seem to offer any featureType. Other tests will fail."
 }
-&lt;/result></path><content>&lt;result>AssertionFailures: The service offers featureTypes.&lt;/result></content><allowWildcards>false</allowWildcards></con:configuration></con:assertion><con:assertion type="Simple Schema Validator" name="M-01##M-01-Schema: Simple Schema Validator" disabled="true"><con:configuration><pathToXSD>xsi:schemaLocation</pathToXSD></con:configuration></con:assertion><con:assertion type="XQuery Match" name="M-01##HTTPGET: HTTP GET Declared"><con:configuration><path>declare namespace wfs='http://www.opengis.net/wfs/2.0';
+&lt;/result></path><content>&lt;result>AssertionFailures: The service offers featureTypes.&lt;/result></content><allowWildcards>false</allowWildcards></con:configuration></con:assertion><con:assertion type="XQuery Match" name="M-01##HTTPGET: HTTP GET Declared"><con:configuration><path>declare namespace wfs='http://www.opengis.net/wfs/2.0';
 declare namespace gml='http://www.opengis.net/gml/3.2';
 declare namespace ows='http://www.opengis.net/ows/1.1';
 
