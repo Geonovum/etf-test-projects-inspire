@@ -24,7 +24,7 @@ testCase.addPropertiesFromFile(file.path)</script></con:config></con:testStep><c
       <con:sourceType>DS.serviceEndpoint</con:sourceType>
       <con:sourceStep>#Global#</con:sourceStep>
       <con:targetType>serviceEndpoint</con:targetType>
-      <con:targetStep>#Project#</con:targetStep>    
+      <con:targetStep>#Project#</con:targetStep>
     </con:transfers>
     <con:transfers setNullOnMissingSource="false" transferTextContent="true" failOnError="false" disabled="false" entitize="false" ignoreEmpty="true" transferChildNodes="false" transferToAll="false" useXQuery="false">
       <con:name>basicAuthUser</con:name>
@@ -44,10 +44,10 @@ testCase.addPropertiesFromFile(file.path)</script></con:config></con:testStep><c
       <con:targetStep>#Project#</con:targetStep>
       <con:targetPath xsi:nil="true"/>
     </con:transfers>
-    
-    
-    
-    
+
+
+
+
     <con:transfers setNullOnMissingSource="false" transferTextContent="true" failOnError="false" disabled="false" entitize="false" ignoreEmpty="true" transferChildNodes="false" transferToAll="false" useXQuery="false">
       <con:name>featureTypeList</con:name>
       <con:sourceType>DS.FeatureTypeList</con:sourceType>
@@ -66,16 +66,16 @@ testCase.addPropertiesFromFile(file.path)</script></con:config></con:testStep><c
       <con:targetStep>#Project#</con:targetStep>
       <con:targetPath xsi:nil="true"/>
     </con:transfers>
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
+
+
+
+
+
+
+
+
+
   <con:transfers setNullOnMissingSource="false" transferTextContent="true" failOnError="false" ignoreEmpty="true" transferToAll="false" entitize="false" useXQuery="false" transferChildNodes="false"><con:name>excludeFeatureTypes</con:name><con:sourceType>DS.excludeFeatureTypes</con:sourceType><con:sourceStep>#Global#</con:sourceStep><con:targetType>excludeFeatureTypes</con:targetType><con:targetStep>#Project#</con:targetStep></con:transfers></con:config></con:testStep>
 <con:properties/></con:testCase><con:testCase failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="Update Credentials" searchProperties="true" id="2b3a4dcc-4f11-45d7-951b-ad32d5566eee"><con:settings/><con:testStep type="groovy" name="Update Credentials"><con:settings/><con:config><script>import de.interactive_instruments.xtf.Util;
 
@@ -96,22 +96,22 @@ import com.eviware.soapui.impl.wsdl.teststeps.*;
 c = testRunner.getRunContext();
 
 URL endpoint = new URL(c.expand('${#Project#serviceEndpoint}'));
-if (endpoint.getQuery()) {      
+if (endpoint.getQuery()) {
     def queryParams = endpoint.getQuery().split("&amp;");
-    
+
     // default params for GetCapabilities:
     // filter out version
     def defaultParamsGetCaps = ["version","service","request","language"];
-    
+
     for (p in queryParams) {
         for (d in defaultParamsGetCaps) {
-            if (p.split("=")[0].toLowerCase() == d) {         
+            if (p.split("=")[0].toLowerCase() == d) {
                 queryParams = queryParams - p;
             }
         }
         log.debug("Queryparams from serviceEndpoint cleaned. Aditional queryparams left: " + queryParams);
     }
-    
+
     // For REST requests, add additional query parameters
     // Here for GetCapabilities only
     if (queryParams.length > 0) {
@@ -119,14 +119,14 @@ if (endpoint.getQuery()) {
         for( testSuite in testRunner.testCase.testSuite.project.getTestSuiteList() ) {
             for( testCase in testSuite.getTestCaseList() ) {
                 for( testStep in testCase.getTestStepList() ) {
-                    if( testStep instanceof HttpTestRequestStep ) {                    
+                    if( testStep instanceof HttpTestRequestStep ) {
                         // First: cleanup old extra params, if the tests have been saved with aditional params a previous time
                         if (testStep.getName()=="GetCapabilities") {
                             // first remove any other params
                             for (prop in testStep.getHttpRequest().getProperties()) {
                                     defaultParam = 0;
                                     log.debug("HTTP param: " + prop.getKey())
-                                    for (d in defaultParamsGetCaps) {                           
+                                    for (d in defaultParamsGetCaps) {
                                     if (prop.getKey().toLowerCase() == d) {
                                         defaultParam = 1;
                                     }
@@ -136,19 +136,19 @@ if (endpoint.getQuery()) {
                                         testStep.getHttpRequest().removeProperty(prop.getKey());
                                         log.debug("Removed non-standard query parameter from the request: " + prop.getKey())
                                 }
-                            }                                              
+                            }
                             // now add the extra params from the query string
                             for (q in queryParams) {
                                     def pair = q.split("=");
-                                    testStep.getHttpRequest().addProperty(pair[0]); 
-                                    testStep.getHttpRequest().setPropertyValue(pair[0], pair[1]); 
+                                    testStep.getHttpRequest().addProperty(pair[0]);
+                                    testStep.getHttpRequest().setPropertyValue(pair[0], pair[1]);
                                     log.debug("Added non-standard query parameter for the Getcapabilities requests: " + pair[0] + "=" + pair[1])
                             }
-                        }                    
+                        }
                     }
                 }
             }
-        };        
+        };
     }
 
 }
@@ -221,8 +221,8 @@ log.debug("featureTypeNodes: " + featureTypeNodes);
 
 // then run Feed test for each dataSetUrl
 for( i in featureTypeNodes )
-{   
-   
+{
+
    log.info("Executing DescribeFeatureType for featureType: " + i)
    props.setPropertyValue("typeNames",i)
    testRunner.runTestStepByName("DescribeFeatureType")
@@ -313,7 +313,7 @@ else "DescribeStoredQueries does NOT contain a StoredQuery with parameters CRS/D
 &lt;/result></path><content>&lt;result>AssertionFailures: DescribeStoredQueries contains more StoredQueries (with parameters CRS/DataSetID/Language) besides the StoredQuery GetFeatureById.&lt;/result></content><allowWildcards>false</allowWildcards></con:configuration></con:assertion><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters><con:parameter><con:name>REQUEST</con:name><con:value>DescribeStoredQueries</con:value></con:parameter><con:parameter><con:name>VERSION</con:name><con:value>2.0.0</con:value></con:parameter><con:parameter><con:name>SERVICE</con:name><con:value>WFS</con:value></con:parameter></con:parameters></con:config></con:testStep><con:properties><con:property><con:name>MAIN_TESTSTEP</con:name><con:value>DescribeStoredQueries</con:value></con:property><con:property><con:name>save_responses</con:name><con:value>TRUE</con:value></con:property><con:property><con:name>traces_dir</con:name><con:value>../../../tmp/</con:value></con:property><con:property><con:name>qaf.AssociatedRequirements</con:name><con:value>M-01##M-01-ImplementsQuery</con:value></con:property></con:properties></con:testCase><con:testCase failOnError="false" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="Mandatory INSPIRE GetCapabilities" searchProperties="true" timeout="0" wsrmEnabled="false" wsrmVersion="1.0" wsrmAckTo="" amfAuthorisation="false" amfEndpoint="" amfLogin="" amfPassword="" id="1ce771c8-5f56-4a07-830e-4bb7369c7fce"><con:settings/><con:testStep type="properties" name="Properties"><con:settings/><con:config xsi:type="con:PropertiesStep" saveFirst="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:properties><con:property><con:name>Capabilities</con:name><con:value/></con:property><con:property><con:name>urlToTest</con:name><con:value/></con:property><con:property><con:name>ServiceMetadataRecord</con:name><con:value/></con:property></con:properties></con:config></con:testStep><con:testStep type="restrequest" name="GetCapabilities_old" disabled="true"><con:settings/><con:config service="service" resourcePath="" methodName="GetCapabilities" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:restRequest name="GetCapabilities_old" mediaType="application/xml" accept=""><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>${#Project#serviceEndpoint}</con:endpoint><con:request/><con:assertion type="Response SLA Assertion" name="Response SLA"><con:configuration><SLA>5000</SLA></con:configuration></con:assertion><con:assertion type="GroovyScriptAssertion" name="Timeout"><con:configuration><scriptText>// check response time
 log.info( "time taken was :" + messageExchange.timeTaken );
 
-</scriptText></con:configuration></con:assertion><con:assertion type="Simple Schema Validator" name="M-01##INSPIRESchemaValid: Simple Schema Validator"><con:configuration><pathToXSD>xsi:schemaLocation</pathToXSD></con:configuration></con:assertion><con:assertion type="XQuery Match" name="M-01##INSPIRESchema: xsi:SchemaLocation contains the INSPIRE Download Services schema"><con:configuration><path>declare namespace wfs='http://www.opengis.net/wfs/2.0';
+</scriptText></con:configuration></con:assertion><con:assertion type="Simple Schema Validator" name="M-01##INSPIRESchemaValid: Simple Schema Validator"><con:configuration><pathToXSD>xsi:schemaLocation</pathToXSD></con:configuration></con:assertion><con:assertion type="XQuery Match" name="M-01##INSPIRESchema: xsi:schemaLocation contains the INSPIRE Download Services schema"><con:configuration><path>declare namespace wfs='http://www.opengis.net/wfs/2.0';
 declare namespace ows='http://www.opengis.net/ows/1.1';
 declare namespace fes='http://www.opengis.net/fes/2.0';
 declare namespace gml='http://www.opengis.net/gml/3.2';
@@ -326,11 +326,11 @@ declare namespace inspire_common='http://inspire.ec.europa.eu/schemas/common/1.0
 let $inspireSchemLocation:=//*[contains(@xsi:schemaLocation,'http://inspire.ec.europa.eu/schemas/inspire_dls/1.0/inspire_dls.xsd')]
 return
 if (exists($inspireSchemLocation))
-then "The Capabilities contain a xsi:SchemaLocation with the INSPIRE Download Services schema."
-else "The Capabilities do not contain a xsi:SchemaLocation with the INSPIRE Download Services schema: 'http://inspire.ec.europa.eu/schemas/inspire_dls/1.0/inspire_dls.xsd'."
+then "The Capabilities contain a xsi:schemaLocation with the INSPIRE Download Services schema."
+else "The Capabilities do not contain a xsi:schemaLocation with the INSPIRE Download Services schema: 'http://inspire.ec.europa.eu/schemas/inspire_dls/1.0/inspire_dls.xsd'."
 }
-&lt;/result></path><content>&lt;result>AssertionFailures: The Capabilities contain a xsi:SchemaLocation with the INSPIRE Download Services schema.&lt;/result></content><allowWildcards>false</allowWildcards></con:configuration></con:assertion><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters><entry key="LANGUAGE" value="ENG" xmlns="http://eviware.com/soapui/config"/></con:parameters></con:restRequest></con:config></con:testStep><con:testStep type="httprequest" name="GetCapabilities"><con:settings/><con:config method="GET" xsi:type="con:HttpRequest" name="GetCapabilities" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:endpoint>${#Project#serviceEndpoint}</con:endpoint><con:request/><con:assertion type="Response SLA Assertion" name="Response SLA"><con:configuration><SLA>5000</SLA></con:configuration></con:assertion><con:assertion type="GroovyScriptAssertion" name="Timeout"><con:configuration><scriptText>// check response time
-log.info( "time taken was :" + messageExchange.timeTaken );</scriptText></con:configuration></con:assertion><con:assertion type="Simple Schema Validator" name="M-01##INSPIRESchemaValid: Simple Schema Validator"><con:configuration><pathToXSD>xsi:schemaLocation</pathToXSD></con:configuration></con:assertion><con:assertion type="XQuery Match" name="M-01##INSPIRESchema: xsi:SchemaLocation contains the INSPIRE Download Services schema"><con:configuration><path>declare namespace wfs='http://www.opengis.net/wfs/2.0';
+&lt;/result></path><content>&lt;result>AssertionFailures: The Capabilities contain a xsi:schemaLocation with the INSPIRE Download Services schema.&lt;/result></content><allowWildcards>false</allowWildcards></con:configuration></con:assertion><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters><entry key="LANGUAGE" value="ENG" xmlns="http://eviware.com/soapui/config"/></con:parameters></con:restRequest></con:config></con:testStep><con:testStep type="httprequest" name="GetCapabilities"><con:settings/><con:config method="GET" xsi:type="con:HttpRequest" name="GetCapabilities" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:endpoint>${#Project#serviceEndpoint}</con:endpoint><con:request/><con:assertion type="Response SLA Assertion" name="Response SLA"><con:configuration><SLA>5000</SLA></con:configuration></con:assertion><con:assertion type="GroovyScriptAssertion" name="Timeout"><con:configuration><scriptText>// check response time
+log.info( "time taken was :" + messageExchange.timeTaken );</scriptText></con:configuration></con:assertion><con:assertion type="Simple Schema Validator" name="M-01##INSPIRESchemaValid: Simple Schema Validator"><con:configuration><pathToXSD>xsi:schemaLocation</pathToXSD></con:configuration></con:assertion><con:assertion type="XQuery Match" name="M-01##INSPIRESchema: xsi:schemaLocation contains the INSPIRE Download Services schema"><con:configuration><path>declare namespace wfs='http://www.opengis.net/wfs/2.0';
 declare namespace ows='http://www.opengis.net/ows/1.1';
 declare namespace fes='http://www.opengis.net/fes/2.0';
 declare namespace gml='http://www.opengis.net/gml/3.2';
@@ -343,10 +343,10 @@ declare namespace inspire_common='http://inspire.ec.europa.eu/schemas/common/1.0
 let $inspireSchemLocation:=//*[contains(@xsi:schemaLocation,'http://inspire.ec.europa.eu/schemas/inspire_dls/1.0/inspire_dls.xsd')]
 return
 if (exists($inspireSchemLocation))
-then "The Capabilities contain a xsi:SchemaLocation with the INSPIRE Download Services schema."
-else "The Capabilities do not contain a xsi:SchemaLocation with the INSPIRE Download Services schema: 'http://inspire.ec.europa.eu/schemas/inspire_dls/1.0/inspire_dls.xsd'."
+then "The Capabilities contain a xsi:schemaLocation with the INSPIRE Download Services schema."
+else "The Capabilities do not contain a xsi:schemaLocation with the INSPIRE Download Services schema: 'http://inspire.ec.europa.eu/schemas/inspire_dls/1.0/inspire_dls.xsd'."
 }
-&lt;/result></path><content>&lt;result>AssertionFailures: The Capabilities contain a xsi:SchemaLocation with the INSPIRE Download Services schema.&lt;/result></content><allowWildcards>false</allowWildcards></con:configuration></con:assertion><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters><con:parameter><con:name>VERSION</con:name><con:value>2.0.0</con:value></con:parameter><con:parameter><con:name>SERVICE</con:name><con:value>WFS</con:value></con:parameter><con:parameter><con:name>REQUEST</con:name><con:value>GetCapabilities</con:value></con:parameter></con:parameters></con:config></con:testStep><con:testStep type="transfer" name="Property Transfer"><con:settings/><con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="false" ignoreEmpty="true" transferToAll="false" useXQuery="false" entitize="false" transferChildNodes="false"><con:name>INSPIREServiceMetadataUrl</con:name><con:sourceType>ResponseAsXml</con:sourceType><con:sourceStep>GetCapabilities</con:sourceStep><con:sourcePath>declare namespace wfs='http://www.opengis.net/wfs/2.0';
+&lt;/result></path><content>&lt;result>AssertionFailures: The Capabilities contain a xsi:schemaLocation with the INSPIRE Download Services schema.&lt;/result></content><allowWildcards>false</allowWildcards></con:configuration></con:assertion><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters><con:parameter><con:name>VERSION</con:name><con:value>2.0.0</con:value></con:parameter><con:parameter><con:name>SERVICE</con:name><con:value>WFS</con:value></con:parameter><con:parameter><con:name>REQUEST</con:name><con:value>GetCapabilities</con:value></con:parameter></con:parameters></con:config></con:testStep><con:testStep type="transfer" name="Property Transfer"><con:settings/><con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="false" ignoreEmpty="true" transferToAll="false" useXQuery="false" entitize="false" transferChildNodes="false"><con:name>INSPIREServiceMetadataUrl</con:name><con:sourceType>ResponseAsXml</con:sourceType><con:sourceStep>GetCapabilities</con:sourceStep><con:sourcePath>declare namespace wfs='http://www.opengis.net/wfs/2.0';
 declare namespace ows='http://www.opengis.net/ows/1.1';
 declare namespace fes='http://www.opengis.net/fes/2.0';
 declare namespace gml='http://www.opengis.net/gml/3.2';
@@ -462,7 +462,7 @@ declare namespace inspire_common='http://inspire.ec.europa.eu/schemas/common/1.0
 &lt;result>AssertionFailures: {
 for $featureType in //wfs:FeatureType
 where string-length($featureType/wfs:MetadataURL/@xlink:href)=0
-return 
+return
 concat ("FeatureType: ",$featureType/wfs:Name," has no MetadataURL.")
 }
 &lt;/result></path><content>&lt;result>AssertionFailures: &lt;/result></content><allowWildcards>false</allowWildcards></con:configuration></con:assertion><con:assertion type="XQuery Match" name="M-01##M-01-SpatialDataServiceType: INSPIRE SpatialDataServiceType is set at 'download'"><con:configuration><path>declare namespace wfs='http://www.opengis.net/wfs/2.0';
@@ -493,7 +493,7 @@ declare namespace inspire_common='http://inspire.ec.europa.eu/schemas/common/1.0
 &lt;result>AssertionFailures: {
 for $featureType in //wfs:FeatureType
 where string-length($featureType/ows:WGS84BoundingBox/ows:LowerCorner)=0
-return 
+return
 concat ("FeatureType: ",$featureType/wfs:Name," has no WGS84BoundingBox.")
 }
 &lt;/result></path><content>&lt;result>AssertionFailures: &lt;/result></content><allowWildcards>false</allowWildcards></con:configuration></con:assertion><con:assertion type="XQuery Match" name="M-01##M-01-TemporalReference: INSPIRE TemporalReference exists"><con:configuration><path>declare namespace wfs='http://www.opengis.net/wfs/2.0';
@@ -732,7 +732,7 @@ declare namespace inspire_common='http://inspire.ec.europa.eu/schemas/common/1.0
 &lt;result>AssertionFailures: {
 for $featureType in //wfs:FeatureType
 where string-length($featureType/wfs:MetadataURL/@xlink:href)=0
-return 
+return
 concat ("FeatureType: ",$featureType/wfs:Name," has no MetadataURL.")
 }
 &lt;/result></path><content>&lt;result>AssertionFailures: &lt;/result></content><allowWildcards>false</allowWildcards></con:configuration></con:assertion><con:assertion type="XQuery Match" name="M-01##M-01-SpatialDataServiceType: INSPIRE SpatialDataServiceType is set at 'download'"><con:configuration><path>declare namespace wfs='http://www.opengis.net/wfs/2.0';
@@ -763,7 +763,7 @@ declare namespace inspire_common='http://inspire.ec.europa.eu/schemas/common/1.0
 &lt;result>AssertionFailures: {
 for $featureType in //wfs:FeatureType
 where string-length($featureType/ows:WGS84BoundingBox/ows:LowerCorner)=0
-return 
+return
 concat ("FeatureType: ",$featureType/wfs:Name," has no WGS84BoundingBox.")
 }
 &lt;/result></path><content>&lt;result>AssertionFailures: &lt;/result></content><allowWildcards>false</allowWildcards></con:configuration></con:assertion><con:assertion type="XQuery Match" name="M-01##M-01-TemporalReference: INSPIRE TemporalReference exists"><con:configuration><path>declare namespace wfs='http://www.opengis.net/wfs/2.0';
@@ -936,7 +936,7 @@ for( i in metadataUrlNodes )
 {
    i=i.replaceAll("%7B","{")
    i=i.replaceAll("%7D","}")
-   log.info("Checking Metadata with URL: " + i)   
+   log.info("Checking Metadata with URL: " + i)
    props.setPropertyValue("urlToTest",i)
    // remove any Authorization header if provided for the service (because this request is for metadata)
    def newheaders = new StringToStringsMap()
@@ -947,7 +947,7 @@ for( i in metadataUrlNodes )
 	       newheaders.put(key,val)
 	  }
 	 }
-   testRunner.testCase.testSteps["GetMetadata"].getHttpRequest().setRequestHeaders(newheaders);	
+   testRunner.testCase.testSteps["GetMetadata"].getHttpRequest().setRequestHeaders(newheaders);
    testRunner.runTestStepByName("GetMetadata")
 }</script></con:config></con:testStep><con:testStep type="httprequest" name="GetMetadata"><con:settings/><con:config method="GET" xsi:type="con:HttpRequest" name="GetMetadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>${#urlToTest}</con:endpoint><con:request/><con:assertion type="XPath Match" name="M-01##M-01-MD_Identifier: The MD_Identifier exists in the Metadata" id="f290e535-4226-4b13-b1a4-498ff501122d" disabled="true"><con:configuration><path>declare namespace gmd='http://www.isotc211.org/2005/gmd';
 declare namespace gco='http://www.isotc211.org/2005/gco';
@@ -966,7 +966,7 @@ else "the referred dataset Metadata document does not seem to be ISO Metadata. I
 
 &lt;result>AssertionFailures: {
 let $fileIdentifier:=//gmd:MD_Metadata/gmd:fileIdentifier
-return 
+return
 if (string-length($fileIdentifier)=0)
 then "there is no fileIdentifier defined in the Metadata."
 else "the Metadata contains a fileIdentifier."
@@ -997,7 +997,7 @@ declare namespace srv='http://www.isotc211.org/2005/srv';
 let $value:=//gmd:MD_Metadata/gmd:identificationInfo/srv:SV_ServiceIdentification/srv:operatesOn
 return
 if (exists($value))
-then "" 
+then ""
 else "The metadata of the WFS does not contain any coupled resource (srv:operatesOn)"
 }
 &lt;/result></path><content>&lt;result>AssertionFailures: &lt;/result></content><allowWildcards>false</allowWildcards></con:configuration></con:assertion><con:assertion type="XQuery Match" name="M-01##M-01-ServiceMD_coupledResourceHref: srv:operatesOn contains a reference to a metadata document"><con:configuration><path>declare namespace gmd='http://www.isotc211.org/2005/gmd';
@@ -1008,7 +1008,7 @@ declare namespace xlink='http://www.w3.org/1999/xlink';
 &lt;result>AssertionFailures: {
 for $operatesOn in //gmd:MD_Metadata/gmd:identificationInfo/srv:SV_ServiceIdentification/srv:operatesOn
 where (empty($operatesOn/@xlink:href))
-return 
+return
 concat ("The element srv:operatesOn with the attribute uuidref: ", $operatesOn/@uuidref, " in the metadata of the WFS has no xlink:href attribute. It does not refer to a metadata document.")
 }
 &lt;/result></path><content>&lt;result>AssertionFailures: &lt;/result></content><allowWildcards>false</allowWildcards></con:configuration></con:assertion><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:config></con:testStep><con:testStep type="transfer" name="Property Transfer Metadata Identifiers"><con:settings/><con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="false" ignoreEmpty="true" transferToAll="false" useXQuery="false" entitize="false" transferChildNodes="false"><con:name>datasetIdentifiersOperatesOn</con:name><con:sourceType>ResponseAsXml</con:sourceType><con:sourceStep>Req 42 (Scenario 1) ExternalServiceMetadata</con:sourceStep><con:sourcePath>declare namespace gmd='http://www.isotc211.org/2005/gmd';
@@ -1039,7 +1039,7 @@ for( i in metadataUrlNodes )
 {
    i=i.replaceAll("%7B","{")
    i=i.replaceAll("%7D","}")
-   log.info("Checking Metadata with URL: " + i)   
+   log.info("Checking Metadata with URL: " + i)
    props.setPropertyValue("urlToTest",i)
       // remove any Authorization header if provided for the service (because this request is for metadata)
    def newheaders = new StringToStringsMap()
@@ -1067,7 +1067,7 @@ else "the referred dataset Metadata document does not seem to be ISO Metadata. I
 
 &lt;result>AssertionFailures: {
 let $fileIdentifier:=//gmd:MD_Metadata/gmd:fileIdentifier
-return 
+return
 if (exists($fileIdentifier))
 then "the Metadata contains a fileIdentifier."
 else "there is no fileIdentifier defined in the Metadata."
@@ -1322,11 +1322,11 @@ else "XPath number predicate (./ns:property[1]) does not work correctly in Filte
     <con:value>http://none</con:value>
     </con:property>
     <con:property><con:name>excludeFeatureTypes</con:name><con:value/></con:property>
-    
-    
-    
-    
-    
+
+
+
+
+
     <con:property>
       <con:name>featureTypeList</con:name>
       <con:value/>
@@ -1335,17 +1335,17 @@ else "XPath number predicate (./ns:property[1]) does not work correctly in Filte
       <con:name>srsnamelist</con:name>
       <con:value>EPSG:4258,EPSG:4326</con:value>
     </con:property>
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-	
+
+
+
+
+
+
+
+
+
+
+
  <con:property><con:name>datasetIdentifiersList</con:name><con:value/></con:property><con:property><con:name>FirstFeature</con:name><con:value/></con:property><con:property><con:name>FirstFeatureId</con:name><con:value/></con:property><con:property><con:name>GetFeatureURL</con:name><con:value/></con:property><con:property><con:name>authUser</con:name><con:value/></con:property><con:property><con:name>authPwd</con:name><con:value/></con:property><con:property><con:name>etf.ignore.properties</con:name><con:value>authUser, authPwd, authMethod, FirstFeature, FirstFeatureId, GetFeatureURL, datasetIdentifiersList, featureTypeList,FirstFeatureTypeName</con:value></con:property><con:property><con:name>authMethod</con:name><con:value>basic</con:value></con:property><con:property><con:name>FirstFeatureTypeName</con:name><con:value/></con:property></con:properties>
  <con:afterLoadScript>
  </con:afterLoadScript>
@@ -1369,7 +1369,7 @@ for( testSuiteR in runner?.getResults() ) {
 					testStepR.testStep.testRequest.assertionList.each{
 						// Extract ID which is seperated with a whitespace and a doublecolon
 						String assertionName = it.name;
-						if (assertionName.indexOf(": ") > -1) {	
+						if (assertionName.indexOf(": ") > -1) {
 							String id = assertionName?.substring( 0, assertionName.indexOf(": ") );
 							if(it.valid) {
 								log.info("Assertion "+assertionName+" passed");
@@ -1377,7 +1377,7 @@ for( testSuiteR in runner?.getResults() ) {
 								log.error("Assertion "+assertionName+" failed with error:");
 								log.error("  -   "+it.getErrors()[0].getMessage());
 								log.error("  -   Requirements:");
-								
+
 								// Todo: Save the requirements as an object in a map
 								requirements.getPropertyList().each {
 									log.info(it.getName())
@@ -1385,7 +1385,7 @@ for( testSuiteR in runner?.getResults() ) {
 										log.error("   -   "+it.getName()+" :" );
 										log.error("        "+it.getValue());
 									}
-								}							
+								}
 							}else{
 								log.warn("Assertion "+assertionName+" is deactivated");
 							}
