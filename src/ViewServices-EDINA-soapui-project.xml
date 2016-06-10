@@ -53,22 +53,22 @@ import com.eviware.soapui.impl.wsdl.teststeps.*;
 c = testRunner.getRunContext();
 
 URL endpoint = new URL(c.expand('${#Project#serviceEndpoint}'));
-if (endpoint.getQuery()) {      
+if (endpoint.getQuery()) {
     def queryParams = endpoint.getQuery().split("&amp;");
-    
+
     // default params for GetCapabilities:
     // filter out version
     def defaultParamsGetCaps = ["version","service","request","language"];
-    
+
     for (p in queryParams) {
         for (d in defaultParamsGetCaps) {
-            if (p.split("=")[0].toLowerCase() == d) {         
+            if (p.split("=")[0].toLowerCase() == d) {
                 queryParams = queryParams - p;
             }
         }
         log.debug("Queryparams from serviceEndpoint cleaned. Aditional queryparams left: " + queryParams);
     }
-    
+
     // For REST requests, add additional query parameters
     // Here for GetCapabilities only
     if (queryParams.length > 0) {
@@ -76,14 +76,14 @@ if (endpoint.getQuery()) {
         for( testSuite in testRunner.testCase.testSuite.project.getTestSuiteList() ) {
             for( testCase in testSuite.getTestCaseList() ) {
                 for( testStep in testCase.getTestStepList() ) {
-                    if( testStep instanceof HttpTestRequestStep ) {                    
+                    if( testStep instanceof HttpTestRequestStep ) {
                         // First: cleanup old extra params, if the tests have been saved with aditional params a previous time
                         if (testStep.getName()=="GetCapabilities") {
                             // first remove any other params
                             for (prop in testStep.getHttpRequest().getProperties()) {
                                     defaultParam = 0;
                                     log.debug("HTTP param: " + prop.getKey())
-                                    for (d in defaultParamsGetCaps) {                           
+                                    for (d in defaultParamsGetCaps) {
                                     if (prop.getKey().toLowerCase() == d) {
                                         defaultParam = 1;
                                     }
@@ -93,23 +93,23 @@ if (endpoint.getQuery()) {
                                         testStep.getHttpRequest().removeProperty(prop.getKey());
                                         log.debug("Removed non-standard query parameter from the request: " + prop.getKey())
                                 }
-                            }                                              
+                            }
                             // now add the extra params from the query string
                             for (q in queryParams) {
                                     def pair = q.split("=");
-                                    testStep.getHttpRequest().addProperty(pair[0]); 
-                                    testStep.getHttpRequest().setPropertyValue(pair[0], pair[1]); 
+                                    testStep.getHttpRequest().addProperty(pair[0]);
+                                    testStep.getHttpRequest().setPropertyValue(pair[0], pair[1]);
                                     log.debug("Added non-standard query parameter for the Getcapabilities requests: " + pair[0] + "=" + pair[1])
                             }
-                        }                    
+                        }
                     }
                 }
             }
-        };        
+        };
     }
 
 }</script></con:config></con:testStep><con:properties/></con:testCase><con:properties/></con:testSuite><con:testSuite name="M-CR-V01 - Get View Service Metadata and Link View Service Mandatory"><con:description>For various combinations of valid mandatory request parameters validate
- that the view service returns a valid XML file, checked against the WMS 
+ that the view service returns a valid XML file, checked against the WMS
 1.3.0 GetCapabilties Response schema.</con:description><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase failOnError="false" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="Test Mandatory WMS GetCapabilities Parameters" searchProperties="true" id="ca38c417-76c9-48f3-a69e-945beb859d0c" timeout="0" wsrmEnabled="false" wsrmVersion="1.0" wsrmAckTo="" amfAuthorisation="false" amfEndpoint="" amfLogin="" amfPassword=""><con:settings/><con:testStep type="properties" name="Properties"><con:settings/><con:config xsi:type="con:PropertiesStep" saveFirst="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:properties><con:property><con:name>firstlayer</con:name><con:value>0</con:value></con:property></con:properties></con:config></con:testStep><con:testStep type="httprequest" name="GetCapabilities"><con:settings/><con:config method="GET" xsi:type="con:HttpRequest" name="GetCapabilities" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>${#Project#serviceEndpoint}</con:endpoint><con:request/><con:assertion type="Response SLA Assertion" name="Response SLA"><con:configuration><SLA>5000</SLA></con:configuration></con:assertion><con:assertion type="GroovyScriptAssertion" name="Timeout"><con:configuration><scriptText>// check response time
 log.info( "time taken was :" + messageExchange.timeTaken );
 
@@ -146,23 +146,23 @@ import com.eviware.soapui.impl.wsdl.teststeps.*;
 c = testRunner.getRunContext();
 
 URL endpoint = new URL(c.expand('${#Project#getMapUrl}'));
-if (endpoint.getQuery()) {  
+if (endpoint.getQuery()) {
     def queryParams = endpoint.getQuery().split("&amp;");
-    
-    
+
+
     // default params for GetMap:
     // filter out version
     def defaultParamsGetMap = ["version","service","request","language","bgcolor","crs","bbox","height","styles","width","height","transparent","exceptions","format","layers","srs"];
-    
+
     for (p in queryParams) {
         for (d in defaultParamsGetMap) {
-            if (p.split("=")[0].toLowerCase() == d) {         
+            if (p.split("=")[0].toLowerCase() == d) {
                 queryParams = queryParams - p;
             }
         }
         log.debug("Queryparams from getMapUrl cleaned. Aditional queryparams left: " + queryParams);
     }
-    
+
     // For REST requests, add additional query parameters
     // Here for GetCapabilities only
     if (queryParams.length > 0) {
@@ -170,14 +170,14 @@ if (endpoint.getQuery()) {
         for( testSuite in testRunner.testCase.testSuite.project.getTestSuiteList() ) {
             for( testCase in testSuite.getTestCaseList() ) {
                 for( testStep in testCase.getTestStepList() ) {
-                    if( testStep instanceof HttpTestRequestStep ) {                    
+                    if( testStep instanceof HttpTestRequestStep ) {
                         // First: cleanup old extra params, if the tests have been saved with aditional params a previous time
                         if (testStep.getName()=="GetMap") {
                             // first remove any other params
                             for (prop in testStep.getHttpRequest().getProperties()) {
                                     defaultParam = 0;
                                     log.debug("HTTP param: " + prop.getKey())
-                                    for (d in defaultParamsGetMap) {                           
+                                    for (d in defaultParamsGetMap) {
                                     if (prop.getKey().toLowerCase() == d) {
                                         defaultParam = 1;
                                     }
@@ -187,19 +187,19 @@ if (endpoint.getQuery()) {
                                         testStep.getHttpRequest().removeProperty(prop.getKey());
                                         log.debug("Removed non-standard query parameter from the request: " + prop.getKey())
                                 }
-                            }                                              
+                            }
                             // now add the extra params from the query string
                             for (q in queryParams) {
                                     def pair = q.split("=");
-                                    testStep.getHttpRequest().addProperty(pair[0]); 
-                                    testStep.getHttpRequest().setPropertyValue(pair[0], pair[1]); 
+                                    testStep.getHttpRequest().addProperty(pair[0]);
+                                    testStep.getHttpRequest().setPropertyValue(pair[0], pair[1]);
                                     log.debug("Added non-standard query parameter for the GetMap requests: " + pair[0] + "=" + pair[1])
                             }
-                        }                    
+                        }
                     }
                 }
             }
-        };        
+        };
     }
 }</script></con:config></con:testStep><con:properties><con:property><con:name>MAIN_TESTSTEP</con:name><con:value>GetCapabilities</con:value></con:property><con:property><con:name>save_responses</con:name><con:value>TRUE</con:value></con:property><con:property><con:name>traces_dir</con:name><con:value>../../../logs/traces/</con:value></con:property><con:property><con:name>etf.AssociatedRequirements</con:name><con:value>M-CR-V01##IR.1</con:value></con:property></con:properties></con:testCase><con:testCase failOnError="false" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="Test Mandatory INSPIRE Get View Service Metadata and Link View Service" searchProperties="true" id="6ddb8223-1680-4903-bab5-a7b158cd89eb" timeout="0" wsrmEnabled="false" wsrmVersion="1.0" wsrmAckTo="" amfAuthorisation="false" amfEndpoint="" amfLogin="" amfPassword=""><con:settings/><con:testStep type="httprequest" name="TG GetCapabilities"><con:settings/><con:config method="GET" xsi:type="con:HttpRequest" name="TG GetCapabilities" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>${#Project#getCapabilitiesURL}</con:endpoint><con:request/><con:assertion type="Response SLA Assertion" name="Response SLA"><con:configuration><SLA>4000</SLA></con:configuration></con:assertion><con:assertion type="GroovyScriptAssertion" name="Timeout"><con:configuration><scriptText>// check response time
 log.info( "time taken was :" + messageExchange.timeTaken );
@@ -216,7 +216,7 @@ else concat(" infoMapAccessService is NOT advertized. This WMS advertizes the fo
 }
 &lt;/result></path><content>&lt;result>AssertionFailures: infoMapAccessService is advertized.&lt;/result></content><allowWildcards>false</allowWildcards></con:configuration></con:assertion><con:assertion type="XQuery Match" name="M-CR-V01##R.31: INSPIRE GetMap Supports PNG or GIF"><con:configuration><path>declare namespace wms='http://www.opengis.net/wms';
 
-&lt;result>AssertionFailures: format image/png or image/gif is { 
+&lt;result>AssertionFailures: format image/png or image/gif is {
 let $formats:=/wms:WMS_Capabilities/wms:Capability/wms:Request/wms:GetMap/wms:Format
 return
 if (exists(index-of($formats,"image/png")) or exists(index-of($formats,"image/gif")))
@@ -228,7 +228,7 @@ else "not supported"
 &lt;result>AssertionFailures: {
 for $namedlayer in //wms:Layer[exists(wms:Name)]
 where string-length($namedlayer/wms:Title)=0
-return 
+return
 concat ("Layer: ",$namedlayer/wms:Name," has no Title. ")
 }
 &lt;/result></path><content>&lt;result>AssertionFailures: &lt;/result></content><allowWildcards>false</allowWildcards></con:configuration></con:assertion><con:assertion type="XQuery Match" name="M-CR-V01##R.32.R.34: INSPIRE Resource Abstract: all Layers with a Name have an Abstract"><con:configuration><path>declare namespace wms='http://www.opengis.net/wms';
@@ -236,7 +236,7 @@ concat ("Layer: ",$namedlayer/wms:Name," has no Title. ")
 &lt;result>AssertionFailures: {
 for $namedlayer in //wms:Layer[exists(wms:Name)]
 where string-length($namedlayer/wms:Abstract)=0
-return 
+return
 concat ("Layer: ",$namedlayer/wms:Name," has no Abstract. ")
 }
 &lt;/result></path><content>&lt;result>AssertionFailures: &lt;/result></content><allowWildcards>false</allowWildcards></con:configuration></con:assertion><con:assertion type="XQuery Match" name="M-CR-V01##R.32.R.35: INSPIRE Resource Keyword: all Layers with a Name have at least one Keyword"><con:configuration><path>declare namespace wms='http://www.opengis.net/wms';
@@ -244,7 +244,7 @@ concat ("Layer: ",$namedlayer/wms:Name," has no Abstract. ")
 &lt;result>AssertionFailures: {
 for $namedlayer in //wms:Layer[exists(wms:Name)]
 where count($namedlayer/wms:KeywordList/wms:Keyword)=0
-return 
+return
 concat ("Layer: ",$namedlayer/wms:Name," has no Keywords. ")
 }
 &lt;/result></path><content>&lt;result>AssertionFailures: &lt;/result></content><allowWildcards>false</allowWildcards></con:configuration></con:assertion><con:assertion type="XQuery Match" name="M-CR-V01##R.32.R.36: INSPIRE Ex_GeographicBoundingBox: all Layers with a Name have a EX_GeographicBoundingBox"><con:configuration><path>declare namespace wms='http://www.opengis.net/wms';
@@ -252,19 +252,19 @@ concat ("Layer: ",$namedlayer/wms:Name," has no Keywords. ")
 &lt;result>AssertionFailures: {
 for $namedlayer in //wms:Layer[exists(wms:Name)]
 where count($namedlayer[exists(ancestor-or-self::wms:Layer/wms:EX_GeographicBoundingBox/wms:westBoundLongitude)])=0
-return 
+return
 concat ("Layer: ",$namedlayer/wms:Name," has no EX_GeographicBoundingBox. ")
 }
 &lt;/result></path><content>&lt;result>AssertionFailures: &lt;/result></content><allowWildcards>false</allowWildcards></con:configuration></con:assertion><con:assertion type="XQuery Match" name="M-CR-V01##R.36: INSPIRE BoundingBox: all Layers with a Name have BoundingBoxes for all advertized CRSes"><con:configuration><path>declare namespace wms='http://www.opengis.net/wms';
 
 &lt;result>AssertionFailures: {
 for $namedlayer in //wms:Layer[exists(wms:Name)]
-let $speccrsstr :=string-join($namedlayer/wms:CRS[../ancestor-or-self::wms:Layer/wms:BoundingBox/@CRS=.],"; ") 
+let $speccrsstr :=string-join($namedlayer/wms:CRS[../ancestor-or-self::wms:Layer/wms:BoundingBox/@CRS=.],"; ")
 let $layercrsstr:=string-join($namedlayer/wms:CRS,"; ")
 let $nrspec:=count($namedlayer/wms:CRS[../ancestor-or-self::wms:Layer/wms:BoundingBox/@CRS=.])
 let $nrlayercrs:=count($namedlayer/wms:CRS[../ancestor-or-self::wms:Layer/wms:CRS])
 where $nrspec != $nrlayercrs
-return 
+return
 concat ("For layer: ",$namedlayer/wms:Name," one ore more BoundingBoxes for the specified CRSes are missing. The specified CRSes for the layer are: ", $speccrsstr, ". The layer has boundingboxes for: ", $layercrsstr, ", nr spec: ", $nrspec, " nr layer crs: ",$nrlayercrs)
 }
 &lt;/result></path><content>&lt;result>AssertionFailures: &lt;/result></content><allowWildcards>false</allowWildcards></con:configuration></con:assertion><con:assertion type="XQuery Match" name="M-CR-V01##R.37.R.38: INSPIRE Resource Identifier: all Layers with a Name have an Identifier and a declared Authority for that Identifier"><con:configuration><path>declare namespace wms='http://www.opengis.net/wms';
@@ -272,7 +272,7 @@ concat ("For layer: ",$namedlayer/wms:Name," one ore more BoundingBoxes for the 
 &lt;result>AssertionFailures: {
 for $namedlayer in //wms:Layer[exists(wms:Name)]
 where string-length($namedlayer/wms:Identifier)=0  or string-length($namedlayer/wms:Identifier/@authority)=0 or count($namedlayer/wms:Identifier/@authority[.=//wms:AuthorityURL/@name])=0
-return 
+return
 concat ("For layer: ",$namedlayer/wms:Name," the Identifier, the Identifier authority attribute and/or AuthorityURL are missing. All have to be present.")
 }
 &lt;/result></path><content>&lt;result>AssertionFailures: &lt;/result></content><allowWildcards>false</allowWildcards></con:configuration></con:assertion><con:assertion type="XQuery Match" name="M-CR-V01##R.41R.46: INSPIRE Styles: all Styles have a Name and Title"><con:configuration><path>declare namespace wms='http://www.opengis.net/wms';
@@ -280,7 +280,7 @@ concat ("For layer: ",$namedlayer/wms:Name," the Identifier, the Identifier auth
 &lt;result>AssertionFailures: {
 for $style in //wms:Style
 where string-length($style/wms:Name)=0  or string-length($style/wms:Title)=0
-return 
+return
 concat ("For the Style: ",$style/wms:Name," of Layer ", $style/../wms:Name," the name and/or title are missing.")
 }
 &lt;/result></path><content>&lt;result>AssertionFailures: &lt;/result></content><allowWildcards>false</allowWildcards></con:configuration></con:assertion><con:assertion type="XQuery Match" name="M-CR-V01##R.70: INSPIRE ResponseLanguage present"><con:configuration><path>declare namespace wms='http://www.opengis.net/wms';
@@ -311,7 +311,7 @@ else "DefaultLanguage is advertized."
 {
 for $namedlayer in //wms:Layer[exists(wms:Name)]
 where count($namedlayer/wms:Style)=0
-return 
+return
 concat ("Layer: ",$namedlayer/wms:Name," has no Style. ")
 }
 &lt;/result></path><content>&lt;result>AssertionFailures:&lt;/result></content><allowWildcards>false</allowWildcards></con:configuration></con:assertion><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters><con:parameter><con:name>VERSION</con:name><con:value>1.3.0</con:value></con:parameter><con:parameter><con:name>SERVICE</con:name><con:value>WMS</con:value></con:parameter><con:parameter><con:name>REQUEST</con:name><con:value>GetCapabilities</con:value></con:parameter><con:parameter><con:name>LANGUAGE</con:name><con:value>ENG</con:value></con:parameter></con:parameters></con:config></con:testStep><con:testStep type="transfer" name="Property Transfer"><con:settings/><con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="false" ignoreEmpty="true" transferToAll="false" useXQuery="false" entitize="false" transferChildNodes="false"><con:name>INSPIREServiceMetadataUrl</con:name><con:sourceType>ResponseAsXml</con:sourceType><con:sourceStep>TG GetCapabilities</con:sourceStep><con:sourcePath>declare namespace wms='http://www.opengis.net/wms';
@@ -325,10 +325,10 @@ declare namespace inspire_vs='http://inspire.ec.europa.eu/schemas/inspire_vs/1.0
 declare namespace inspire_common='http://inspire.ec.europa.eu/schemas/common/1.0';
 declare namespace xsi='http://www.w3.org/2001/XMLSchema-instance';
 
-string-join(//wms:Layer/wms:Identifier,',')</con:sourcePath><con:targetType>datasetIdentifiersList</con:targetType><con:targetStep>#Project#</con:targetStep></con:transfers></con:config></con:testStep><con:testStep type="goto" name="Conditional Goto xsi:SchemaLocation"><con:settings/><con:config xsi:type="con:GotoStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:condition><con:name>xsiSchemaLocationPresent</con:name><con:type>XPATH</con:type><con:expression>declare namespace wms='http://www.opengis.net/wms';
+string-join(//wms:Layer/wms:Identifier,',')</con:sourcePath><con:targetType>datasetIdentifiersList</con:targetType><con:targetStep>#Project#</con:targetStep></con:transfers></con:config></con:testStep><con:testStep type="goto" name="Conditional Goto xsi:schemaLocation"><con:settings/><con:config xsi:type="con:GotoStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:condition><con:name>xsiSchemaLocationPresent</con:name><con:type>XPATH</con:type><con:expression>declare namespace wms='http://www.opengis.net/wms';
 declare namespace xsi='http://www.w3.org/2001/XMLSchema-instance';
 
-exists(/wms:WMS_Capabilities/@xsi:schemaLocation)</con:expression><con:targetStep>TG GetCapabilities Schema Validation - xsi:schemaLocation</con:targetStep></con:condition></con:config></con:testStep><con:testStep type="httprequest" name="TG GetCapabilities Schema Validation - INSPIRE schema"><con:settings/><con:config method="GET" xsi:type="con:HttpRequest" name="TG GetCapabilities Schema Validation - INSPIRE schema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>${#Project#getCapabilitiesURL}</con:endpoint><con:request/><con:assertion type="Simple Schema Validator" name="M-CR-V01##R.8.R.9: Capabilities implement the extended metadata. Validate to INSPIRE Schema http://inspire.ec.europa.eu/schemas/inspire_vs/1.0/inspire_vs.xsd"><con:configuration><pathToXSD>http://inspire.ec.europa.eu/schemas/inspire_vs/1.0/inspire_vs.xsd</pathToXSD></con:configuration></con:assertion><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters><con:parameter><con:name>VERSION</con:name><con:value>1.3.0</con:value></con:parameter><con:parameter><con:name>SERVICE</con:name><con:value>WMS</con:value></con:parameter><con:parameter><con:name>REQUEST</con:name><con:value>GetCapabilities</con:value></con:parameter><con:parameter><con:name>LANGUAGE</con:name><con:value>ENG</con:value></con:parameter></con:parameters></con:config></con:testStep><con:testStep type="goto" name="Conditional Goto Skip xsi:SchemaLocation"><con:settings/><con:config xsi:type="con:GotoStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:condition><con:name>xsiSchemaLocationPresent</con:name><con:type>XPATH</con:type><con:expression>declare namespace wms='http://www.opengis.net/wms';
+exists(/wms:WMS_Capabilities/@xsi:schemaLocation)</con:expression><con:targetStep>TG GetCapabilities Schema Validation - xsi:schemaLocation</con:targetStep></con:condition></con:config></con:testStep><con:testStep type="httprequest" name="TG GetCapabilities Schema Validation - INSPIRE schema"><con:settings/><con:config method="GET" xsi:type="con:HttpRequest" name="TG GetCapabilities Schema Validation - INSPIRE schema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>${#Project#getCapabilitiesURL}</con:endpoint><con:request/><con:assertion type="Simple Schema Validator" name="M-CR-V01##R.8.R.9: Capabilities implement the extended metadata. Validate to INSPIRE Schema http://inspire.ec.europa.eu/schemas/inspire_vs/1.0/inspire_vs.xsd"><con:configuration><pathToXSD>http://inspire.ec.europa.eu/schemas/inspire_vs/1.0/inspire_vs.xsd</pathToXSD></con:configuration></con:assertion><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters><con:parameter><con:name>VERSION</con:name><con:value>1.3.0</con:value></con:parameter><con:parameter><con:name>SERVICE</con:name><con:value>WMS</con:value></con:parameter><con:parameter><con:name>REQUEST</con:name><con:value>GetCapabilities</con:value></con:parameter><con:parameter><con:name>LANGUAGE</con:name><con:value>ENG</con:value></con:parameter></con:parameters></con:config></con:testStep><con:testStep type="goto" name="Conditional Goto Skip xsi:schemaLocation"><con:settings/><con:config xsi:type="con:GotoStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:condition><con:name>xsiSchemaLocationPresent</con:name><con:type>XPATH</con:type><con:expression>declare namespace wms='http://www.opengis.net/wms';
 declare namespace xsi='http://www.w3.org/2001/XMLSchema-instance';
 
 empty(/wms:WMS_Capabilities/@xsi:schemaLocation)</con:expression><con:targetStep>TG GetCapabilities - Metadata</con:targetStep></con:condition></con:config></con:testStep><con:testStep type="httprequest" name="TG GetCapabilities Schema Validation - xsi:schemaLocation"><con:settings/><con:config method="GET" xsi:type="con:HttpRequest" name="TG GetCapabilities Schema Validation - xsi:schemaLocation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>${#Project#getCapabilitiesURL}</con:endpoint><con:request/><con:assertion type="Simple Schema Validator" name="M-CR-V01##R.8.R.9b: Capabilities implement the extended metadata. Validate to declared XML Schema (xsi:schemaLocation)"><con:configuration><pathToXSD>xsi:schemaLocation</pathToXSD></con:configuration></con:assertion><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters><con:parameter><con:name>VERSION</con:name><con:value>1.3.0</con:value></con:parameter><con:parameter><con:name>SERVICE</con:name><con:value>WMS</con:value></con:parameter><con:parameter><con:name>REQUEST</con:name><con:value>GetCapabilities</con:value></con:parameter><con:parameter><con:name>LANGUAGE</con:name><con:value>ENG</con:value></con:parameter></con:parameters></con:config></con:testStep><con:testStep type="httprequest" name="TG GetCapabilities - Metadata"><con:settings/><con:config method="GET" xsi:type="con:HttpRequest" name="TG GetCapabilities - Metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>${#Project#getCapabilitiesURL}</con:endpoint><con:request/><con:assertion type="Response SLA Assertion" name="Document Received"><con:configuration><SLA>30000</SLA></con:configuration></con:assertion><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters><con:parameter><con:name>VERSION</con:name><con:value>1.3.0</con:value></con:parameter><con:parameter><con:name>SERVICE</con:name><con:value>WMS</con:value></con:parameter><con:parameter><con:name>REQUEST</con:name><con:value>GetCapabilities</con:value></con:parameter><con:parameter><con:name>LANGUAGE</con:name><con:value>ENG</con:value></con:parameter></con:parameters></con:config></con:testStep><con:testStep type="goto" name="Conditional Goto Scenario 1 ExternalServiceMetadata"><con:settings/><con:config xsi:type="con:GotoStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:condition><con:name>ExternalServiceMetadata</con:name><con:type>XPATH</con:type><con:expression>declare namespace wms='http://www.opengis.net/wms';
@@ -408,7 +408,7 @@ declare namespace inspire_vs='http://inspire.europa.eu/networkservice/view/1.0';
 &lt;result>AssertionFailures: {
 let $contactOrg:=wms:WMS_Capabilities/wms:Service/wms:ContactInformation/wms:ContactPersonPrimary/wms:ContactOrganization
 let $contactPos:=wms:WMS_Capabilities/wms:Service/wms:ContactInformation/wms:ContactPosition
-return 
+return
 if (string-length($contactOrg)=0 or string-length($contactPos)=0 )
 then "INSPIRE Responsible Organization is not completely present. Check if wms:ContactOrganization and wms:ContactPosition are both advertized."
 else "INSPIRE Responsible Organization is present (wms:ContactOrganization and wms:ContactPosition)."
@@ -456,8 +456,8 @@ else "the referred service Metadata document does not seem to be ISO Metadata. I
 &lt;/result></path><content>&lt;result>AssertionFailures: the service metadata has an ISO Metadata root element (gmd:Metadata exists).&lt;/result></content><allowWildcards>false</allowWildcards></con:configuration></con:assertion><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:config></con:testStep><con:testStep type="transfer" name="Property Transfer Metadata Identifiers"><con:settings/><con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="false" ignoreEmpty="true" transferToAll="false" useXQuery="false" entitize="false" transferChildNodes="false"><con:name>datasetIdentifiersOperatesOn</con:name><con:sourceType>ResponseAsXml</con:sourceType><con:sourceStep>Req 6 (Scenario 1): The inspire_common:MetadataURL refers to the INSPIRE service metadata available through an INSPIRE Discovery Service</con:sourceStep><con:sourcePath>declare namespace gmd='http://www.isotc211.org/2005/gmd';
 declare namespace srv='http://www.isotc211.org/2005/srv';
 declare namespace gco='http://www.isotc211.org/2005/gco';
-string-join(//srv:operatesOn/@uuidref,',')</con:sourcePath><con:targetType>datasetIdentifiersList</con:targetType><con:targetStep>#Project#</con:targetStep></con:transfers></con:config></con:testStep><con:testStep type="transfer" name="Property Transfer (Finish Goto)"><con:settings/><con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/></con:testStep><con:properties><con:property><con:name>MAIN_TESTSTEP</con:name><con:value>TG GetCapabilities</con:value></con:property><con:property><con:name>save_responses</con:name><con:value>TRUE</con:value></con:property><con:property><con:name>traces_dir</con:name><con:value>../../../logs/traces/</con:value></con:property><con:property><con:name>etf.AssociatedRequirements</con:name><con:value>M-CR-V01###M-CR-V01##R.18###M-CR-V01##R.31###M-CR-V01##R.32.R.33###M-CR-V01##R.32.R.34###M-CR-V01##R.32.R.35###M-CR-V01##R.32.R.36###M-CR-V01##R.36###M-CR-V01##R.37.R.38###M-CR-V01##R.41R.46###M-CR-V01##R.70###M-CR-V01##R.71###M-CR-V01##StylesPresent###M-CR-V01##R.8.R.9###M-CR-V01##R.8.R.9b###M-CR-V01##R.10###M-CR-V01##R.10b###M-CR-V01##R.11###M-CR-V01##R.16.R.18###M-CR-V01##R.24###M-CR-V01##R.25.R.26###M-CR-V01##R.33</con:value></con:property></con:properties></con:testCase><con:properties><con:property><con:name>etf.AssociatedRequirements</con:name><con:value>M-CR-V01</con:value></con:property></con:properties></con:testSuite><con:testSuite name="O-CR-V02 - Get View Service Metadata Optional"><con:description>For various combinations of valid mandatory and optional request 
-parameters validate that the view service returns a valid XML file, 
+string-join(//srv:operatesOn/@uuidref,',')</con:sourcePath><con:targetType>datasetIdentifiersList</con:targetType><con:targetStep>#Project#</con:targetStep></con:transfers></con:config></con:testStep><con:testStep type="transfer" name="Property Transfer (Finish Goto)"><con:settings/><con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/></con:testStep><con:properties><con:property><con:name>MAIN_TESTSTEP</con:name><con:value>TG GetCapabilities</con:value></con:property><con:property><con:name>save_responses</con:name><con:value>TRUE</con:value></con:property><con:property><con:name>traces_dir</con:name><con:value>../../../logs/traces/</con:value></con:property><con:property><con:name>etf.AssociatedRequirements</con:name><con:value>M-CR-V01###M-CR-V01##R.18###M-CR-V01##R.31###M-CR-V01##R.32.R.33###M-CR-V01##R.32.R.34###M-CR-V01##R.32.R.35###M-CR-V01##R.32.R.36###M-CR-V01##R.36###M-CR-V01##R.37.R.38###M-CR-V01##R.41R.46###M-CR-V01##R.70###M-CR-V01##R.71###M-CR-V01##StylesPresent###M-CR-V01##R.8.R.9###M-CR-V01##R.8.R.9b###M-CR-V01##R.10###M-CR-V01##R.10b###M-CR-V01##R.11###M-CR-V01##R.16.R.18###M-CR-V01##R.24###M-CR-V01##R.25.R.26###M-CR-V01##R.33</con:value></con:property></con:properties></con:testCase><con:properties><con:property><con:name>etf.AssociatedRequirements</con:name><con:value>M-CR-V01</con:value></con:property></con:properties></con:testSuite><con:testSuite name="O-CR-V02 - Get View Service Metadata Optional"><con:description>For various combinations of valid mandatory and optional request
+parameters validate that the view service returns a valid XML file,
 checked against the WMS 1.3.0 GetCapabilties Response schema.</con:description><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="Test Optional Get View Service Metadata Parameters" searchProperties="true" id="030e2606-2bd4-4922-8c38-1f1a4a6bf6f5"><con:settings/><con:testStep type="httprequest" name="GetCapabilities"><con:settings/><con:config method="GET" xsi:type="con:HttpRequest" name="GetCapabilities" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:endpoint>${#Project#getCapabilitiesURL}</con:endpoint><con:request/><con:assertion type="Response SLA Assertion" name="Response SLA"><con:configuration><SLA>5000</SLA></con:configuration></con:assertion><con:assertion type="GroovyScriptAssertion" name="Timeout"><con:configuration><scriptText>// check response time
 log.info( "time taken was :" + messageExchange.timeTaken );
 
@@ -470,7 +470,7 @@ declare namespace xsi='http://www.w3.org/2001/XMLSchema-instance';
 &lt;result>AssertionFailures: {
 let $allLayerNames:=string-join(//wms:Layer[wms:Name]/wms:Name, "; ")
 
-let $harmonizedLayers:=string-join(//wms:Layer[wms:Name='AD.Address' or wms:Name='HY.PhysicalWaters.Waterbodies' or wms:Name='HY.PhysicalWaters.LandWaterBoundary' or wms:Name='HY.PhysicalWaters.Catchments' or wms:Name='HY.Network' or wms:Name='HY.PhysicalWaters.HydroPointOfInterest' or wms:Name='HY.PhysicalWaters.ManMadeObject' or wms:Name='HY.AquiferNode' or wms:Name='HY.HydroObject' or wms:Name='HY.Reporting.WFDRiver' or wms:Name='HY.Reporting.WFDLake' or wms:Name='HY.Reporting.WFDTransitionalWater' or wms:Name='HY.Reporting.WFDCoastalWater' or wms:Name='HY.OceanRegion' or wms:Name='TN.CommonTransportElements.TransportNode' or wms:Name='TN.CommonTransportElements.TransportLink' or wms:Name='TN.CommonTransportElements.TransportArea' or wms:Name='TN.RoadTransportNetwork.RoadLink' or wms:Name='TN.RoadTransportNetwork.VehicleTrafficArea' or wms:Name='TN.RoadTransportNetwork.RoadServiceArea' or wms:Name='TN.RoadTransportNetwork.RoadArea' or wms:Name='TN.RailTransportNetwork.RailwayLink' or wms:Name='TN.RailTransportNetwork.RailwayStationArea' or wms:Name='TN.RailTransportNetwork.RailwayYardArea' or wms:Name='TN.RailTransportNetwork.RailwayArea' or wms:Name='TN.WaterTransportNetwork.WaterwayLink' or wms:Name='TN.WaterTransportNetwork.FairwayArea' or wms:Name='TN.WaterTransportNetwork.PortArea' or wms:Name='TN.AirTransportNetwork.AirLink' or wms:Name='TN.AirTransportNetwork.AerodromeArea' or wms:Name='TN.AirTransportNetwork.RunwayArea' or wms:Name='TN.AirTransportNetwork.AirSpaceArea' or wms:Name='TN.AirTransportNetwork.ApronArea' or wms:Name='TN.AirTransportNetwork.TaxiwayArea' or wms:Name='TN.CableTransportNetwork.CablewayLink' or wms:Name='PS.ProtectedSite' or wms:Name='PS.ProtectedSitesNatureConservation' or wms:Name='PS.ProtectedSitesArcheaological' or wms:Name='PS.ProtectedSitesCultural' or wms:Name='PS.ProtectedSitesEcological' or wms:Name='PS.ProtectedSitesLandscape' or wms:Name='PS.ProtectedSitesEnvironment' or wms:Name='PS.ProtectedSitesGeological' or wms:Name='GN.GeographicalNames' or wms:Name='CP.CadastralParcel' or wms:Name='CP.CadastralZoning' or wms:Name='CP.CadastralBoundary' or wms:Name='AU.AdministrativeUnit' or wms:Name='AU.AdministrativeBoundary' or wms:Name='AU.Condominium' or wms:Name='AU.NUTSRegion' 
+let $harmonizedLayers:=string-join(//wms:Layer[wms:Name='AD.Address' or wms:Name='HY.PhysicalWaters.Waterbodies' or wms:Name='HY.PhysicalWaters.LandWaterBoundary' or wms:Name='HY.PhysicalWaters.Catchments' or wms:Name='HY.Network' or wms:Name='HY.PhysicalWaters.HydroPointOfInterest' or wms:Name='HY.PhysicalWaters.ManMadeObject' or wms:Name='HY.AquiferNode' or wms:Name='HY.HydroObject' or wms:Name='HY.Reporting.WFDRiver' or wms:Name='HY.Reporting.WFDLake' or wms:Name='HY.Reporting.WFDTransitionalWater' or wms:Name='HY.Reporting.WFDCoastalWater' or wms:Name='HY.OceanRegion' or wms:Name='TN.CommonTransportElements.TransportNode' or wms:Name='TN.CommonTransportElements.TransportLink' or wms:Name='TN.CommonTransportElements.TransportArea' or wms:Name='TN.RoadTransportNetwork.RoadLink' or wms:Name='TN.RoadTransportNetwork.VehicleTrafficArea' or wms:Name='TN.RoadTransportNetwork.RoadServiceArea' or wms:Name='TN.RoadTransportNetwork.RoadArea' or wms:Name='TN.RailTransportNetwork.RailwayLink' or wms:Name='TN.RailTransportNetwork.RailwayStationArea' or wms:Name='TN.RailTransportNetwork.RailwayYardArea' or wms:Name='TN.RailTransportNetwork.RailwayArea' or wms:Name='TN.WaterTransportNetwork.WaterwayLink' or wms:Name='TN.WaterTransportNetwork.FairwayArea' or wms:Name='TN.WaterTransportNetwork.PortArea' or wms:Name='TN.AirTransportNetwork.AirLink' or wms:Name='TN.AirTransportNetwork.AerodromeArea' or wms:Name='TN.AirTransportNetwork.RunwayArea' or wms:Name='TN.AirTransportNetwork.AirSpaceArea' or wms:Name='TN.AirTransportNetwork.ApronArea' or wms:Name='TN.AirTransportNetwork.TaxiwayArea' or wms:Name='TN.CableTransportNetwork.CablewayLink' or wms:Name='PS.ProtectedSite' or wms:Name='PS.ProtectedSitesNatureConservation' or wms:Name='PS.ProtectedSitesArcheaological' or wms:Name='PS.ProtectedSitesCultural' or wms:Name='PS.ProtectedSitesEcological' or wms:Name='PS.ProtectedSitesLandscape' or wms:Name='PS.ProtectedSitesEnvironment' or wms:Name='PS.ProtectedSitesGeological' or wms:Name='GN.GeographicalNames' or wms:Name='CP.CadastralParcel' or wms:Name='CP.CadastralZoning' or wms:Name='CP.CadastralBoundary' or wms:Name='AU.AdministrativeUnit' or wms:Name='AU.AdministrativeBoundary' or wms:Name='AU.Condominium' or wms:Name='AU.NUTSRegion'
  or wms:Name='AF.AgriculturalHolding'
  or wms:Name='AF.AquacultureHolding'
  or wms:Name='AF.Sites'
@@ -575,7 +575,7 @@ else concat("None of these layer names is an harmonized layer name: ", $allLayer
 
 &lt;result>AssertionFailures: {
 for $namedlayer in //wms:Layer[exists(wms:Name) and  empty(ancestor-or-self::wms:Layer/wms:CRS[contains( ., ':4258') or contains( ., ':4326') or contains( ., 'CRS:84')]) ]
-return 
+return
 concat ("Layer: ",$namedlayer/wms:Name," or the Group Layer it belongs to, seems to miss one of the CRSes: EPSG:4258, EPSG:4326, WGS84 (in different encoding formats like EPSG:4258 or urn:ogc:def:crs:EPSG::4258)")
 }
 &lt;/result></path><content>&lt;result>AssertionFailures: &lt;/result></content><allowWildcards>false</allowWildcards></con:configuration></con:assertion><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters><con:parameter><con:name>VERSION</con:name><con:value>1.3.0</con:value></con:parameter><con:parameter><con:name>SERVICE</con:name><con:value>WMS</con:value></con:parameter><con:parameter><con:name>REQUEST</con:name><con:value>GetCapabilities</con:value></con:parameter><con:parameter><con:name>LANGUAGE</con:name><con:value>ENG</con:value></con:parameter></con:parameters></con:config></con:testStep><con:setupScript/><con:properties><con:property><con:name>MAIN_TESTSTEP</con:name><con:value>GetCapabilities</con:value></con:property><con:property><con:name>save_responses</con:name><con:value>TRUE</con:value></con:property><con:property><con:name>traces_dir</con:name><con:value>../../../logs/traces/</con:value></con:property></con:properties></con:testCase><con:properties><con:property><con:name>etf.AssociatedRequirements</con:name><con:value>M-CR-V01##R.39###M-CR-V01##R.40</con:value></con:property></con:properties></con:testSuite><con:testSuite name="M-CR-V04 - GetMap Mandatory"><con:description>GetMap Mandatory and Optional Parameters</con:description><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="GetMap Mandatory Parameters" searchProperties="true" id="031afbfe-5a63-47f5-a850-58ac2f1385d5"><con:settings/><con:testStep type="httprequest" name="GetMap default layer"><con:settings/><con:config method="GET" xsi:type="con:HttpRequest" name="GetMap default layer" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>${#Project#getMapUrl}</con:endpoint><con:request/><con:assertion type="GroovyScriptAssertion" name="M-CR-V04##R.50-57: Content-Type == image/png"><con:configuration><scriptText>headers = messageExchange.getResponseHeaders()
@@ -604,7 +604,7 @@ assert size > 100
 mimetype = headers["Content-Type"][0].split(";")[0]
 log.info(mimetype)
 // Thijs Brentjens, Geonovum: only use the main mimetype, strip off subtypes after ;
-assert mimetype == "text/xml" : "The WMS does not return an exception in format text/xml. \n\n Request: \n" + new String( messageExchange.getRawRequestData() ) + "\n\n"</scriptText></con:configuration></con:assertion><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters><con:parameter><con:name>VERSION</con:name><con:value>1.3.0</con:value></con:parameter><con:parameter><con:name>SERVICE</con:name><con:value>WMS</con:value></con:parameter><con:parameter><con:name>REQUEST</con:name><con:value>BREAKME</con:value></con:parameter><con:parameter><con:name>BGCOLOR</con:name><con:value>0x0000FF</con:value></con:parameter><con:parameter><con:name>CRS</con:name><con:value>${#Project#firstlayercrs}</con:value></con:parameter><con:parameter><con:name>BBOX</con:name><con:value>${#Project#bbox}</con:value></con:parameter><con:parameter><con:name>HEIGHT</con:name><con:value>600</con:value></con:parameter><con:parameter><con:name>STYLES</con:name><con:value>${#Project#firstlayerstyle}</con:value></con:parameter><con:parameter><con:name>WIDTH</con:name><con:value>800</con:value></con:parameter><con:parameter><con:name>TRANSPARENT</con:name><con:value>true</con:value></con:parameter><con:parameter><con:name>EXCEPTIONS</con:name><con:value>XML</con:value></con:parameter><con:parameter><con:name>FORMAT</con:name><con:value>image/png</con:value></con:parameter><con:parameter><con:name>LAYERS</con:name><con:value>${#Project#firstlayercapabilities}</con:value></con:parameter><con:parameter><con:name>SRS</con:name><con:value>${#Project#firstlayercrs}</con:value></con:parameter></con:parameters></con:config></con:testStep><con:properties><con:property><con:name>MAIN_TESTSTEP</con:name><con:value>INSPIRE GetMap default layer</con:value></con:property><con:property><con:name>save_responses</con:name><con:value>TRUE</con:value></con:property><con:property><con:name>traces_dir</con:name><con:value>../../../logs/traces/</con:value></con:property></con:properties></con:testCase><con:properties><con:property><con:name>etf.AssociatedRequirements</con:name><con:value>M-CR-V04</con:value></con:property></con:properties></con:testSuite><con:testSuite name="O-CR-V05 - GetMap Optional"><con:description>For various combinations of valid mandatory and optional 
+assert mimetype == "text/xml" : "The WMS does not return an exception in format text/xml. \n\n Request: \n" + new String( messageExchange.getRawRequestData() ) + "\n\n"</scriptText></con:configuration></con:assertion><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters><con:parameter><con:name>VERSION</con:name><con:value>1.3.0</con:value></con:parameter><con:parameter><con:name>SERVICE</con:name><con:value>WMS</con:value></con:parameter><con:parameter><con:name>REQUEST</con:name><con:value>BREAKME</con:value></con:parameter><con:parameter><con:name>BGCOLOR</con:name><con:value>0x0000FF</con:value></con:parameter><con:parameter><con:name>CRS</con:name><con:value>${#Project#firstlayercrs}</con:value></con:parameter><con:parameter><con:name>BBOX</con:name><con:value>${#Project#bbox}</con:value></con:parameter><con:parameter><con:name>HEIGHT</con:name><con:value>600</con:value></con:parameter><con:parameter><con:name>STYLES</con:name><con:value>${#Project#firstlayerstyle}</con:value></con:parameter><con:parameter><con:name>WIDTH</con:name><con:value>800</con:value></con:parameter><con:parameter><con:name>TRANSPARENT</con:name><con:value>true</con:value></con:parameter><con:parameter><con:name>EXCEPTIONS</con:name><con:value>XML</con:value></con:parameter><con:parameter><con:name>FORMAT</con:name><con:value>image/png</con:value></con:parameter><con:parameter><con:name>LAYERS</con:name><con:value>${#Project#firstlayercapabilities}</con:value></con:parameter><con:parameter><con:name>SRS</con:name><con:value>${#Project#firstlayercrs}</con:value></con:parameter></con:parameters></con:config></con:testStep><con:properties><con:property><con:name>MAIN_TESTSTEP</con:name><con:value>INSPIRE GetMap default layer</con:value></con:property><con:property><con:name>save_responses</con:name><con:value>TRUE</con:value></con:property><con:property><con:name>traces_dir</con:name><con:value>../../../logs/traces/</con:value></con:property></con:properties></con:testCase><con:properties><con:property><con:name>etf.AssociatedRequirements</con:name><con:value>M-CR-V04</con:value></con:property></con:properties></con:testSuite><con:testSuite name="O-CR-V05 - GetMap Optional"><con:description>For various combinations of valid mandatory and optional
 request parameters validate that the view service returns
  a valid map file</con:description><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="GetMap Optional Parameters" searchProperties="true" id="8ef5dfb7-d617-4c77-802c-32d9c41a8ace"><con:description>Optional params:
 EXCEPTIONS: XML (always), INIMAGE (opt), BLANK (opt)
@@ -630,7 +630,7 @@ declare namespace xlink='http://www.w3.org/1999/xlink';
 &lt;result>AssertionFailures:
 {
 let $nrOfMetadataURLs:=count(//wms:Layer/wms:MetadataURL/wms:OnlineResource/@xlink:href)
-return 
+return
 if ($nrOfMetadataURLs=0)
 then "there is no MetadataURL defined for any Layer. There should be at least one."
 else ""
@@ -657,10 +657,10 @@ testRunner.testCase.testSuite.project.setPropertyValue("mdIdentifiersDatasetMeta
 
 // run GetMetadata test for each url
 for( i in metadataUrlNodes )
-{   
+{
    i=i.replaceAll("%7B","{")
    i=i.replaceAll("%7D","}")
-   log.info("URL: " + i)   
+   log.info("URL: " + i)
    props.setPropertyValue("urlToTest",i)
    props.setPropertyValue("urlToTestEncoded",i.replaceAll("&amp;","&amp;amp;"))
    def reqName = "GetMetadata"
@@ -675,7 +675,7 @@ for( i in metadataUrlNodes )
 	 }
 	testRunner.testCase.testSteps[reqName].getHttpRequest().setRequestHeaders(newheaders);
    testRunner.runTestStepByName("GetMetadata")
-   testRunner.runTestStepByName("PropertyTransferMD_Identifier")  
+   testRunner.runTestStepByName("PropertyTransferMD_Identifier")
 }</script></con:config></con:testStep><con:testStep type="httprequest" name="GetMetadata"><con:settings/><con:config method="GET" xsi:type="con:HttpRequest" name="GetMetadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>${#urlToTest}</con:endpoint><con:request/><con:assertion type="XQuery Match" name="M-CR-V10##MD_Metadata: Metadata has root element MD_Metadata"><con:configuration><path>declare namespace gmd='http://www.isotc211.org/2005/gmd';
 declare namespace csw='http://www.opengis.net/cat/csw/2.0.2';
 
@@ -692,7 +692,7 @@ else "the referred dataset Metadata document does not seem to be ISO Metadata. I
 &lt;result>AssertionFailures:
 {
 let $fileIdentifier:=//gmd:MD_Metadata/gmd:fileIdentifier
-return 
+return
 if (string-length($fileIdentifier)=0)
 then "there is no fileIdentifier defined in the Metadata."
 else ""
@@ -780,7 +780,7 @@ log.info("legendUrlNodes: " + legendUrlNodes);
 
 // run GetMetadata test for each url
 for( i in legendUrlNodes )
-{   
+{
    i=i.replaceAll("%2F","/")
    i=i.replaceAll("%3A",":")
    log.info("Legend URL: " + i)
