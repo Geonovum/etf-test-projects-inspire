@@ -83,8 +83,8 @@ testCase.addPropertiesFromFile(file.path)</script></con:config></con:testStep><c
 def basicAuthUser = context.expand('${#Project#authUser}');
 if (basicAuthUser.length()>0) {
 	log.info("Setting credentials for user: " + basicAuthUser);
-	Util.updateCredentials(testRunner);
 }
+Util.updateCredentials(testRunner);
 </script></con:config>
 </con:testStep>
 <con:properties/>
