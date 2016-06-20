@@ -78,7 +78,13 @@ if (endpoint.getQuery()) {
                 for( testStep in testCase.getTestStepList() ) {
                     if( testStep instanceof HttpTestRequestStep ) {
                         // First: cleanup old extra params, if the tests have been saved with aditional params a previous time
-                        if (testStep.getName()=="GetCapabilities") {
+                       def getCapsReq = false;
+                        for (prop in testStep.getHttpRequest().getProperties()) {
+                        	       if (prop.getValue().getValue()=="GetCapabilities") {
+                                	getCapsReq = true;
+                                }
+                            }
+                        if (getCapsReq) {
                             // first remove any other params
                             for (prop in testStep.getHttpRequest().getProperties()) {
                                     defaultParam = 0;
@@ -108,7 +114,9 @@ if (endpoint.getQuery()) {
         };
     }
 
-}</script></con:config></con:testStep><con:properties/></con:testCase><con:properties/></con:testSuite><con:testSuite name="M-CR-V01 - Get View Service Metadata and Link View Service Mandatory"><con:description>For various combinations of valid mandatory request parameters validate
+}
+
+</script></con:config></con:testStep><con:properties/></con:testCase><con:properties/></con:testSuite><con:testSuite name="M-CR-V01 - Get View Service Metadata and Link View Service Mandatory"><con:description>For various combinations of valid mandatory request parameters validate
  that the view service returns a valid XML file, checked against the WMS
 1.3.0 GetCapabilties Response schema.</con:description><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase failOnError="false" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="Test Mandatory WMS GetCapabilities Parameters" searchProperties="true" id="ca38c417-76c9-48f3-a69e-945beb859d0c" timeout="0" wsrmEnabled="false" wsrmVersion="1.0" wsrmAckTo="" amfAuthorisation="false" amfEndpoint="" amfLogin="" amfPassword=""><con:settings/><con:testStep type="properties" name="Properties"><con:settings/><con:config xsi:type="con:PropertiesStep" saveFirst="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:properties><con:property><con:name>firstlayer</con:name><con:value>0</con:value></con:property></con:properties></con:config></con:testStep><con:testStep type="httprequest" name="GetCapabilities"><con:settings/><con:config method="GET" xsi:type="con:HttpRequest" name="GetCapabilities" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>${#Project#serviceEndpoint}</con:endpoint><con:request/><con:assertion type="Response SLA Assertion" name="Response SLA"><con:configuration><SLA>5000</SLA></con:configuration></con:assertion><con:assertion type="GroovyScriptAssertion" name="Timeout"><con:configuration><scriptText>// check response time
 log.info( "time taken was :" + messageExchange.timeTaken );
@@ -172,7 +180,13 @@ if (endpoint.getQuery()) {
                 for( testStep in testCase.getTestStepList() ) {
                     if( testStep instanceof HttpTestRequestStep ) {
                         // First: cleanup old extra params, if the tests have been saved with aditional params a previous time
-                        if (testStep.getName()=="GetMap") {
+                       def getMapReq = false;
+                        for (prop in testStep.getHttpRequest().getProperties()) {
+                        	       if (prop.getValue().getValue()=="GetMap" || prop.getValue().getValue()=="BREAKME") {
+                                	getMapReq = true;
+                                }
+                            }
+                        if (getMapReq) {
                             // first remove any other params
                             for (prop in testStep.getHttpRequest().getProperties()) {
                                     defaultParam = 0;
