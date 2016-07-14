@@ -310,26 +310,7 @@ if (exists($query))
 then "DescribeStoredQueries contains more StoredQueries (with parameters CRS/DataSetID/Language) besides the StoredQuery GetFeatureById."
 else "DescribeStoredQueries does NOT contain a StoredQuery with parameters CRS/DataSetID/Language, to download the entire INSPIRE dataset. Check the DescribeStoredQueries response."
 }
-&lt;/result></path><content>&lt;result>AssertionFailures: DescribeStoredQueries contains more StoredQueries (with parameters CRS/DataSetID/Language) besides the StoredQuery GetFeatureById.&lt;/result></content><allowWildcards>false</allowWildcards></con:configuration></con:assertion><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters><con:parameter><con:name>REQUEST</con:name><con:value>DescribeStoredQueries</con:value></con:parameter><con:parameter><con:name>VERSION</con:name><con:value>2.0.0</con:value></con:parameter><con:parameter><con:name>SERVICE</con:name><con:value>WFS</con:value></con:parameter></con:parameters></con:config></con:testStep><con:properties><con:property><con:name>MAIN_TESTSTEP</con:name><con:value>DescribeStoredQueries</con:value></con:property><con:property><con:name>save_responses</con:name><con:value>TRUE</con:value></con:property><con:property><con:name>traces_dir</con:name><con:value>../../../tmp/</con:value></con:property><con:property><con:name>qaf.AssociatedRequirements</con:name><con:value>M-01##M-01-ImplementsQuery</con:value></con:property></con:properties></con:testCase><con:testCase failOnError="false" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="Mandatory INSPIRE GetCapabilities" searchProperties="true" timeout="0" wsrmEnabled="false" wsrmVersion="1.0" wsrmAckTo="" amfAuthorisation="false" amfEndpoint="" amfLogin="" amfPassword="" id="1ce771c8-5f56-4a07-830e-4bb7369c7fce"><con:settings/><con:testStep type="properties" name="Transfer_Properties"><con:settings/><con:config xsi:type="con:PropertiesStep" saveFirst="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:properties><con:property><con:name>Capabilities</con:name><con:value/></con:property><con:property><con:name>urlToTest</con:name><con:value/></con:property><con:property><con:name>ServiceMetadataRecord</con:name><con:value/></con:property></con:properties></con:config></con:testStep><con:testStep type="restrequest" name="GetCapabilities_old" disabled="true"><con:settings/><con:config service="service" resourcePath="" methodName="GetCapabilities" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:restRequest name="GetCapabilities_old" mediaType="application/xml" accept=""><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>${#Project#serviceEndpoint}</con:endpoint><con:request/><con:assertion type="Response SLA Assertion" name="Response SLA"><con:configuration><SLA>5000</SLA></con:configuration></con:assertion><con:assertion type="GroovyScriptAssertion" name="Timeout"><con:configuration><scriptText>// check response time
-log.info( "time taken was :" + messageExchange.timeTaken );
-
-</scriptText></con:configuration></con:assertion><con:assertion type="Simple Schema Validator" name="M-01##INSPIRESchemaValid: Simple Schema Validator"><con:configuration><pathToXSD>xsi:schemaLocation</pathToXSD></con:configuration></con:assertion><con:assertion type="XQuery Match" name="M-01##INSPIRESchema: xsi:schemaLocation contains the INSPIRE Download Services schema"><con:configuration><path>declare namespace wfs='http://www.opengis.net/wfs/2.0';
-declare namespace ows='http://www.opengis.net/ows/1.1';
-declare namespace fes='http://www.opengis.net/fes/2.0';
-declare namespace gml='http://www.opengis.net/gml/3.2';
-declare namespace xlink='http://www.w3.org/1999/xlink';
-declare namespace xsi='http://www.w3.org/2001/XMLSchema-instance';
-declare namespace inspire_dls='http://inspire.ec.europa.eu/schemas/inspire_dls/1.0';
-declare namespace inspire_common='http://inspire.ec.europa.eu/schemas/common/1.0';
-
-&lt;result>AssertionFailures: {
-let $inspireSchemLocation:=//*[contains(@xsi:schemaLocation,'http://inspire.ec.europa.eu/schemas/inspire_dls/1.0/inspire_dls.xsd')]
-return
-if (exists($inspireSchemLocation))
-then "The Capabilities contain a xsi:schemaLocation with the INSPIRE Download Services schema."
-else "The Capabilities do not contain a xsi:schemaLocation with the INSPIRE Download Services schema: 'http://inspire.ec.europa.eu/schemas/inspire_dls/1.0/inspire_dls.xsd'."
-}
-&lt;/result></path><content>&lt;result>AssertionFailures: The Capabilities contain a xsi:schemaLocation with the INSPIRE Download Services schema.&lt;/result></content><allowWildcards>false</allowWildcards></con:configuration></con:assertion><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters><entry key="LANGUAGE" value="ENG" xmlns="http://eviware.com/soapui/config"/></con:parameters></con:restRequest></con:config></con:testStep><con:testStep type="httprequest" name="GetCapabilities"><con:settings/><con:config method="GET" xsi:type="con:HttpRequest" name="GetCapabilities" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:endpoint>${#Project#serviceEndpoint}</con:endpoint><con:request/><con:assertion type="Response SLA Assertion" name="Response SLA"><con:configuration><SLA>5000</SLA></con:configuration></con:assertion><con:assertion type="GroovyScriptAssertion" name="Timeout"><con:configuration><scriptText>// check response time
+&lt;/result></path><content>&lt;result>AssertionFailures: DescribeStoredQueries contains more StoredQueries (with parameters CRS/DataSetID/Language) besides the StoredQuery GetFeatureById.&lt;/result></content><allowWildcards>false</allowWildcards></con:configuration></con:assertion><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters><con:parameter><con:name>REQUEST</con:name><con:value>DescribeStoredQueries</con:value></con:parameter><con:parameter><con:name>VERSION</con:name><con:value>2.0.0</con:value></con:parameter><con:parameter><con:name>SERVICE</con:name><con:value>WFS</con:value></con:parameter></con:parameters></con:config></con:testStep><con:properties><con:property><con:name>MAIN_TESTSTEP</con:name><con:value>DescribeStoredQueries</con:value></con:property><con:property><con:name>save_responses</con:name><con:value>TRUE</con:value></con:property><con:property><con:name>traces_dir</con:name><con:value>../../../tmp/</con:value></con:property><con:property><con:name>qaf.AssociatedRequirements</con:name><con:value>M-01##M-01-ImplementsQuery</con:value></con:property></con:properties></con:testCase><con:testCase failOnError="false" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="Mandatory INSPIRE GetCapabilities" searchProperties="true" timeout="0" wsrmEnabled="false" wsrmVersion="1.0" wsrmAckTo="" amfAuthorisation="false" amfEndpoint="" amfLogin="" amfPassword="" id="1ce771c8-5f56-4a07-830e-4bb7369c7fce"><con:settings/><con:testStep type="properties" name="Transfer_Properties"><con:settings/><con:config xsi:type="con:PropertiesStep" saveFirst="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:properties><con:property><con:name>Capabilities</con:name><con:value/></con:property><con:property><con:name>urlToTest</con:name><con:value/></con:property><con:property><con:name>ServiceMetadataRecord</con:name><con:value/></con:property></con:properties></con:config></con:testStep><con:testStep type="httprequest" name="GetCapabilities"><con:settings/><con:config method="GET" xsi:type="con:HttpRequest" name="GetCapabilities" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:endpoint>${#Project#serviceEndpoint}</con:endpoint><con:request/><con:assertion type="Response SLA Assertion" name="Response SLA"><con:configuration><SLA>5000</SLA></con:configuration></con:assertion><con:assertion type="GroovyScriptAssertion" name="Timeout"><con:configuration><scriptText>// check response time
 log.info( "time taken was :" + messageExchange.timeTaken );</scriptText></con:configuration></con:assertion><con:assertion type="Simple Schema Validator" name="M-01##INSPIRESchemaValid: Simple Schema Validator"><con:configuration><pathToXSD>xsi:schemaLocation</pathToXSD></con:configuration></con:assertion><con:assertion type="XQuery Match" name="M-01##INSPIRESchema: xsi:schemaLocation contains the INSPIRE Download Services schema"><con:configuration><path>declare namespace wfs='http://www.opengis.net/wfs/2.0';
 declare namespace ows='http://www.opengis.net/ows/1.1';
 declare namespace fes='http://www.opengis.net/fes/2.0';
@@ -362,7 +343,7 @@ declare namespace xlink='http://www.w3.org/1999/xlink';
 declare namespace inspire_dls='http://inspire.ec.europa.eu/schemas/inspire_dls/1.0';
 declare namespace inspire_common='http://inspire.ec.europa.eu/schemas/common/1.0';
 
-//ows:Operation[@name='GetCapabilities'][1]/ows:DCP/ows:HTTP/ows:Get/@xlink:href</con:sourcePath><con:targetType>Endpoint</con:targetType><con:targetStep>Req 42 (Scenario 2) CapabilitiesServiceMetadata_old</con:targetStep></con:transfers><con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true"><con:name>Capabilities</con:name><con:sourceType>ResponseAsXml</con:sourceType><con:sourceStep>GetCapabilities</con:sourceStep><con:sourcePath/><con:targetType>Capabilities</con:targetType><con:targetStep>Transfer_Properties</con:targetStep></con:transfers></con:config></con:testStep><con:testStep type="goto" name="Conditional Goto Scenario 1 ExternalServiceMetadata"><con:settings/><con:config xsi:type="con:GotoStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:condition><con:name>ExternalServiceMetadata</con:name><con:type>XPATH</con:type><con:expression>declare namespace wfs='http://www.opengis.net/wfs/2.0';
+//ows:Operation[@name='GetCapabilities'][1]/ows:DCP/ows:HTTP/ows:Get/@xlink:href</con:sourcePath><con:targetType>Endpoint</con:targetType><con:targetStep>Req 42 (Scenario 2) CapabilitiesServiceMetadata</con:targetStep></con:transfers><con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false"><con:name>Capabilities</con:name><con:sourceType>ResponseAsXml</con:sourceType><con:sourceStep>GetCapabilities</con:sourceStep><con:sourcePath/><con:targetType>Capabilities</con:targetType><con:targetStep>Transfer_Properties</con:targetStep></con:transfers></con:config></con:testStep><con:testStep type="goto" name="Conditional Goto Scenario 1 ExternalServiceMetadata"><con:settings/><con:config xsi:type="con:GotoStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:condition><con:name>ExternalServiceMetadata</con:name><con:type>XPATH</con:type><con:expression>declare namespace wfs='http://www.opengis.net/wfs/2.0';
 declare namespace ows='http://www.opengis.net/ows/1.1';
 declare namespace fes='http://www.opengis.net/fes/2.0';
 declare namespace gml='http://www.opengis.net/gml/3.2';
@@ -640,277 +621,7 @@ if (exists($value))
 then "INSPIRE Unique Resource Identifier exists."
 else "INSPIRE Unique Resource Identifier does not exist for a SpatialDataSet. Check the ExtendedCapabilities for this element."
 }
-&lt;/result></path><content>&lt;result>AssertionFailures: INSPIRE Unique Resource Identifier exists.&lt;/result></content><allowWildcards>false</allowWildcards></con:configuration></con:assertion><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters><con:parameter><con:name>SERVICE</con:name><con:value>WFS</con:value></con:parameter><con:parameter><con:name>VERSION</con:name><con:value>2.0.0</con:value></con:parameter><con:parameter><con:name>REQUEST</con:name><con:value>GetCapabilities</con:value></con:parameter></con:parameters></con:config></con:testStep><con:testStep type="restrequest" name="Req 42 (Scenario 2) CapabilitiesServiceMetadata_old" disabled="true"><con:settings/><con:config service="service" resourcePath="" methodName="GetCapabilities" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:restRequest name="Req 42 (Scenario 2) CapabilitiesServiceMetadata_old" mediaType="application/xml" accept=""><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>${#Project#getCapabilitiesURL}</con:endpoint><con:request/><con:assertion type="XQuery Match" name="M-01##M-01-infoFeatureAccessService: INSPIRE Keyword infoFeatureAccessService exists"><con:configuration><path>declare namespace wfs='http://www.opengis.net/wfs/2.0';
-declare namespace ows='http://www.opengis.net/ows/1.1';
-declare namespace fes='http://www.opengis.net/fes/2.0';
-declare namespace gml='http://www.opengis.net/gml/3.2';
-declare namespace xlink='http://www.w3.org/1999/xlink';
-declare namespace xsi='http://www.w3.org/2001/XMLSchema-instance';
-declare namespace inspire_dls='http://inspire.ec.europa.eu/schemas/inspire_dls/1.0';
-declare namespace inspire_common='http://inspire.ec.europa.eu/schemas/common/1.0';
-
-&lt;result>AssertionFailures: {
-let $infoFeatureAccessService:=/wfs:WFS_Capabilities/ows:ServiceIdentification/ows:Keywords[ows:Keyword='infoFeatureAccessService']
-return
-if (exists($infoFeatureAccessService))
-then "The INSPIRE keyword infoFeatureAccessService is advertized in the Capabilities."
-else "The INSPIRE keyword infoFeatureAccessService is NOT advertized in the Capabilities."
-}
-&lt;/result></path><content>&lt;result>AssertionFailures: The INSPIRE keyword infoFeatureAccessService is advertized in the Capabilities.&lt;/result></content><allowWildcards>false</allowWildcards></con:configuration></con:assertion><con:assertion type="XQuery Match" name="M-01##M-01-WFSTitle: WFS Title exists"><con:configuration><path>declare namespace wfs='http://www.opengis.net/wfs/2.0';
-declare namespace ows='http://www.opengis.net/ows/1.1';
-declare namespace fes='http://www.opengis.net/fes/2.0';
-declare namespace gml='http://www.opengis.net/gml/3.2';
-declare namespace xlink='http://www.w3.org/1999/xlink';
-declare namespace xsi='http://www.w3.org/2001/XMLSchema-instance';
-declare namespace inspire_dls='http://inspire.ec.europa.eu/schemas/inspire_dls/1.0';
-declare namespace inspire_common='http://inspire.ec.europa.eu/schemas/common/1.0';
-
-&lt;result>AssertionFailures: {
-let $value:=/wfs:WFS_Capabilities/ows:ServiceIdentification/ows:Title
-return
-if (exists($value))
-then "The WFS Title exists."
-else "The WFS Title is not set in the Capabilities."
-}
-&lt;/result></path><content>&lt;result>AssertionFailures: The WFS Title exists.&lt;/result></content><allowWildcards>false</allowWildcards></con:configuration></con:assertion><con:assertion type="XQuery Match" name="M-01##M-01-WFSAbstract: WFS Abstract exists"><con:configuration><path>declare namespace wfs='http://www.opengis.net/wfs/2.0';
-declare namespace ows='http://www.opengis.net/ows/1.1';
-declare namespace fes='http://www.opengis.net/fes/2.0';
-declare namespace gml='http://www.opengis.net/gml/3.2';
-declare namespace xlink='http://www.w3.org/1999/xlink';
-declare namespace xsi='http://www.w3.org/2001/XMLSchema-instance';
-declare namespace inspire_dls='http://inspire.ec.europa.eu/schemas/inspire_dls/1.0';
-declare namespace inspire_common='http://inspire.ec.europa.eu/schemas/common/1.0';
-
-&lt;result>AssertionFailures: {
-let $value:=/wfs:WFS_Capabilities/ows:ServiceIdentification/ows:Abstract
-return
-if (exists($value))
-then "The WFS Abstract exists."
-else "The WFS Abstract is not set in the Capabilities."
-}
-&lt;/result></path><content>&lt;result>AssertionFailures: The WFS Abstract exists.&lt;/result></content><allowWildcards>false</allowWildcards></con:configuration></con:assertion><con:assertion type="XQuery Match" name="M-01##M-01-ResourceType: INSPIRE ResourceType exists"><con:configuration><path>declare namespace wfs='http://www.opengis.net/wfs/2.0';
-declare namespace ows='http://www.opengis.net/ows/1.1';
-declare namespace fes='http://www.opengis.net/fes/2.0';
-declare namespace gml='http://www.opengis.net/gml/3.2';
-declare namespace xlink='http://www.w3.org/1999/xlink';
-declare namespace xsi='http://www.w3.org/2001/XMLSchema-instance';
-declare namespace inspire_dls='http://inspire.ec.europa.eu/schemas/inspire_dls/1.0';
-declare namespace inspire_common='http://inspire.ec.europa.eu/schemas/common/1.0';
-
-&lt;result>AssertionFailures: {
-let $value:=//inspire_dls:ExtendedCapabilities/inspire_common:ResourceType
-return
-if (exists($value))
-then "INSPIRE ResourceType exists."
-else "INSPIRE ResourceType is not set in the Capabilities. Check the INSPIRE ExtendedCapabilities."
-}
-&lt;/result></path><content>&lt;result>AssertionFailures: INSPIRE ResourceType exists.&lt;/result></content><allowWildcards>false</allowWildcards></con:configuration></con:assertion><con:assertion type="XQuery Match" name="M-01##M-01-ResourceLocator: INSPIRE ResourceLocator exists"><con:configuration><path>declare namespace wfs='http://www.opengis.net/wfs/2.0';
-declare namespace ows='http://www.opengis.net/ows/1.1';
-declare namespace fes='http://www.opengis.net/fes/2.0';
-declare namespace gml='http://www.opengis.net/gml/3.2';
-declare namespace xlink='http://www.w3.org/1999/xlink';
-declare namespace xsi='http://www.w3.org/2001/XMLSchema-instance';
-declare namespace inspire_dls='http://inspire.ec.europa.eu/schemas/inspire_dls/1.0';
-declare namespace inspire_common='http://inspire.ec.europa.eu/schemas/common/1.0';
-
-&lt;result>AssertionFailures: {
-let $value:=//inspire_dls:ExtendedCapabilities/inspire_common:ResourceLocator
-return
-if (exists($value))
-then "INSPIRE ResourceLocator exists."
-else "INSPIRE ResourceLocator is not set in the Capabilities. Check the INSPIRE ExtendedCapabilities."
-}
-&lt;/result></path><content>&lt;result>AssertionFailures: INSPIRE ResourceType exists.&lt;/result></content><allowWildcards>false</allowWildcards></con:configuration></con:assertion><con:assertion type="XQuery Match" name="M-01##M-01-ft-MetadataURL: INSPIRE Each FeatureType has a MetadataURL"><con:configuration><path>declare namespace wfs='http://www.opengis.net/wfs/2.0';
-declare namespace ows='http://www.opengis.net/ows/1.1';
-declare namespace fes='http://www.opengis.net/fes/2.0';
-declare namespace gml='http://www.opengis.net/gml/3.2';
-declare namespace xlink='http://www.w3.org/1999/xlink';
-declare namespace xsi='http://www.w3.org/2001/XMLSchema-instance';
-declare namespace inspire_dls='http://inspire.ec.europa.eu/schemas/inspire_dls/1.0';
-declare namespace inspire_common='http://inspire.ec.europa.eu/schemas/common/1.0';
-
-&lt;result>AssertionFailures: {
-for $featureType in //wfs:FeatureType
-where string-length($featureType/wfs:MetadataURL/@xlink:href)=0
-return
-concat ("FeatureType: ",$featureType/wfs:Name," has no MetadataURL.")
-}
-&lt;/result></path><content>&lt;result>AssertionFailures: &lt;/result></content><allowWildcards>false</allowWildcards></con:configuration></con:assertion><con:assertion type="XQuery Match" name="M-01##M-01-SpatialDataServiceType: INSPIRE SpatialDataServiceType is set at 'download'"><con:configuration><path>declare namespace wfs='http://www.opengis.net/wfs/2.0';
-declare namespace ows='http://www.opengis.net/ows/1.1';
-declare namespace fes='http://www.opengis.net/fes/2.0';
-declare namespace gml='http://www.opengis.net/gml/3.2';
-declare namespace xlink='http://www.w3.org/1999/xlink';
-declare namespace xsi='http://www.w3.org/2001/XMLSchema-instance';
-declare namespace inspire_dls='http://inspire.ec.europa.eu/schemas/inspire_dls/1.0';
-declare namespace inspire_common='http://inspire.ec.europa.eu/schemas/common/1.0';
-
-&lt;result>AssertionFailures: {
-let $value:=//inspire_dls:ExtendedCapabilities/inspire_common:SpatialDataServiceType[.='download']
-return
-if (exists($value))
-then "INSPIRE SpatialDataServiceType is set at 'download'."
-else "INSPIRE SpatialDataServiceType is NOT set at 'download'. Check the ExtendedCapabilities."
-}
-&lt;/result></path><content>&lt;result>AssertionFailures: INSPIRE SpatialDataServiceType is set at 'download'.&lt;/result></content><allowWildcards>false</allowWildcards></con:configuration></con:assertion><con:assertion type="XQuery Match" name="M-01##M-01-WGS84BoundingBox: WFS Each FeatureType has a WGS84BoundingBox."><con:configuration><path>declare namespace wfs='http://www.opengis.net/wfs/2.0';
-declare namespace ows='http://www.opengis.net/ows/1.1';
-declare namespace fes='http://www.opengis.net/fes/2.0';
-declare namespace gml='http://www.opengis.net/gml/3.2';
-declare namespace xlink='http://www.w3.org/1999/xlink';
-declare namespace xsi='http://www.w3.org/2001/XMLSchema-instance';
-declare namespace inspire_dls='http://inspire.ec.europa.eu/schemas/inspire_dls/1.0';
-declare namespace inspire_common='http://inspire.ec.europa.eu/schemas/common/1.0';
-
-&lt;result>AssertionFailures: {
-for $featureType in //wfs:FeatureType
-where string-length($featureType/ows:WGS84BoundingBox/ows:LowerCorner)=0
-return
-concat ("FeatureType: ",$featureType/wfs:Name," has no WGS84BoundingBox.")
-}
-&lt;/result></path><content>&lt;result>AssertionFailures: &lt;/result></content><allowWildcards>false</allowWildcards></con:configuration></con:assertion><con:assertion type="XQuery Match" name="M-01##M-01-TemporalReference: INSPIRE TemporalReference exists"><con:configuration><path>declare namespace wfs='http://www.opengis.net/wfs/2.0';
-declare namespace ows='http://www.opengis.net/ows/1.1';
-declare namespace fes='http://www.opengis.net/fes/2.0';
-declare namespace gml='http://www.opengis.net/gml/3.2';
-declare namespace xlink='http://www.w3.org/1999/xlink';
-declare namespace xsi='http://www.w3.org/2001/XMLSchema-instance';
-declare namespace inspire_dls='http://inspire.ec.europa.eu/schemas/inspire_dls/1.0';
-declare namespace inspire_common='http://inspire.ec.europa.eu/schemas/common/1.0';
-
-&lt;result>AssertionFailures: {
-let $value:=//inspire_dls:ExtendedCapabilities/inspire_common:TemporalReference
-return
-if (exists($value))
-then "INSPIRE TemporalReference exists."
-else "INSPIRE TemporalReference does not exist.Check the ExtendedCapabilities for this element."
-}
-&lt;/result></path><content>&lt;result>AssertionFailures: INSPIRE TemporalReference exists.&lt;/result></content><allowWildcards>false</allowWildcards></con:configuration></con:assertion><con:assertion type="XQuery Match" name="M-01##M-01-Conformity: INSPIRE Conformity exists"><con:configuration><path>declare namespace wfs='http://www.opengis.net/wfs/2.0';
-declare namespace ows='http://www.opengis.net/ows/1.1';
-declare namespace fes='http://www.opengis.net/fes/2.0';
-declare namespace gml='http://www.opengis.net/gml/3.2';
-declare namespace xlink='http://www.w3.org/1999/xlink';
-declare namespace xsi='http://www.w3.org/2001/XMLSchema-instance';
-declare namespace inspire_dls='http://inspire.ec.europa.eu/schemas/inspire_dls/1.0';
-declare namespace inspire_common='http://inspire.ec.europa.eu/schemas/common/1.0';
-
-&lt;result>AssertionFailures: {
-let $value:=//inspire_dls:ExtendedCapabilities/inspire_common:Conformity
-return
-if (exists($value))
-then "INSPIRE Conformity exists."
-else "INSPIRE Conformity does not exist. Check the ExtendedCapabilities for this element."
-}
-&lt;/result></path><content>&lt;result>AssertionFailures: INSPIRE Conformity exists.&lt;/result></content><allowWildcards>false</allowWildcards></con:configuration></con:assertion><con:assertion type="XQuery Match" name="M-01##M-01-Fees: WFS Fees exists"><con:configuration><path>declare namespace wfs='http://www.opengis.net/wfs/2.0';
-declare namespace ows='http://www.opengis.net/ows/1.1';
-declare namespace fes='http://www.opengis.net/fes/2.0';
-declare namespace gml='http://www.opengis.net/gml/3.2';
-declare namespace xlink='http://www.w3.org/1999/xlink';
-declare namespace xsi='http://www.w3.org/2001/XMLSchema-instance';
-declare namespace inspire_dls='http://inspire.ec.europa.eu/schemas/inspire_dls/1.0';
-declare namespace inspire_common='http://inspire.ec.europa.eu/schemas/common/1.0';
-
-&lt;result>AssertionFailures: {
-let $value:=//ows:ServiceIdentification/ows:Fees
-return
-if (exists($value))
-then "WFS Fees exists."
-else "WFS Fees does not exist. Check the Capabilities for this element."
-}
-&lt;/result></path><content>&lt;result>AssertionFailures: WFS Fees exists.&lt;/result></content><allowWildcards>false</allowWildcards></con:configuration></con:assertion><con:assertion type="XQuery Match" name="M-01##M-01-AccessConstraints: WFS AccessConstraints exists"><con:configuration><path>declare namespace wfs='http://www.opengis.net/wfs/2.0';
-declare namespace ows='http://www.opengis.net/ows/1.1';
-declare namespace fes='http://www.opengis.net/fes/2.0';
-declare namespace gml='http://www.opengis.net/gml/3.2';
-declare namespace xlink='http://www.w3.org/1999/xlink';
-declare namespace xsi='http://www.w3.org/2001/XMLSchema-instance';
-declare namespace inspire_dls='http://inspire.ec.europa.eu/schemas/inspire_dls/1.0';
-declare namespace inspire_common='http://inspire.ec.europa.eu/schemas/common/1.0';
-
-&lt;result>AssertionFailures: {
-let $value:=//ows:ServiceIdentification/ows:AccessConstraints
-return
-if (exists($value))
-then "WFS AccessConstraints exists."
-else "WFS AccessConstraints does not exist. Check the Capabilities for this element."
-}
-&lt;/result></path><content>&lt;result>AssertionFailures: WFS AccessConstraints exists.&lt;/result></content><allowWildcards>false</allowWildcards></con:configuration></con:assertion><con:assertion type="XQuery Match" name="M-01##M-01-ContactInfo: WFS ServiceProvider exists, at least a ServiceContact with ContactInfo"><con:configuration><path>declare namespace wfs='http://www.opengis.net/wfs/2.0';
-declare namespace ows='http://www.opengis.net/ows/1.1';
-declare namespace fes='http://www.opengis.net/fes/2.0';
-declare namespace gml='http://www.opengis.net/gml/3.2';
-declare namespace xlink='http://www.w3.org/1999/xlink';
-declare namespace xsi='http://www.w3.org/2001/XMLSchema-instance';
-declare namespace inspire_dls='http://inspire.ec.europa.eu/schemas/inspire_dls/1.0';
-declare namespace inspire_common='http://inspire.ec.europa.eu/schemas/common/1.0';
-
-&lt;result>AssertionFailures: {
-let $value:=//ows:ServiceProvider/ows:ServiceContact/ows:ContactInfo
-return
-if (exists($value))
-then "WFS ServiceProvider ContactInfo exists."
-else "WFS ServiceProvider ContactInfo does not exist. Check the Capabilities for this element."
-}
-&lt;/result></path><content>&lt;result>AssertionFailures: WFS ServiceProvider ContactInfo exists.&lt;/result></content><allowWildcards>false</allowWildcards></con:configuration></con:assertion><con:assertion type="XQuery Match" name="M-01##M-01-ProviderName: WFS ServiceProvider exists, with ProviderName"><con:configuration><path>declare namespace wfs='http://www.opengis.net/wfs/2.0';
-declare namespace ows='http://www.opengis.net/ows/1.1';
-declare namespace fes='http://www.opengis.net/fes/2.0';
-declare namespace gml='http://www.opengis.net/gml/3.2';
-declare namespace xlink='http://www.w3.org/1999/xlink';
-declare namespace xsi='http://www.w3.org/2001/XMLSchema-instance';
-declare namespace inspire_dls='http://inspire.ec.europa.eu/schemas/inspire_dls/1.0';
-declare namespace inspire_common='http://inspire.ec.europa.eu/schemas/common/1.0';
-
-&lt;result>AssertionFailures: {
-let $value:=//ows:ServiceProvider/ows:ProviderName
-return
-if (exists($value))
-then "WFS ServiceProvider ProviderName exists."
-else "WFS ServiceProvider ProviderName does not exist. Check the Capabilities for this element."
-}
-&lt;/result></path><content>&lt;result>AssertionFailures: WFS ServiceProvider ProviderName exists.&lt;/result></content><allowWildcards>false</allowWildcards></con:configuration></con:assertion><con:assertion type="XQuery Match" name="M-01##M-01-MetadataDate: INSPIRE MetadataDate exists"><con:configuration><path>declare namespace wfs='http://www.opengis.net/wfs/2.0';
-declare namespace ows='http://www.opengis.net/ows/1.1';
-declare namespace fes='http://www.opengis.net/fes/2.0';
-declare namespace gml='http://www.opengis.net/gml/3.2';
-declare namespace xlink='http://www.w3.org/1999/xlink';
-declare namespace xsi='http://www.w3.org/2001/XMLSchema-instance';
-declare namespace inspire_dls='http://inspire.ec.europa.eu/schemas/inspire_dls/1.0';
-declare namespace inspire_common='http://inspire.ec.europa.eu/schemas/common/1.0';
-
-&lt;result>AssertionFailures: {
-let $value:=//inspire_dls:ExtendedCapabilities/inspire_common:MetadataDate
-return
-if (string-length($value)=0)
-then "INSPIRE MetadataDate exists."
-else "INSPIRE MetadataDate does not exist. Check the ExtendedCapabilities for this element."
-}
-&lt;/result></path><content>&lt;result>AssertionFailures: INSPIRE MetadataDate exists.&lt;/result></content><allowWildcards>false</allowWildcards></con:configuration></con:assertion><con:assertion type="XQuery Match" name="M-01##M-01-MetadataPointOfContact: INSPIRE MetadataPointOfContact exists"><con:configuration><path>declare namespace wfs='http://www.opengis.net/wfs/2.0';
-declare namespace ows='http://www.opengis.net/ows/1.1';
-declare namespace fes='http://www.opengis.net/fes/2.0';
-declare namespace gml='http://www.opengis.net/gml/3.2';
-declare namespace xlink='http://www.w3.org/1999/xlink';
-declare namespace xsi='http://www.w3.org/2001/XMLSchema-instance';
-declare namespace inspire_dls='http://inspire.ec.europa.eu/schemas/inspire_dls/1.0';
-declare namespace inspire_common='http://inspire.ec.europa.eu/schemas/common/1.0';
-
-&lt;result>AssertionFailures: {
-let $value:=//inspire_dls:ExtendedCapabilities/inspire_common:MetadataPointOfContact
-return
-if (exists($value))
-then "INSPIRE MetadataPointOfContact exists."
-else "INSPIRE MetadataPointOfContact does not exist. Check the ExtendedCapabilities for this element."
-}
-&lt;/result></path><content>&lt;result>AssertionFailures: INSPIRE MetadataPointOfContact exists.&lt;/result></content><allowWildcards>false</allowWildcards></con:configuration></con:assertion><con:assertion type="XQuery Match" name="M-01##M-01-URI: INSPIRE Unique Resource Identifier exists"><con:configuration><path>declare namespace wfs='http://www.opengis.net/wfs/2.0';
-declare namespace ows='http://www.opengis.net/ows/1.1';
-declare namespace fes='http://www.opengis.net/fes/2.0';
-declare namespace gml='http://www.opengis.net/gml/3.2';
-declare namespace xlink='http://www.w3.org/1999/xlink';
-declare namespace xsi='http://www.w3.org/2001/XMLSchema-instance';
-declare namespace inspire_dls='http://inspire.ec.europa.eu/schemas/inspire_dls/1.0';
-declare namespace inspire_common='http://inspire.ec.europa.eu/schemas/common/1.0';
-
-&lt;result>AssertionFailures: {
-let $value:=//inspire_dls:ExtendedCapabilities/inspire_common:SpatialDataSet/inspire_common:UniqueResourceIdentifier
-return
-if (exists($value))
-then "INSPIRE Unique Resource Identifier exists."
-else "INSPIRE Unique Resource Identifier does not exist for a SpatialDataSet. Check the ExtendedCapabilities for this element."
-}
-&lt;/result></path><content>&lt;result>AssertionFailures: INSPIRE Unique Resource Identifier exists.&lt;/result></content><allowWildcards>false</allowWildcards></con:configuration></con:assertion><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters><entry key="LANGUAGE" value="ENG" xmlns="http://eviware.com/soapui/config"/></con:parameters></con:restRequest></con:config></con:testStep><con:testStep type="groovy" name="RunMetadataDatasetTest"><con:settings/><con:config><script>import de.interactive_instruments.xtf.*;
+&lt;/result></path><content>&lt;result>AssertionFailures: INSPIRE Unique Resource Identifier exists.&lt;/result></content><allowWildcards>false</allowWildcards></con:configuration></con:assertion><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters><con:parameter><con:name>SERVICE</con:name><con:value>WFS</con:value></con:parameter><con:parameter><con:name>VERSION</con:name><con:value>2.0.0</con:value></con:parameter><con:parameter><con:name>REQUEST</con:name><con:value>GetCapabilities</con:value></con:parameter></con:parameters></con:config></con:testStep><con:testStep type="groovy" name="RunMetadataDatasetTest"><con:settings/><con:config><script>import de.interactive_instruments.xtf.*;
 SOAPUI_I.init(log,context,testRunner);
 
 ProjectHelper ph = new ProjectHelper();
@@ -992,46 +703,31 @@ concat ("The element srv:operatesOn with the attribute uuidref: ", $operatesOn/@
 &lt;/result></path><content>&lt;result>AssertionFailures: &lt;/result></content><allowWildcards>false</allowWildcards></con:configuration></con:assertion><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:config></con:testStep><con:testStep type="transfer" name="Property Transfer Metadata Identifiers"><con:settings/><con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="false" ignoreEmpty="true" transferToAll="false" useXQuery="false" entitize="false" transferChildNodes="false"><con:name>datasetIdentifiersOperatesOn</con:name><con:sourceType>ResponseAsXml</con:sourceType><con:sourceStep>Req 42 (Scenario 1) ExternalServiceMetadata</con:sourceStep><con:sourcePath>declare namespace gmd='http://www.isotc211.org/2005/gmd';
 declare namespace srv='http://www.isotc211.org/2005/srv';
 declare namespace gco='http://www.isotc211.org/2005/gco';
-string-join(//srv:operatesOn/@uuidref,',')</con:sourcePath><con:targetType>datasetIdentifiersList</con:targetType><con:targetStep>#Project#</con:targetStep></con:transfers><con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false"><con:name>ServiceMetadataRecord</con:name><con:sourceType>ResponseAsXml</con:sourceType><con:sourceStep>Req 42 (Scenario 1) ExternalServiceMetadata</con:sourceStep><con:sourcePath/><con:targetType>ServiceMetadataRecord</con:targetType><con:targetStep>Transfer_Properties</con:targetStep></con:transfers></con:config></con:testStep><con:testStep type="groovy" name="RunMetadataDatasetFromServiceMetadata"><con:settings/><con:config><script>import com.eviware.soapui.support.types.StringToStringsMap;
-
-props = testRunner.testCase.testSteps['Properties']
-
+string-join(//srv:operatesOn/@uuidref,',')</con:sourcePath><con:targetType>datasetIdentifiersList</con:targetType><con:targetStep>#Project#</con:targetStep></con:transfers><con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false"><con:name>ServiceMetadataRecord</con:name><con:sourceType>ResponseAsXml</con:sourceType><con:sourceStep>Req 42 (Scenario 1) ExternalServiceMetadata</con:sourceStep><con:sourcePath/><con:targetType>ServiceMetadataRecord</con:targetType><con:targetStep>Transfer_Properties</con:targetStep></con:transfers></con:config></con:testStep><con:testStep type="groovy" name="RunMetadataDatasetFromServiceMetadata"><con:settings/><con:config><script>import de.interactive_instruments.xtf.*;
+SOAPUI_I.init(log,context,testRunner);
+// props = testRunner.testCase.testSteps['Properties']
 // log.info("Caps: " + props.getPropertyValue("Capabilities"))
-//Start parsing of Capabilities
-def groovyUtils = new com.eviware.soapui.support.GroovyUtils(context);
-def serviceMDXmlHolder = groovyUtils.getXmlHolder(props.getPropertyValue("ServiceMetadataRecord"))
-serviceMDXmlHolder.namespaces["srv"] = "http://www.isotc211.org/2005/srv";
-serviceMDXmlHolder.namespaces["gmd"] = "http://www.isotc211.org/2005/gmd";
-serviceMDXmlHolder.namespaces["xlink"] = "http://www.w3.org/1999/xlink";
+ProjectHelper ph = new ProjectHelper();
+def serviceMDXmlHolder = ph.getTransferPropertyAsXml("ServiceMetadataRecord")
 
-// srv:operatesOn/@xlink:href
-// Pull out the metadataURLs
-def metadataUrlNodes = serviceMDXmlHolder.getNodeValues("//srv:operatesOn/@xlink:href");
-log.debug("metadataUrlNodes: " + metadataUrlNodes);
+//Pull out the metadataURLs
+def metadataUrlNodes = serviceMDXmlHolder.getNodeValues("//*:operatesOn/@*:href");
+log.info("metadataUrlNodes: " + metadataUrlNodes);
 
 // clear url to test
-props.setPropertyValue("urlToTest",'')
+ph.setTransferProperty("urlToTest","")
 
 // run GetMetadata test for each url
-for( i in metadataUrlNodes )
-{
-   i=i.replaceAll("%7B","{")
-   i=i.replaceAll("%7D","}")
-   log.info("Checking Metadata with URL: " + i)
-   props.setPropertyValue("urlToTest",i)
-      // remove any Authorization header if provided for the service (because this request is for metadata)
-   def newheaders = new StringToStringsMap()
-   def header = testRunner.testCase.testSteps["GetMetadataDatasetFromServiceMetadata"].httpRequest.getRequestHeaders()
-	 header.each
-	 {
-	  if (key!="Authorization") {
-	       newheaders.put(key,val)
-	  }
-	 }
-   testRunner.testCase.testSteps["GetMetadataDatasetFromServiceMetadata"].getHttpRequest().setRequestHeaders(newheaders);
-   testRunner.runTestStepByName("GetMetadataDatasetFromServiceMetadata")
+for( url in metadataUrlNodes ) {
+   url=url.replaceAll("%7B","{")
+   url=url.replaceAll("%7D","}")
+
+   ph.setTransferProperty("urlToTest",url)
+   ph.runTestStep("GetMetadataDatasetFromServiceMetadata")
 }
-testRunner.gotoStepByName("Property Transfer (Finish Goto)");</script></con:config></con:testStep><con:testStep type="httprequest" name="GetMetadataDatasetFromServiceMetadata"><con:settings/><con:config method="GET" xsi:type="con:HttpRequest" name="GetMetadataDatasetFromServiceMetadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>${#urlToTest}</con:endpoint><con:request/><con:assertion type="XQuery Match" name="M-01##M-01-MD_Metadata2: Metadata has root element MD_Metadata"><con:configuration><path><![CDATA[declare namespace gmd='http://www.isotc211.org/2005/gmd';
+
+testRunner.gotoStepByName("Property Transfer (Finish Goto)");
+</script></con:config></con:testStep><con:testStep type="httprequest" name="GetMetadataDatasetFromServiceMetadata"><con:settings/><con:config method="GET" xsi:type="con:HttpRequest" name="GetMetadataDatasetFromServiceMetadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>${#urlToTest}</con:endpoint><con:request/><con:assertion type="XQuery Match" name="M-01##M-01-MD_Metadata2: Metadata has root element MD_Metadata"><con:configuration><path><![CDATA[declare namespace gmd='http://www.isotc211.org/2005/gmd';
 declare namespace csw='http://www.opengis.net/cat/csw/2.0.2';
 
 <result>AssertionFailures: {
