@@ -125,10 +125,11 @@ log.info( "time taken was :" + messageExchange.timeTaken );
 
 &lt;result>AssertionFailures:
 {
-for $obj in /wms:WMS_Capabilities
-let $nm:=$obj/@version
-where $nm!='1.3.0'
-return concat(" version should be 1.3.0, but version in WMS Capabilities is: ", data($nm))
+let $v := /wms:WMS_Capabilities[@version='1.3.0']
+return
+if (exists($v))
+then ""
+else " No valid WMS Capabilities or version provided."
 }
 &lt;/result></path><content>&lt;result>AssertionFailures:&lt;/result></content><allowWildcards>false</allowWildcards></con:configuration></con:assertion><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters><con:parameter><con:name>ACCEPTVERSIONS</con:name><con:value>1.3.0</con:value></con:parameter><con:parameter><con:name>SERVICE</con:name><con:value>WMS</con:value></con:parameter><con:parameter><con:name>REQUEST</con:name><con:value>GetCapabilities</con:value></con:parameter></con:parameters></con:config></con:testStep><con:testStep type="transfer" name="Property Transfer"><con:settings/><con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" useXQuery="false" entitize="false" transferChildNodes="false"><con:name>firstlayer</con:name><con:sourceType>ResponseAsXml</con:sourceType><con:sourceStep>GetCapabilities</con:sourceStep><con:sourcePath>declare namespace wms='http://www.opengis.net/wms';
 (//wms:Layer[wms:Name and empty(./wms:Layer[exists(wms:Name)]) and (ancestor-or-self::wms:Layer/wms:BoundingBox/@CRS='EPSG:4258' or ancestor-or-self::wms:Layer/wms:BoundingBox/@CRS='EPSG:4326' or ancestor-or-self::wms:Layer/wms:BoundingBox/@CRS='CRS:84')][1]/wms:Name)[1]</con:sourcePath><con:targetType>firstlayercapabilities</con:targetType><con:targetStep>#Project#</con:targetStep><con:targetPath/></con:transfers><con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" transferToAll="false" entitize="false" ignoreEmpty="false" useXQuery="false" transferChildNodes="false"><con:name>layerlist</con:name><con:sourceType>ResponseAsXml</con:sourceType><con:sourceStep>GetCapabilities</con:sourceStep><con:sourcePath>declare namespace wms='http://www.opengis.net/wms';
