@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<con:soapui-project name="INSPIRE View Service WMS 1_3_0 TG 3_11" resourceRoot="${projectDir}" soapui-version="4.6.4" abortOnError="false" runType="SEQUENTIAL" activeEnvironment="Default" xmlns:con="http://eviware.com/soapui/config"><con:description>This test project checks an implementation of WMS version 1.3.0 to the requirements that the INSPIRE View Services Technical Guidance (TG version 3.11) lays down. It tests for mandatory and optional parts.</con:description><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.actions.iface.tools.soapui.TestRunnerAction@values-local"><![CDATA[<xml-fragment xmlns:con="http://eviware.com/soapui/config">
+<con:soapui-project name="INSPIRE View Service WMS 1_3_0 TG 3_11" resourceRoot="${projectDir}" soapui-version="4.6.4" abortOnError="false" runType="SEQUENTIAL" activeEnvironment="etf-sel.modelBridge" xmlns:con="http://eviware.com/soapui/config"><con:description>This test project checks an implementation of WMS version 1.3.0 to the requirements that the INSPIRE View Services Technical Guidance (TG version 3.11) lays down. It tests for mandatory and optional parts.</con:description><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.actions.iface.tools.soapui.TestRunnerAction@values-local"><![CDATA[<xml-fragment xmlns:con="http://eviware.com/soapui/config">
   <con:entry key="Global Properties" value=""/>
   <con:entry key="TestSuite" value="FR-V3 - Availability"/>
   <con:entry key="Report to Generate" value=""/>
@@ -668,6 +668,10 @@ ph.setTransferProperty("mdIdentifiersDatasetMetadata",'');
 
 // run GetMetadata test for each url
 for( url in metadataUrlNodes ) {
+   url=url.replaceAll("%7B","{")
+   url=url.replaceAll("%7D","}")
+   url=url.replaceAll("%7b","{")
+   url=url.replaceAll("%7d","}")
    ph.setTransferProperty("urlToTest",url)
    ph.runTestStep("GetMetadata")
    ph.runTestStep("PropertyTransferMD_Identifier")
