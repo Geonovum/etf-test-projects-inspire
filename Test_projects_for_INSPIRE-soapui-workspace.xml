@@ -4,4 +4,6 @@
   <con:project name="INSPIRE Download Service Atom TG 3_1">src/ESDIN-DS-Tests-Atom-soapui-project.xml</con:project>
   <con:project name="INSPIRE Download Service WFS 2_0_0 ISO19142 TG 3_1">src/ESDIN-DS-Tests-ISO19142-soapui-project.xml</con:project>
   <con:project name="INSPIRE View Service WMS 1_3_0 TG 3_11">src/ViewServices-EDINA-soapui-project.xml</con:project>
+  <con:project name="Nederlands WMS profiel 1_3_0">../etf-test-projects-nl/src/nlprofielenservices/NL-WMS-profiel-soapui-project.xml</con:project>
+  <con:project name="Nederlands WFS profiel WFS 2_0_0 ISO19142">../etf-test-projects-nl/src/nlprofielenservices/NL-WFS-profiel-soapui-project.xml</con:project>
 </con:soapui-workspace>
