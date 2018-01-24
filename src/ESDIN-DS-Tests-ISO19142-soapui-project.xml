@@ -1,15 +1,15 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
-<con:soapui-project xmlns:con="http://eviware.com/soapui/config" name="INSPIRE Download Service WFS 2_0_0 ISO19142 TG 3_1" resourceRoot="${projectDir}" soapui-version="4.6.4" abortOnError="false" runType="SEQUENTIAL" activeEnvironment="etf-sel.modelBridge">
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project name="INSPIRE Download Service WFS 2_0_0 ISO19142 TG 3_1" resourceRoot="${projectDir}" soapui-version="5.3.0" abortOnError="false" runType="SEQUENTIAL" activeEnvironment="Default" id="4148b08d-b2d4-4703-b94f-f4e2e9432e8a" xmlns:con="http://eviware.com/soapui/config">
   <con:description>This test project checks an implementation of a WFS 2.0.0 / ISO 19142 service to the requirements that the INSPIRE Download Service Technical Guidance (TG version 3.1) lays down. It tests for mandatory and optional parts, for so-called predefined and direct access services.</con:description>
   <con:settings/>
-  <con:interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="con:RestService" wadlVersion="http://wadl.dev.java.net/2009/02" name="service" type="rest" basePath="">
+  <con:interface xsi:type="con:RestService" wadlVersion="http://wadl.dev.java.net/2009/02" name="service" type="rest" basePath="" id="833ad1cf-19cb-401d-8c0e-f8a9f2fabf81" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <con:settings/>
     <con:definitionCache type="TEXT"/>
     <con:endpoints>
       <con:endpoint>${#Project#serviceEndpoint}</con:endpoint>
       <con:endpoint>${#TestSuite#GetPropertyValueURL}</con:endpoint>
     </con:endpoints>
-    <con:resource name="DS" path="">
+    <con:resource name="DS" path="" id="89903091-2657-451a-a493-2d6808f480ea">
       <con:settings/>
       <con:parameters>
         <con:parameter required="true">
@@ -37,7 +37,7 @@
           <con:description xsi:nil="true"/>
         </con:parameter>
       </con:parameters>
-      <con:method name="GetCapabilities" method="GET">
+      <con:method name="GetCapabilities" method="GET" id="b3fa0d08-e51a-4c24-80a1-718738b5505c">
         <con:settings/>
         <con:parameters>
           <con:parameter>
@@ -113,9 +113,9 @@
           <con:params/>
           <con:element>data</con:element>
         </con:representation>
-        <con:request name="GetCapabilities" mediaType="application/xml" accept="">
+        <con:request name="GetCapabilities" mediaType="application/xml" accept="" id="0be5d56f-e005-40b4-b653-8bfcfbd151a7">
           <con:settings>
-            <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;entry key="Accept" value="application/xml" xmlns="http://eviware.com/soapui/config"/&gt;</con:setting>
+            <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;entry key="Accept" value="application/xml" xmlns="http://eviware.com/soapui/config"/></con:setting>
           </con:settings>
           <con:endpoint>${#Project#serviceEndpoint}</con:endpoint>
           <con:request/>
@@ -127,7 +127,7 @@
           <con:parameters/>
         </con:request>
       </con:method>
-      <con:method name="GetFeature" method="GET">
+      <con:method name="GetFeature" method="GET" id="c2ed6e81-00eb-4d54-b785-07db23e4e7f1">
         <con:settings/>
         <con:parameters>
           <con:parameter>
@@ -290,9 +290,9 @@
           <con:status>200 0</con:status>
           <con:params/>
         </con:representation>
-        <con:request name="GetFeature" mediaType="application/xml">
+        <con:request name="GetFeature" mediaType="application/xml" id="ec9e0d09-8c50-4b1c-a7fc-15201d32c3a1">
           <con:settings>
-            <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/&gt;</con:setting>
+            <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
           </con:settings>
           <con:endpoint>${#Project#serviceEndpoint}</con:endpoint>
           <con:request/>
@@ -302,7 +302,7 @@
           <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
           <con:jmsPropertyConfig/>
           <con:parameters>
-            <entry xmlns="http://eviware.com/soapui/config" key="REQUEST" value="GetFeature"/>
+            <entry key="REQUEST" value="GetFeature" xmlns="http://eviware.com/soapui/config"/>
           </con:parameters>
           <con:parameterOrder>
             <con:entry>REQUEST</con:entry>
@@ -331,7 +331,7 @@
           </con:parameterOrder>
         </con:request>
       </con:method>
-      <con:method name="DescribeFeatureType" method="GET">
+      <con:method name="DescribeFeatureType" method="GET" id="deb537b4-a33a-4b4a-87f9-69d8a4e69a63">
         <con:settings/>
         <con:parameters>
           <con:parameter>
@@ -400,9 +400,9 @@
           <con:status>200 0</con:status>
           <con:params/>
         </con:representation>
-        <con:request name="DescribeFeatureType" mediaType="application/xml">
+        <con:request name="DescribeFeatureType" mediaType="application/xml" id="ab0528ef-b393-4994-a652-66e9b690b54e">
           <con:settings>
-            <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/&gt;</con:setting>
+            <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
           </con:settings>
           <con:endpoint>${#Project#serviceEndpoint}</con:endpoint>
           <con:request/>
@@ -422,7 +422,7 @@
           </con:parameterOrder>
         </con:request>
       </con:method>
-      <con:method name="GetPropertyValue" method="GET">
+      <con:method name="GetPropertyValue" method="GET" id="d18241c6-ead6-4063-bcec-81e8785c877b">
         <con:settings/>
         <con:parameters>
           <con:parameter>
@@ -601,9 +601,9 @@
           <con:status>200 0</con:status>
           <con:params/>
         </con:representation>
-        <con:request name="GetPropertyValue" mediaType="application/xml">
+        <con:request name="GetPropertyValue" mediaType="application/xml" id="aa355d11-03b8-4cba-9c3f-e0bd5daa8ee4">
           <con:settings>
-            <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/&gt;</con:setting>
+            <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
           </con:settings>
           <con:endpoint>${#Project#serviceEndpoint}</con:endpoint>
           <con:request/>
@@ -642,7 +642,7 @@
           </con:parameterOrder>
         </con:request>
       </con:method>
-      <con:method name="ListStoredQueries" method="GET">
+      <con:method name="ListStoredQueries" method="GET" id="478949e8-5c7c-4f2c-a9bc-eecc60384805">
         <con:settings/>
         <con:parameters>
           <con:parameter>
@@ -707,9 +707,9 @@
           <con:status>200 0</con:status>
           <con:params/>
         </con:representation>
-        <con:request name="ListStoredQueries" mediaType="application/xml">
+        <con:request name="ListStoredQueries" mediaType="application/xml" id="7e4e669d-b29a-4df1-8bde-b2a6b0c3de9a">
           <con:settings>
-            <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/&gt;</con:setting>
+            <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
           </con:settings>
           <con:endpoint>${#Project#serviceEndpoint}</con:endpoint>
           <con:request/>
@@ -728,7 +728,7 @@
           </con:parameterOrder>
         </con:request>
       </con:method>
-      <con:method name="DescribeStoredQueries" method="GET">
+      <con:method name="DescribeStoredQueries" method="GET" id="998f5330-e360-4ac0-aaf4-27608a96396b">
         <con:settings/>
         <con:parameters>
           <con:parameter>
@@ -799,9 +799,9 @@
           <con:status>200 0</con:status>
           <con:params/>
         </con:representation>
-        <con:request name="DescribeStoredQueries" mediaType="application/xml">
+        <con:request name="DescribeStoredQueries" mediaType="application/xml" id="31a9ffdf-89fa-40a0-9fdc-cd6cb4234b11">
           <con:settings>
-            <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/&gt;</con:setting>
+            <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
           </con:settings>
           <con:endpoint>${#Project#serviceEndpoint}</con:endpoint>
           <con:request/>
@@ -822,12 +822,12 @@
     <con:inferredSchema><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
 <xml-fragment><inf:schema xmlns:inf="http://www.eviware.com/soapui/InferredSchema"><inf:namespace>http://www.opengis.net/wms</inf:namespace><inf:particle xsi:type="inf:ElementParticle" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><inf:name>WMS_Capabilities</inf:name><inf:type xsi:type="inf:TypeReference"><inf:reference xmlns:wms="http://www.opengis.net/wms">wms:WMS_Capabilities</inf:reference></inf:type></inf:particle><inf:particle xsi:type="inf:ElementParticle" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><inf:name>Format</inf:name><inf:type xsi:type="inf:SimpleType"><inf:completed>false</inf:completed><inf:typeName>string</inf:typeName></inf:type></inf:particle><inf:particle xsi:type="inf:ElementParticle" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><inf:name>DCPType</inf:name><inf:type xsi:type="inf:TypeReference"><inf:reference xmlns:wms="http://www.opengis.net/wms">wms:_DCPType</inf:reference></inf:type></inf:particle><inf:prefix key="http://mapserver.gis.umn.edu/mapserver" value="ms"/><inf:prefix key="http://www.w3.org/2001/XMLSchema" value="xs"/><inf:prefix key="http://www.opengis.net/sld" value="sld"/><inf:prefix key="http://www.w3.org/1999/xlink" value="xlink"/><inf:complexType><inf:completed>true</inf:completed><inf:mixed>false</inf:mixed><inf:name>Request_GetMap</inf:name><inf:content xsi:type="inf:SequenceContent" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><inf:completed>true</inf:completed><inf:particle xsi:type="inf:ElementParticle"><inf:name>Format</inf:name><inf:attribute key="maxOccurs" value="7"/><inf:type xsi:type="inf:SimpleType"><inf:completed>false</inf:completed><inf:typeName>string</inf:typeName></inf:type></inf:particle><inf:particle xsi:type="inf:ElementParticle"><inf:name>DCPType</inf:name><inf:type xsi:type="inf:TypeReference"><inf:reference xmlns:wms="http://www.opengis.net/wms">wms:GetMap_DCPType</inf:reference></inf:type></inf:particle><inf:comesBefore qname="wms:Format" xmlns:wms="http://www.opengis.net/wms"><inf:other>wms:DCPType</inf:other></inf:comesBefore><inf:comesBefore qname="wms:DCPType" xmlns:wms="http://www.opengis.net/wms"/></inf:content></inf:complexType><inf:complexType><inf:completed>true</inf:completed><inf:mixed>false</inf:mixed><inf:name>DCPType_HTTP</inf:name><inf:content xsi:type="inf:SequenceContent" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><inf:completed>true</inf:completed><inf:particle xsi:type="inf:ElementParticle"><inf:name>Get</inf:name><inf:type xsi:type="inf:TypeReference"><inf:reference xmlns:wms="http://www.opengis.net/wms">wms:HTTP_Get</inf:reference></inf:type></inf:particle><inf:particle xsi:type="inf:ElementParticle"><inf:name>Post</inf:name><inf:type xsi:type="inf:TypeReference"><inf:reference xmlns:wms="http://www.opengis.net/wms">wms:HTTP_Post</inf:reference></inf:type></inf:particle><inf:comesBefore qname="wms:Post" xmlns:wms="http://www.opengis.net/wms"/><inf:comesBefore qname="wms:Get" xmlns:wms="http://www.opengis.net/wms"><inf:other>wms:Post</inf:other></inf:comesBefore></inf:content></inf:complexType><inf:complexType><inf:completed>true</inf:completed><inf:mixed>false</inf:mixed><inf:name>Capability_Layer</inf:name><inf:content xsi:type="inf:SequenceContent" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><inf:completed>true</inf:completed><inf:particle xsi:type="inf:ElementParticle"><inf:name>Name</inf:name><inf:type xsi:type="inf:SimpleType"><inf:completed>false</inf:completed><inf:typeName>string</inf:typeName></inf:type></inf:particle><inf:particle xsi:type="inf:ElementParticle"><inf:name>Title</inf:name><inf:type xsi:type="inf:SimpleType"><inf:completed>false</inf:completed><inf:typeName>string</inf:typeName></inf:type></inf:particle><inf:particle xsi:type="inf:ElementParticle"><inf:name>Abstract</inf:name><inf:type xsi:type="inf:SimpleType"><inf:completed>false</inf:completed><inf:typeName>string</inf:typeName></inf:type></inf:particle><inf:particle xsi:type="inf:ElementParticle"><inf:name>KeywordList</inf:name><inf:type xsi:type="inf:TypeReference"><inf:reference xmlns:wms="http://www.opengis.net/wms">wms:Layer_KeywordList</inf:reference></inf:type></inf:particle><inf:particle xsi:type="inf:ElementParticle"><inf:name>CRS</inf:name><inf:attribute key="maxOccurs" value="18"/><inf:type xsi:type="inf:SimpleType"><inf:completed>false</inf:completed><inf:typeName>string</inf:typeName></inf:type></inf:particle><inf:particle xsi:type="inf:ElementParticle"><inf:name>EX_GeographicBoundingBox</inf:name><inf:type xsi:type="inf:TypeReference"><inf:reference xmlns:wms="http://www.opengis.net/wms">wms:EX_GeographicBoundingBox</inf:reference></inf:type></inf:particle><inf:particle xsi:type="inf:ElementParticle"><inf:name>Layer</inf:name><inf:attribute key="maxOccurs" value="5"/><inf:type xsi:type="inf:TypeReference"><inf:reference xmlns:wms="http://www.opengis.net/wms">wms:Layer_Layer</inf:reference></inf:type></inf:particle><inf:comesBefore qname="wms:Layer" xmlns:wms="http://www.opengis.net/wms"/><inf:comesBefore qname="wms:Name" xmlns:wms="http://www.opengis.net/wms"><inf:other>wms:Title</inf:other><inf:other>wms:Abstract</inf:other><inf:other>wms:KeywordList</inf:other><inf:other>wms:CRS</inf:other><inf:other>wms:EX_GeographicBoundingBox</inf:other><inf:other>wms:Layer</inf:other></inf:comesBefore><inf:comesBefore qname="wms:CRS" xmlns:wms="http://www.opengis.net/wms"><inf:other>wms:EX_GeographicBoundingBox</inf:other><inf:other>wms:Layer</inf:other></inf:comesBefore><inf:comesBefore qname="wms:EX_GeographicBoundingBox" xmlns:wms="http://www.opengis.net/wms"><inf:other>wms:Layer</inf:other></inf:comesBefore><inf:comesBefore qname="wms:Title" xmlns:wms="http://www.opengis.net/wms"><inf:other>wms:Abstract</inf:other><inf:other>wms:KeywordList</inf:other><inf:other>wms:CRS</inf:other><inf:other>wms:EX_GeographicBoundingBox</inf:other><inf:other>wms:Layer</inf:other></inf:comesBefore><inf:comesBefore qname="wms:KeywordList" xmlns:wms="http://www.opengis.net/wms"><inf:other>wms:CRS</inf:other><inf:other>wms:EX_GeographicBoundingBox</inf:other><inf:other>wms:Layer</inf:other></inf:comesBefore><inf:comesBefore qname="wms:Abstract" xmlns:wms="http://www.opengis.net/wms"><inf:other>wms:KeywordList</inf:other><inf:other>wms:CRS</inf:other><inf:other>wms:EX_GeographicBoundingBox</inf:other><inf:other>wms:Layer</inf:other></inf:comesBefore></inf:content></inf:complexType><inf:complexType><inf:completed>true</inf:completed><inf:mixed>false</inf:mixed><inf:name>Capability_Exception</inf:name><inf:content xsi:type="inf:SequenceContent" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><inf:completed>true</inf:completed><inf:particle xsi:type="inf:ElementParticle"><inf:name>Format</inf:name><inf:attribute key="maxOccurs" value="3"/><inf:type xsi:type="inf:SimpleType"><inf:completed>false</inf:completed><inf:typeName>string</inf:typeName></inf:type></inf:particle><inf:comesBefore qname="wms:Format" xmlns:wms="http://www.opengis.net/wms"/></inf:content></inf:complexType><inf:complexType><inf:completed>true</inf:completed><inf:mixed>false</inf:mixed><inf:name>Capability_Request</inf:name><inf:content xsi:type="inf:SequenceContent" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><inf:completed>true</inf:completed><inf:particle xsi:type="inf:ElementParticle"><inf:name>GetCapabilities</inf:name><inf:type xsi:type="inf:TypeReference"><inf:reference xmlns:wms="http://www.opengis.net/wms">wms:Request_GetCapabilities</inf:reference></inf:type></inf:particle><inf:particle xsi:type="inf:ElementParticle"><inf:name>GetMap</inf:name><inf:type xsi:type="inf:TypeReference"><inf:reference xmlns:wms="http://www.opengis.net/wms">wms:Request_GetMap</inf:reference></inf:type></inf:particle><inf:particle xsi:type="inf:ElementParticle"><inf:name>GetFeatureInfo</inf:name><inf:type xsi:type="inf:TypeReference"><inf:reference xmlns:wms="http://www.opengis.net/wms">wms:Request_GetFeatureInfo</inf:reference></inf:type></inf:particle><inf:particle xsi:type="inf:ReferenceParticle"><inf:reference xmlns:sld="http://www.opengis.net/sld">sld:DescribeLayer</inf:reference></inf:particle><inf:particle xsi:type="inf:ReferenceParticle"><inf:reference xmlns:sld="http://www.opengis.net/sld">sld:GetLegendGraphic</inf:reference></inf:particle><inf:particle xsi:type="inf:ReferenceParticle"><inf:reference xmlns:map="http://mapserver.gis.umn.edu/mapserver">map:GetStyles</inf:reference></inf:particle><inf:comesBefore qname="map:GetStyles" xmlns:map="http://mapserver.gis.umn.edu/mapserver"/><inf:comesBefore qname="wms:GetCapabilities" xmlns:wms="http://www.opengis.net/wms"><inf:other>wms:GetMap</inf:other><inf:other>wms:GetFeatureInfo</inf:other><inf:other xmlns:sld="http://www.opengis.net/sld">sld:DescribeLayer</inf:other><inf:other xmlns:sld="http://www.opengis.net/sld">sld:GetLegendGraphic</inf:other><inf:other xmlns:map="http://mapserver.gis.umn.edu/mapserver">map:GetStyles</inf:other></inf:comesBefore><inf:comesBefore qname="sld:GetLegendGraphic" xmlns:sld="http://www.opengis.net/sld"><inf:other xmlns:map="http://mapserver.gis.umn.edu/mapserver">map:GetStyles</inf:other></inf:comesBefore><inf:comesBefore qname="sld:DescribeLayer" xmlns:sld="http://www.opengis.net/sld"><inf:other>sld:GetLegendGraphic</inf:other><inf:other xmlns:map="http://mapserver.gis.umn.edu/mapserver">map:GetStyles</inf:other></inf:comesBefore><inf:comesBefore qname="wms:GetMap" xmlns:wms="http://www.opengis.net/wms"><inf:other>wms:GetFeatureInfo</inf:other><inf:other xmlns:sld="http://www.opengis.net/sld">sld:DescribeLayer</inf:other><inf:other xmlns:sld="http://www.opengis.net/sld">sld:GetLegendGraphic</inf:other><inf:other xmlns:map="http://mapserver.gis.umn.edu/mapserver">map:GetStyles</inf:other></inf:comesBefore><inf:comesBefore qname="wms:GetFeatureInfo" xmlns:wms="http://www.opengis.net/wms"><inf:other xmlns:sld="http://www.opengis.net/sld">sld:DescribeLayer</inf:other><inf:other xmlns:sld="http://www.opengis.net/sld">sld:GetLegendGraphic</inf:other><inf:other xmlns:map="http://mapserver.gis.umn.edu/mapserver">map:GetStyles</inf:other></inf:comesBefore></inf:content></inf:complexType><inf:complexType><inf:completed>true</inf:completed><inf:mixed>false</inf:mixed><inf:name>LegendURL_OnlineResource</inf:name><inf:attribute xsi:type="inf:ReferenceParticle" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><inf:reference xmlns:xlin="http://www.w3.org/1999/xlink">xlin:href</inf:reference></inf:attribute><inf:attribute xsi:type="inf:ReferenceParticle" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><inf:reference xmlns:xlin="http://www.w3.org/1999/xlink">xlin:type</inf:reference></inf:attribute><inf:content xsi:type="inf:EmptyContent" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><inf:completed>true</inf:completed></inf:content></inf:complexType><inf:complexType><inf:completed>true</inf:completed><inf:mixed>false</inf:mixed><inf:name>Post_OnlineResource</inf:name><inf:attribute xsi:type="inf:ReferenceParticle" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><inf:reference xmlns:xlin="http://www.w3.org/1999/xlink">xlin:href</inf:reference></inf:attribute><inf:content xsi:type="inf:EmptyContent" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><inf:completed>true</inf:completed></inf:content></inf:complexType><inf:complexType><inf:completed>true</inf:completed><inf:mixed>false</inf:mixed><inf:name>Style_LegendURL</inf:name><inf:attribute xsi:type="inf:AttributeParticle" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><inf:name>height</inf:name><inf:type xsi:type="inf:SimpleType"><inf:completed>false</inf:completed><inf:typeName>positiveInteger</inf:typeName></inf:type></inf:attribute><inf:attribute xsi:type="inf:AttributeParticle" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><inf:name>width</inf:name><inf:type xsi:type="inf:SimpleType"><inf:completed>false</inf:completed><inf:typeName>positiveInteger</inf:typeName></inf:type></inf:attribute><inf:content xsi:type="inf:SequenceContent" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><inf:completed>true</inf:completed><inf:particle xsi:type="inf:ElementParticle"><inf:name>Format</inf:name><inf:type xsi:type="inf:SimpleType"><inf:completed>false</inf:completed><inf:typeName>string</inf:typeName></inf:type></inf:particle><inf:particle xsi:type="inf:ElementParticle"><inf:name>OnlineResource</inf:name><inf:type xsi:type="inf:TypeReference"><inf:reference xmlns:wms="http://www.opengis.net/wms">wms:LegendURL_OnlineResource</inf:reference></inf:type></inf:particle><inf:comesBefore qname="wms:Format" xmlns:wms="http://www.opengis.net/wms"><inf:other>wms:OnlineResource</inf:other></inf:comesBefore><inf:comesBefore qname="wms:OnlineResource" xmlns:wms="http://www.opengis.net/wms"/></inf:content></inf:complexType><inf:complexType><inf:completed>true</inf:completed><inf:mixed>false</inf:mixed><inf:name>HTTP_Post</inf:name><inf:content xsi:type="inf:SequenceContent" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><inf:completed>true</inf:completed><inf:particle xsi:type="inf:ElementParticle"><inf:name>OnlineResource</inf:name><inf:type xsi:type="inf:TypeReference"><inf:reference xmlns:wms="http://www.opengis.net/wms">wms:Post_OnlineResource</inf:reference></inf:type></inf:particle><inf:comesBefore qname="wms:OnlineResource" xmlns:wms="http://www.opengis.net/wms"/></inf:content></inf:complexType><inf:complexType><inf:completed>true</inf:completed><inf:mixed>false</inf:mixed><inf:name>WMS_Capabilities</inf:name><inf:attribute xsi:type="inf:AttributeParticle" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><inf:name>version</inf:name><inf:type xsi:type="inf:SimpleType"><inf:completed>false</inf:completed><inf:typeName>string</inf:typeName></inf:type></inf:attribute><inf:content xsi:type="inf:SequenceContent" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><inf:completed>true</inf:completed><inf:particle xsi:type="inf:ElementParticle"><inf:name>Service</inf:name><inf:type xsi:type="inf:TypeReference"><inf:reference xmlns:wms="http://www.opengis.net/wms">wms:Capabilities_Service</inf:reference></inf:type></inf:particle><inf:particle xsi:type="inf:ElementParticle"><inf:name>Capability</inf:name><inf:type xsi:type="inf:TypeReference"><inf:reference xmlns:wms="http://www.opengis.net/wms">wms:Capabilities_Capability</inf:reference></inf:type></inf:particle><inf:comesBefore qname="wms:Service" xmlns:wms="http://www.opengis.net/wms"><inf:other>wms:Capability</inf:other></inf:comesBefore><inf:comesBefore qname="wms:Capability" xmlns:wms="http://www.opengis.net/wms"/></inf:content></inf:complexType><inf:complexType><inf:completed>true</inf:completed><inf:mixed>false</inf:mixed><inf:name>Capabilities_Service</inf:name><inf:content xsi:type="inf:SequenceContent" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><inf:completed>true</inf:completed><inf:particle xsi:type="inf:ElementParticle"><inf:name>Name</inf:name><inf:type xsi:type="inf:SimpleType"><inf:completed>false</inf:completed><inf:typeName>string</inf:typeName></inf:type></inf:particle><inf:particle xsi:type="inf:ElementParticle"><inf:name>Title</inf:name><inf:type xsi:type="inf:SimpleType"><inf:completed>false</inf:completed><inf:typeName>string</inf:typeName></inf:type></inf:particle><inf:particle xsi:type="inf:ElementParticle"><inf:name>Abstract</inf:name><inf:type xsi:type="inf:SimpleType"><inf:completed>false</inf:completed><inf:typeName>string</inf:typeName></inf:type></inf:particle><inf:particle xsi:type="inf:ElementParticle"><inf:name>KeywordList</inf:name><inf:type xsi:type="inf:TypeReference"><inf:reference xmlns:wms="http://www.opengis.net/wms">wms:Service_KeywordList</inf:reference></inf:type></inf:particle><inf:particle xsi:type="inf:ElementParticle"><inf:name>OnlineResource</inf:name><inf:type xsi:type="inf:TypeReference"><inf:reference xmlns:wms="http://www.opengis.net/wms">wms:Service_OnlineResource</inf:reference></inf:type></inf:particle><inf:particle xsi:type="inf:ElementParticle"><inf:name>ContactInformation</inf:name><inf:type xsi:type="inf:TypeReference"><inf:reference xmlns:wms="http://www.opengis.net/wms">wms:Service_ContactInformation</inf:reference></inf:type></inf:particle><inf:particle xsi:type="inf:ElementParticle"><inf:name>Fees</inf:name><inf:type xsi:type="inf:SimpleType"><inf:completed>false</inf:completed><inf:typeName>string</inf:typeName></inf:type></inf:particle><inf:particle xsi:type="inf:ElementParticle"><inf:name>AccessConstraints</inf:name><inf:type xsi:type="inf:SimpleType"><inf:completed>false</inf:completed><inf:typeName>string</inf:typeName></inf:type></inf:particle><inf:particle xsi:type="inf:ElementParticle"><inf:name>MaxWidth</inf:name><inf:type xsi:type="inf:SimpleType"><inf:completed>false</inf:completed><inf:typeName>positiveInteger</inf:typeName></inf:type></inf:particle><inf:particle xsi:type="inf:ElementParticle"><inf:name>MaxHeight</inf:name><inf:type xsi:type="inf:SimpleType"><inf:completed>false</inf:completed><inf:typeName>positiveInteger</inf:typeName></inf:type></inf:particle><inf:comesBefore qname="wms:MaxWidth" xmlns:wms="http://www.opengis.net/wms"><inf:other>wms:MaxHeight</inf:other></inf:comesBefore><inf:comesBefore qname="wms:Fees" xmlns:wms="http://www.opengis.net/wms"><inf:other>wms:AccessConstraints</inf:other><inf:other>wms:MaxWidth</inf:other><inf:other>wms:MaxHeight</inf:other></inf:comesBefore><inf:comesBefore qname="wms:ContactInformation" xmlns:wms="http://www.opengis.net/wms"><inf:other>wms:Fees</inf:other><inf:other>wms:AccessConstraints</inf:other><inf:other>wms:MaxWidth</inf:other><inf:other>wms:MaxHeight</inf:other></inf:comesBefore><inf:comesBefore qname="wms:Name" xmlns:wms="http://www.opengis.net/wms"><inf:other>wms:Title</inf:other><inf:other>wms:Abstract</inf:other><inf:other>wms:KeywordList</inf:other><inf:other>wms:OnlineResource</inf:other><inf:other>wms:ContactInformation</inf:other><inf:other>wms:Fees</inf:other><inf:other>wms:AccessConstraints</inf:other><inf:other>wms:MaxWidth</inf:other><inf:other>wms:MaxHeight</inf:other></inf:comesBefore><inf:comesBefore qname="wms:AccessConstraints" xmlns:wms="http://www.opengis.net/wms"><inf:other>wms:MaxWidth</inf:other><inf:other>wms:MaxHeight</inf:other></inf:comesBefore><inf:comesBefore qname="wms:MaxHeight" xmlns:wms="http://www.opengis.net/wms"/><inf:comesBefore qname="wms:OnlineResource" xmlns:wms="http://www.opengis.net/wms"><inf:other>wms:ContactInformation</inf:other><inf:other>wms:Fees</inf:other><inf:other>wms:AccessConstraints</inf:other><inf:other>wms:MaxWidth</inf:other><inf:other>wms:MaxHeight</inf:other></inf:comesBefore><inf:comesBefore qname="wms:Title" xmlns:wms="http://www.opengis.net/wms"><inf:other>wms:Abstract</inf:other><inf:other>wms:KeywordList</inf:other><inf:other>wms:OnlineResource</inf:other><inf:other>wms:ContactInformation</inf:other><inf:other>wms:Fees</inf:other><inf:other>wms:AccessConstraints</inf:other><inf:other>wms:MaxWidth</inf:other><inf:other>wms:MaxHeight</inf:other></inf:comesBefore><inf:comesBefore qname="wms:KeywordList" xmlns:wms="http://www.opengis.net/wms"><inf:other>wms:OnlineResource</inf:other><inf:other>wms:ContactInformation</inf:other><inf:other>wms:Fees</inf:other><inf:other>wms:AccessConstraints</inf:other><inf:other>wms:MaxWidth</inf:other><inf:other>wms:MaxHeight</inf:other></inf:comesBefore><inf:comesBefore qname="wms:Abstract" xmlns:wms="http://www.opengis.net/wms"><inf:other>wms:KeywordList</inf:other><inf:other>wms:OnlineResource</inf:other><inf:other>wms:ContactInformation</inf:other><inf:other>wms:Fees</inf:other><inf:other>wms:AccessConstraints</inf:other><inf:other>wms:MaxWidth</inf:other><inf:other>wms:MaxHeight</inf:other></inf:comesBefore></inf:content></inf:complexType><inf:complexType><inf:completed>true</inf:completed><inf:mixed>false</inf:mixed><inf:name>Layer_KeywordList</inf:name><inf:content xsi:type="inf:SequenceContent" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><inf:completed>true</inf:completed><inf:particle xsi:type="inf:ElementParticle"><inf:name>Keyword</inf:name><inf:attribute key="maxOccurs" value="4"/><inf:type xsi:type="inf:SimpleType"><inf:completed>false</inf:completed><inf:typeName>string</inf:typeName></inf:type></inf:particle><inf:comesBefore qname="wms:Keyword" xmlns:wms="http://www.opengis.net/wms"/></inf:content></inf:complexType><inf:complexType><inf:completed>true</inf:completed><inf:mixed>false</inf:mixed><inf:name>Layer_Style</inf:name><inf:content xsi:type="inf:SequenceContent" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><inf:completed>true</inf:completed><inf:particle xsi:type="inf:ElementParticle"><inf:name>Name</inf:name><inf:type xsi:type="inf:SimpleType"><inf:completed>false</inf:completed><inf:typeName>string</inf:typeName></inf:type></inf:particle><inf:particle xsi:type="inf:ElementParticle"><inf:name>Title</inf:name><inf:type xsi:type="inf:SimpleType"><inf:completed>false</inf:completed><inf:typeName>string</inf:typeName></inf:type></inf:particle><inf:particle xsi:type="inf:ElementParticle"><inf:name>LegendURL</inf:name><inf:type xsi:type="inf:TypeReference"><inf:reference xmlns:wms="http://www.opengis.net/wms">wms:Style_LegendURL</inf:reference></inf:type></inf:particle><inf:comesBefore qname="wms:Name" xmlns:wms="http://www.opengis.net/wms"><inf:other>wms:Title</inf:other><inf:other>wms:LegendURL</inf:other></inf:comesBefore><inf:comesBefore qname="wms:LegendURL" xmlns:wms="http://www.opengis.net/wms"/><inf:comesBefore qname="wms:Title" xmlns:wms="http://www.opengis.net/wms"><inf:other>wms:LegendURL</inf:other></inf:comesBefore></inf:content></inf:complexType><inf:complexType><inf:completed>true</inf:completed><inf:mixed>false</inf:mixed><inf:name>Request_GetFeatureInfo</inf:name><inf:content xsi:type="inf:SequenceContent" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><inf:completed>true</inf:completed><inf:particle xsi:type="inf:ElementParticle"><inf:name>Format</inf:name><inf:attribute key="maxOccurs" value="2"/><inf:type xsi:type="inf:SimpleType"><inf:completed>false</inf:completed><inf:typeName>string</inf:typeName></inf:type></inf:particle><inf:particle xsi:type="inf:ElementParticle"><inf:name>DCPType</inf:name><inf:type xsi:type="inf:TypeReference"><inf:reference xmlns:wms="http://www.opengis.net/wms">wms:GetFeatureInfo_DCPType</inf:reference></inf:type></inf:particle><inf:comesBefore qname="wms:Format" xmlns:wms="http://www.opengis.net/wms"><inf:other>wms:DCPType</inf:other></inf:comesBefore><inf:comesBefore qname="wms:DCPType" xmlns:wms="http://www.opengis.net/wms"/></inf:content></inf:complexType><inf:complexType><inf:completed>true</inf:completed><inf:mixed>false</inf:mixed><inf:name>_DCPType</inf:name><inf:content xsi:type="inf:SequenceContent" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><inf:completed>true</inf:completed><inf:particle xsi:type="inf:ElementParticle"><inf:name>HTTP</inf:name><inf:type xsi:type="inf:TypeReference"><inf:reference xmlns:wms="http://www.opengis.net/wms">wms:DCPType_HTTP</inf:reference></inf:type></inf:particle><inf:comesBefore qname="wms:HTTP" xmlns:wms="http://www.opengis.net/wms"/></inf:content></inf:complexType><inf:complexType><inf:completed>true</inf:completed><inf:mixed>false</inf:mixed><inf:name>Service_KeywordList</inf:name><inf:content xsi:type="inf:SequenceContent" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><inf:completed>true</inf:completed><inf:particle xsi:type="inf:ElementParticle"><inf:name>Keyword</inf:name><inf:type xsi:type="inf:SimpleType"><inf:completed>false</inf:completed><inf:typeName>string</inf:typeName></inf:type></inf:particle><inf:comesBefore qname="wms:Keyword" xmlns:wms="http://www.opengis.net/wms"/></inf:content></inf:complexType><inf:complexType><inf:completed>true</inf:completed><inf:mixed>false</inf:mixed><inf:name>Layer_Layer</inf:name><inf:attribute xsi:type="inf:AttributeParticle" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><inf:name>cascaded</inf:name><inf:type xsi:type="inf:SimpleType"><inf:completed>false</inf:completed><inf:typeName>boolean</inf:typeName></inf:type></inf:attribute><inf:attribute xsi:type="inf:AttributeParticle" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><inf:name>opaque</inf:name><inf:type xsi:type="inf:SimpleType"><inf:completed>false</inf:completed><inf:typeName>boolean</inf:typeName></inf:type></inf:attribute><inf:attribute xsi:type="inf:AttributeParticle" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><inf:name>queryable</inf:name><inf:type xsi:type="inf:SimpleType"><inf:completed>false</inf:completed><inf:typeName>boolean</inf:typeName></inf:type></inf:attribute><inf:content xsi:type="inf:SequenceContent" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><inf:completed>true</inf:completed><inf:particle xsi:type="inf:ElementParticle"><inf:name>Name</inf:name><inf:type xsi:type="inf:SimpleType"><inf:completed>false</inf:completed><inf:typeName>string</inf:typeName></inf:type></inf:particle><inf:particle xsi:type="inf:ElementParticle"><inf:name>Title</inf:name><inf:type xsi:type="inf:SimpleType"><inf:completed>false</inf:completed><inf:typeName>string</inf:typeName></inf:type></inf:particle><inf:particle xsi:type="inf:ElementParticle"><inf:name>Abstract</inf:name><inf:type xsi:type="inf:SimpleType"><inf:completed>false</inf:completed><inf:typeName>string</inf:typeName></inf:type></inf:particle><inf:particle xsi:type="inf:ElementParticle"><inf:name>KeywordList</inf:name><inf:type xsi:type="inf:TypeReference"><inf:reference xmlns:wms="http://www.opengis.net/wms">wms:Layer_KeywordList</inf:reference></inf:type></inf:particle><inf:particle xsi:type="inf:ElementParticle"><inf:name>CRS</inf:name><inf:attribute key="maxOccurs" value="18"/><inf:type xsi:type="inf:SimpleType"><inf:completed>false</inf:completed><inf:typeName>string</inf:typeName></inf:type></inf:particle><inf:particle xsi:type="inf:ElementParticle"><inf:name>EX_GeographicBoundingBox</inf:name><inf:type xsi:type="inf:TypeReference"><inf:reference xmlns:wms="http://www.opengis.net/wms">wms:EX_GeographicBoundingBox</inf:reference></inf:type></inf:particle><inf:particle xsi:type="inf:ElementParticle"><inf:name>Style</inf:name><inf:type xsi:type="inf:TypeReference"><inf:reference xmlns:wms="http://www.opengis.net/wms">wms:Layer_Style</inf:reference></inf:type></inf:particle><inf:particle xsi:type="inf:ElementParticle"><inf:name>MaxScaleDenominator</inf:name><inf:type xsi:type="inf:SimpleType"><inf:completed>false</inf:completed><inf:typeName>string</inf:typeName></inf:type></inf:particle><inf:comesBefore qname="wms:Name" xmlns:wms="http://www.opengis.net/wms"><inf:other>wms:Title</inf:other><inf:other>wms:Abstract</inf:other><inf:other>wms:KeywordList</inf:other><inf:other>wms:CRS</inf:other><inf:other>wms:EX_GeographicBoundingBox</inf:other><inf:other>wms:Style</inf:other><inf:other>wms:MaxScaleDenominator</inf:other></inf:comesBefore><inf:comesBefore qname="wms:CRS" xmlns:wms="http://www.opengis.net/wms"><inf:other>wms:EX_GeographicBoundingBox</inf:other><inf:other>wms:Style</inf:other><inf:other>wms:MaxScaleDenominator</inf:other></inf:comesBefore><inf:comesBefore qname="wms:Style" xmlns:wms="http://www.opengis.net/wms"><inf:other>wms:MaxScaleDenominator</inf:other></inf:comesBefore><inf:comesBefore qname="wms:EX_GeographicBoundingBox" xmlns:wms="http://www.opengis.net/wms"><inf:other>wms:Style</inf:other><inf:other>wms:MaxScaleDenominator</inf:other></inf:comesBefore><inf:comesBefore qname="wms:MaxScaleDenominator" xmlns:wms="http://www.opengis.net/wms"/><inf:comesBefore qname="wms:Title" xmlns:wms="http://www.opengis.net/wms"><inf:other>wms:Abstract</inf:other><inf:other>wms:KeywordList</inf:other><inf:other>wms:CRS</inf:other><inf:other>wms:EX_GeographicBoundingBox</inf:other><inf:other>wms:Style</inf:other><inf:other>wms:MaxScaleDenominator</inf:other></inf:comesBefore><inf:comesBefore qname="wms:KeywordList" xmlns:wms="http://www.opengis.net/wms"><inf:other>wms:CRS</inf:other><inf:other>wms:EX_GeographicBoundingBox</inf:other><inf:other>wms:Style</inf:other><inf:other>wms:MaxScaleDenominator</inf:other></inf:comesBefore><inf:comesBefore qname="wms:Abstract" xmlns:wms="http://www.opengis.net/wms"><inf:other>wms:KeywordList</inf:other><inf:other>wms:CRS</inf:other><inf:other>wms:EX_GeographicBoundingBox</inf:other><inf:other>wms:Style</inf:other><inf:other>wms:MaxScaleDenominator</inf:other></inf:comesBefore></inf:content></inf:complexType><inf:complexType><inf:completed>true</inf:completed><inf:mixed>false</inf:mixed><inf:name>HTTP_Get</inf:name><inf:content xsi:type="inf:SequenceContent" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><inf:completed>true</inf:completed><inf:particle xsi:type="inf:ElementParticle"><inf:name>OnlineResource</inf:name><inf:type xsi:type="inf:TypeReference"><inf:reference xmlns:wms="http://www.opengis.net/wms">wms:Get_OnlineResource</inf:reference></inf:type></inf:particle><inf:comesBefore qname="wms:OnlineResource" xmlns:wms="http://www.opengis.net/wms"/></inf:content></inf:complexType><inf:complexType><inf:completed>true</inf:completed><inf:mixed>false</inf:mixed><inf:name>Capabilities_Capability</inf:name><inf:content xsi:type="inf:SequenceContent" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><inf:completed>true</inf:completed><inf:particle xsi:type="inf:ElementParticle"><inf:name>Request</inf:name><inf:type xsi:type="inf:TypeReference"><inf:reference xmlns:wms="http://www.opengis.net/wms">wms:Capability_Request</inf:reference></inf:type></inf:particle><inf:particle xsi:type="inf:ElementParticle"><inf:name>Exception</inf:name><inf:type xsi:type="inf:TypeReference"><inf:reference xmlns:wms="http://www.opengis.net/wms">wms:Capability_Exception</inf:reference></inf:type></inf:particle><inf:particle xsi:type="inf:ReferenceParticle"><inf:reference xmlns:sld="http://www.opengis.net/sld">sld:UserDefinedSymbolization</inf:reference></inf:particle><inf:particle xsi:type="inf:ElementParticle"><inf:name>Layer</inf:name><inf:type xsi:type="inf:TypeReference"><inf:reference xmlns:wms="http://www.opengis.net/wms">wms:Capability_Layer</inf:reference></inf:type></inf:particle><inf:comesBefore qname="wms:Layer" xmlns:wms="http://www.opengis.net/wms"/><inf:comesBefore qname="sld:UserDefinedSymbolization" xmlns:sld="http://www.opengis.net/sld"><inf:other xmlns:wms="http://www.opengis.net/wms">wms:Layer</inf:other></inf:comesBefore><inf:comesBefore qname="wms:Exception" xmlns:wms="http://www.opengis.net/wms"><inf:other xmlns:sld="http://www.opengis.net/sld">sld:UserDefinedSymbolization</inf:other><inf:other>wms:Layer</inf:other></inf:comesBefore><inf:comesBefore qname="wms:Request" xmlns:wms="http://www.opengis.net/wms"><inf:other>wms:Exception</inf:other><inf:other xmlns:sld="http://www.opengis.net/sld">sld:UserDefinedSymbolization</inf:other><inf:other>wms:Layer</inf:other></inf:comesBefore></inf:content></inf:complexType><inf:complexType><inf:completed>true</inf:completed><inf:mixed>false</inf:mixed><inf:name>ContactInformation_ContactPersonPrimary</inf:name><inf:content xsi:type="inf:SequenceContent" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><inf:completed>true</inf:completed><inf:particle xsi:type="inf:ElementParticle"><inf:name>ContactPerson</inf:name><inf:type xsi:type="inf:SimpleType"><inf:completed>false</inf:completed><inf:typeName>string</inf:typeName></inf:type></inf:particle><inf:particle xsi:type="inf:ElementParticle"><inf:name>ContactOrganization</inf:name><inf:type xsi:type="inf:SimpleType"><inf:completed>false</inf:completed><inf:typeName>string</inf:typeName></inf:type></inf:particle><inf:comesBefore qname="wms:ContactPerson" xmlns:wms="http://www.opengis.net/wms"><inf:other>wms:ContactOrganization</inf:other></inf:comesBefore><inf:comesBefore qname="wms:ContactOrganization" xmlns:wms="http://www.opengis.net/wms"/></inf:content></inf:complexType><inf:complexType><inf:completed>true</inf:completed><inf:mixed>false</inf:mixed><inf:name>GetCapabilities_DCPType</inf:name><inf:content xsi:type="inf:SequenceContent" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><inf:completed>true</inf:completed><inf:particle xsi:type="inf:ElementParticle"><inf:name>HTTP</inf:name><inf:type xsi:type="inf:TypeReference"><inf:reference xmlns:wms="http://www.opengis.net/wms">wms:DCPType_HTTP</inf:reference></inf:type></inf:particle><inf:comesBefore qname="wms:HTTP" xmlns:wms="http://www.opengis.net/wms"/></inf:content></inf:complexType><inf:complexType><inf:completed>true</inf:completed><inf:mixed>false</inf:mixed><inf:name>Service_OnlineResource</inf:name><inf:attribute xsi:type="inf:ReferenceParticle" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><inf:reference xmlns:xlin="http://www.w3.org/1999/xlink">xlin:href</inf:reference></inf:attribute><inf:content xsi:type="inf:EmptyContent" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><inf:completed>true</inf:completed></inf:content></inf:complexType><inf:complexType><inf:completed>true</inf:completed><inf:mixed>false</inf:mixed><inf:name>EX_GeographicBoundingBox</inf:name><inf:content xsi:type="inf:SequenceContent" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><inf:completed>true</inf:completed><inf:particle xsi:type="inf:ElementParticle"><inf:name>westBoundLongitude</inf:name><inf:type xsi:type="inf:SimpleType"><inf:completed>false</inf:completed><inf:typeName>decimal</inf:typeName></inf:type></inf:particle><inf:particle xsi:type="inf:ElementParticle"><inf:name>eastBoundLongitude</inf:name><inf:type xsi:type="inf:SimpleType"><inf:completed>false</inf:completed><inf:typeName>decimal</inf:typeName></inf:type></inf:particle><inf:particle xsi:type="inf:ElementParticle"><inf:name>southBoundLatitude</inf:name><inf:type xsi:type="inf:SimpleType"><inf:completed>false</inf:completed><inf:typeName>decimal</inf:typeName></inf:type></inf:particle><inf:particle xsi:type="inf:ElementParticle"><inf:name>northBoundLatitude</inf:name><inf:type xsi:type="inf:SimpleType"><inf:completed>false</inf:completed><inf:typeName>decimal</inf:typeName></inf:type></inf:particle><inf:comesBefore qname="wms:southBoundLatitude" xmlns:wms="http://www.opengis.net/wms"><inf:other>wms:northBoundLatitude</inf:other></inf:comesBefore><inf:comesBefore qname="wms:eastBoundLongitude" xmlns:wms="http://www.opengis.net/wms"><inf:other>wms:southBoundLatitude</inf:other><inf:other>wms:northBoundLatitude</inf:other></inf:comesBefore><inf:comesBefore qname="wms:northBoundLatitude" xmlns:wms="http://www.opengis.net/wms"/><inf:comesBefore qname="wms:westBoundLongitude" xmlns:wms="http://www.opengis.net/wms"><inf:other>wms:eastBoundLongitude</inf:other><inf:other>wms:southBoundLatitude</inf:other><inf:other>wms:northBoundLatitude</inf:other></inf:comesBefore></inf:content></inf:complexType><inf:complexType><inf:completed>true</inf:completed><inf:mixed>false</inf:mixed><inf:name>Request_GetCapabilities</inf:name><inf:content xsi:type="inf:SequenceContent" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><inf:completed>true</inf:completed><inf:particle xsi:type="inf:ElementParticle"><inf:name>Format</inf:name><inf:type xsi:type="inf:SimpleType"><inf:completed>false</inf:completed><inf:typeName>string</inf:typeName></inf:type></inf:particle><inf:particle xsi:type="inf:ElementParticle"><inf:name>DCPType</inf:name><inf:type xsi:type="inf:TypeReference"><inf:reference xmlns:wms="http://www.opengis.net/wms">wms:GetCapabilities_DCPType</inf:reference></inf:type></inf:particle><inf:comesBefore qname="wms:Format" xmlns:wms="http://www.opengis.net/wms"><inf:other>wms:DCPType</inf:other></inf:comesBefore><inf:comesBefore qname="wms:DCPType" xmlns:wms="http://www.opengis.net/wms"/></inf:content></inf:complexType><inf:complexType><inf:completed>true</inf:completed><inf:mixed>false</inf:mixed><inf:name>GetMap_DCPType</inf:name><inf:content xsi:type="inf:SequenceContent" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><inf:completed>true</inf:completed><inf:particle xsi:type="inf:ElementParticle"><inf:name>HTTP</inf:name><inf:type xsi:type="inf:TypeReference"><inf:reference xmlns:wms="http://www.opengis.net/wms">wms:DCPType_HTTP</inf:reference></inf:type></inf:particle><inf:comesBefore qname="wms:HTTP" xmlns:wms="http://www.opengis.net/wms"/></inf:content></inf:complexType><inf:complexType><inf:completed>true</inf:completed><inf:mixed>false</inf:mixed><inf:name>Service_ContactInformation</inf:name><inf:content xsi:type="inf:SequenceContent" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><inf:completed>true</inf:completed><inf:particle xsi:type="inf:ElementParticle"><inf:name>ContactPersonPrimary</inf:name><inf:type xsi:type="inf:TypeReference"><inf:reference xmlns:wms="http://www.opengis.net/wms">wms:ContactInformation_ContactPersonPrimary</inf:reference></inf:type></inf:particle><inf:particle xsi:type="inf:ElementParticle"><inf:name>ContactVoiceTelephone</inf:name><inf:type xsi:type="inf:SimpleType"><inf:completed>false</inf:completed><inf:typeName>string</inf:typeName></inf:type></inf:particle><inf:particle xsi:type="inf:ElementParticle"><inf:name>ContactFacsimileTelephone</inf:name><inf:type xsi:type="inf:SimpleType"><inf:completed>false</inf:completed><inf:typeName>string</inf:typeName></inf:type></inf:particle><inf:particle xsi:type="inf:ElementParticle"><inf:name>ContactElectronicMailAddress</inf:name><inf:type xsi:type="inf:SimpleType"><inf:completed>false</inf:completed><inf:typeName>string</inf:typeName></inf:type></inf:particle><inf:comesBefore qname="wms:ContactPersonPrimary" xmlns:wms="http://www.opengis.net/wms"><inf:other>wms:ContactVoiceTelephone</inf:other><inf:other>wms:ContactFacsimileTelephone</inf:other><inf:other>wms:ContactElectronicMailAddress</inf:other></inf:comesBefore><inf:comesBefore qname="wms:ContactFacsimileTelephone" xmlns:wms="http://www.opengis.net/wms"><inf:other>wms:ContactElectronicMailAddress</inf:other></inf:comesBefore><inf:comesBefore qname="wms:ContactElectronicMailAddress" xmlns:wms="http://www.opengis.net/wms"/><inf:comesBefore qname="wms:ContactVoiceTelephone" xmlns:wms="http://www.opengis.net/wms"><inf:other>wms:ContactFacsimileTelephone</inf:other><inf:other>wms:ContactElectronicMailAddress</inf:other></inf:comesBefore></inf:content></inf:complexType><inf:complexType><inf:completed>true</inf:completed><inf:mixed>false</inf:mixed><inf:name>Get_OnlineResource</inf:name><inf:attribute xsi:type="inf:ReferenceParticle" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><inf:reference xmlns:xlin="http://www.w3.org/1999/xlink">xlin:href</inf:reference></inf:attribute><inf:content xsi:type="inf:EmptyContent" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><inf:completed>true</inf:completed></inf:content></inf:complexType><inf:complexType><inf:completed>true</inf:completed><inf:mixed>false</inf:mixed><inf:name>GetFeatureInfo_DCPType</inf:name><inf:content xsi:type="inf:SequenceContent" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><inf:completed>true</inf:completed><inf:particle xsi:type="inf:ElementParticle"><inf:name>HTTP</inf:name><inf:type xsi:type="inf:TypeReference"><inf:reference xmlns:wms="http://www.opengis.net/wms">wms:DCPType_HTTP</inf:reference></inf:type></inf:particle><inf:comesBefore qname="wms:HTTP" xmlns:wms="http://www.opengis.net/wms"/></inf:content></inf:complexType></inf:schema><inf:schema xmlns:inf="http://www.eviware.com/soapui/InferredSchema"><inf:namespace>http://www.w3.org/1999/xlink</inf:namespace><inf:particle xsi:type="inf:AttributeParticle" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><inf:name>href</inf:name><inf:type xsi:type="inf:SimpleType"><inf:completed>false</inf:completed><inf:typeName>string</inf:typeName></inf:type></inf:particle><inf:particle xsi:type="inf:AttributeParticle" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><inf:name>type</inf:name><inf:type xsi:type="inf:SimpleType"><inf:completed>false</inf:completed><inf:typeName>string</inf:typeName></inf:type></inf:particle><inf:prefix key="http://www.w3.org/2001/XMLSchema" value="xs"/></inf:schema><inf:schema xmlns:inf="http://www.eviware.com/soapui/InferredSchema"><inf:namespace>http://www.opengis.net/sld</inf:namespace><inf:particle xsi:type="inf:ElementParticle" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><inf:name>UserDefinedSymbolization</inf:name><inf:type xsi:type="inf:TypeReference"><inf:reference xmlns:sld="http://www.opengis.net/sld">sld:_UserDefinedSymbolization</inf:reference></inf:type></inf:particle><inf:particle xsi:type="inf:ElementParticle" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><inf:name>DescribeLayer</inf:name><inf:type xsi:type="inf:TypeReference"><inf:reference xmlns:sld="http://www.opengis.net/sld">sld:_DescribeLayer</inf:reference></inf:type></inf:particle><inf:particle xsi:type="inf:ElementParticle" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><inf:name>GetLegendGraphic</inf:name><inf:type xsi:type="inf:TypeReference"><inf:reference xmlns:sld="http://www.opengis.net/sld">sld:_GetLegendGraphic</inf:reference></inf:type></inf:particle><inf:prefix key="http://www.opengis.net/wms" value=""/><inf:prefix key="http://www.w3.org/2001/XMLSchema" value="xs"/><inf:complexType><inf:completed>true</inf:completed><inf:mixed>false</inf:mixed><inf:name>_GetLegendGraphic</inf:name><inf:content xsi:type="inf:SequenceContent" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><inf:completed>true</inf:completed><inf:particle xsi:type="inf:ReferenceParticle"><inf:attribute key="maxOccurs" value="5"/><inf:reference xmlns:wms="http://www.opengis.net/wms">wms:Format</inf:reference></inf:particle><inf:particle xsi:type="inf:ReferenceParticle"><inf:reference xmlns:wms="http://www.opengis.net/wms">wms:DCPType</inf:reference></inf:particle><inf:comesBefore qname="wms:Format" xmlns:wms="http://www.opengis.net/wms"><inf:other>wms:DCPType</inf:other></inf:comesBefore><inf:comesBefore qname="wms:DCPType" xmlns:wms="http://www.opengis.net/wms"/></inf:content></inf:complexType><inf:complexType><inf:completed>true</inf:completed><inf:mixed>false</inf:mixed><inf:name>_DescribeLayer</inf:name><inf:content xsi:type="inf:SequenceContent" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><inf:completed>true</inf:completed><inf:particle xsi:type="inf:ReferenceParticle"><inf:reference xmlns:wms="http://www.opengis.net/wms">wms:Format</inf:reference></inf:particle><inf:particle xsi:type="inf:ReferenceParticle"><inf:reference xmlns:wms="http://www.opengis.net/wms">wms:DCPType</inf:reference></inf:particle><inf:comesBefore qname="wms:Format" xmlns:wms="http://www.opengis.net/wms"><inf:other>wms:DCPType</inf:other></inf:comesBefore><inf:comesBefore qname="wms:DCPType" xmlns:wms="http://www.opengis.net/wms"/></inf:content></inf:complexType><inf:complexType><inf:completed>true</inf:completed><inf:mixed>false</inf:mixed><inf:name>_UserDefinedSymbolization</inf:name><inf:attribute xsi:type="inf:AttributeParticle" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><inf:name>RemoteWCS</inf:name><inf:type xsi:type="inf:SimpleType"><inf:completed>false</inf:completed><inf:typeName>boolean</inf:typeName></inf:type></inf:attribute><inf:attribute xsi:type="inf:AttributeParticle" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><inf:name>RemoteWFS</inf:name><inf:type xsi:type="inf:SimpleType"><inf:completed>false</inf:completed><inf:typeName>boolean</inf:typeName></inf:type></inf:attribute><inf:attribute xsi:type="inf:AttributeParticle" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><inf:name>UserStyle</inf:name><inf:type xsi:type="inf:SimpleType"><inf:completed>false</inf:completed><inf:typeName>positiveInteger</inf:typeName></inf:type></inf:attribute><inf:attribute xsi:type="inf:AttributeParticle" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><inf:name>UserLayer</inf:name><inf:type xsi:type="inf:SimpleType"><inf:completed>false</inf:completed><inf:typeName>boolean</inf:typeName></inf:type></inf:attribute><inf:attribute xsi:type="inf:AttributeParticle" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><inf:name>InlineFeature</inf:name><inf:type xsi:type="inf:SimpleType"><inf:completed>false</inf:completed><inf:typeName>boolean</inf:typeName></inf:type></inf:attribute><inf:attribute xsi:type="inf:AttributeParticle" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><inf:name>SupportSLD</inf:name><inf:type xsi:type="inf:SimpleType"><inf:completed>false</inf:completed><inf:typeName>positiveInteger</inf:typeName></inf:type></inf:attribute><inf:content xsi:type="inf:EmptyContent" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><inf:completed>true</inf:completed></inf:content></inf:complexType></inf:schema><inf:schema xmlns:inf="http://www.eviware.com/soapui/InferredSchema"><inf:namespace>http://mapserver.gis.umn.edu/mapserver</inf:namespace><inf:particle xsi:type="inf:ElementParticle" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><inf:name>GetStyles</inf:name><inf:type xsi:type="inf:TypeReference"><inf:reference xmlns:map="http://mapserver.gis.umn.edu/mapserver">map:_GetStyles</inf:reference></inf:type></inf:particle><inf:prefix key="http://www.opengis.net/wms" value=""/><inf:prefix key="http://www.w3.org/2001/XMLSchema" value="xs"/><inf:complexType><inf:completed>true</inf:completed><inf:mixed>false</inf:mixed><inf:name>_GetStyles</inf:name><inf:content xsi:type="inf:SequenceContent" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><inf:completed>true</inf:completed><inf:particle xsi:type="inf:ReferenceParticle"><inf:reference xmlns:wms="http://www.opengis.net/wms">wms:Format</inf:reference></inf:particle><inf:particle xsi:type="inf:ReferenceParticle"><inf:reference xmlns:wms="http://www.opengis.net/wms">wms:DCPType</inf:reference></inf:particle><inf:comesBefore qname="wms:Format" xmlns:wms="http://www.opengis.net/wms"><inf:other>wms:DCPType</inf:other></inf:comesBefore><inf:comesBefore qname="wms:DCPType" xmlns:wms="http://www.opengis.net/wms"/></inf:content></inf:complexType></inf:schema></xml-fragment>]]></con:inferredSchema>
   </con:interface>
-  <con:testSuite name="TestSetup">
+  <con:testSuite name="TestSetup" id="43f6ff0f-49af-444f-898a-20f0a330c034">
     <con:settings/>
     <con:runType>SEQUENTIAL</con:runType>
     <con:testCase failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="Requirements" searchProperties="true" id="aac056b0-5ae5-4144-9f84-c872b6f9b280">
       <con:settings/>
-      <con:testStep type="groovy" name="Requirements" disabled="true">
+      <con:testStep type="groovy" name="Requirements" disabled="true" id="fb45255e-afbf-4119-af5f-3723e4ed557f">
         <con:settings/>
         <con:config>
           <script>// Load Requierments properties
@@ -839,7 +839,7 @@ File file = new File(projectroot+"\\RequirementsISO19142.txt")
 def testCase = testRunner.testCase
 
 // Delete all properties
-/*testCase.propertyNames.each { name -&gt;
+/*testCase.propertyNames.each { name ->
 	testCase.removeProperty name
 }*/
 
@@ -1508,16 +1508,16 @@ testCase.addPropertiesFromFile(file.path)</script>
     </con:testCase>
     <con:testCase failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="Transfer Global Properties" searchProperties="true" id="e3a825b0-06cb-4211-b695-4e39a43bcb5e">
       <con:settings/>
-      <con:testStep type="transfer" name="Transfer Global Properties">
+      <con:testStep type="transfer" name="Transfer Global Properties" id="988101a9-a8e2-45de-800e-70d6becd1a39">
         <con:settings/>
-        <con:config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="con:PropertyTransfersStep">
-          <con:transfers setNullOnMissingSource="false" transferTextContent="true" failOnError="false" ignoreEmpty="true" transferToAll="false" useXQuery="false" entitize="false" transferChildNodes="false" disabled="false">
+        <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:transfers setNullOnMissingSource="false" transferTextContent="true" failOnError="false" ignoreEmpty="false" transferToAll="false" useXQuery="false" entitize="false" transferChildNodes="false" disabled="false">
             <con:name>serviceEndpoint</con:name>
             <con:sourceType>DS.serviceEndpoint</con:sourceType>
             <con:sourceStep>#Global#</con:sourceStep>
             <con:targetType>serviceEndpoint</con:targetType>
             <con:targetStep>#Project#</con:targetStep>
-          </con:transfers>
+          <con:upgraded>true</con:upgraded></con:transfers>
           <con:transfers setNullOnMissingSource="false" transferTextContent="true" failOnError="false" disabled="false" entitize="false" ignoreEmpty="true" transferChildNodes="false" transferToAll="false" useXQuery="false">
             <con:name>basicAuthUser</con:name>
             <con:sourceType>DS.basicAuthUser</con:sourceType>
@@ -1526,7 +1526,7 @@ testCase.addPropertiesFromFile(file.path)</script>
             <con:targetType>authUser</con:targetType>
             <con:targetStep>#Project#</con:targetStep>
             <con:targetPath xsi:nil="true"/>
-          </con:transfers>
+          <con:upgraded>true</con:upgraded></con:transfers>
           <con:transfers setNullOnMissingSource="false" transferTextContent="true" failOnError="false" disabled="false" entitize="false" ignoreEmpty="true" transferChildNodes="false" transferToAll="false" useXQuery="false">
             <con:name>basicAuthPwd</con:name>
             <con:sourceType>DS.basicAuthPwd</con:sourceType>
@@ -1535,7 +1535,7 @@ testCase.addPropertiesFromFile(file.path)</script>
             <con:targetType>authPwd</con:targetType>
             <con:targetStep>#Project#</con:targetStep>
             <con:targetPath xsi:nil="true"/>
-          </con:transfers>
+          <con:upgraded>true</con:upgraded></con:transfers>
           <con:transfers setNullOnMissingSource="false" transferTextContent="true" failOnError="false" disabled="false" entitize="false" ignoreEmpty="true" transferChildNodes="false" transferToAll="false" useXQuery="false">
             <con:name>featureTypeList</con:name>
             <con:sourceType>DS.FeatureTypeList</con:sourceType>
@@ -1544,7 +1544,7 @@ testCase.addPropertiesFromFile(file.path)</script>
             <con:targetType>featureTypeList</con:targetType>
             <con:targetStep>#Project#</con:targetStep>
             <con:targetPath xsi:nil="true"/>
-          </con:transfers>
+          <con:upgraded>true</con:upgraded></con:transfers>
           <con:transfers setNullOnMissingSource="false" transferTextContent="true" failOnError="false" disabled="false" entitize="false" ignoreEmpty="true" transferChildNodes="false" transferToAll="false" useXQuery="false">
             <con:name>srsnamelist</con:name>
             <con:sourceType>DS.srsnamelist</con:sourceType>
@@ -1553,28 +1553,28 @@ testCase.addPropertiesFromFile(file.path)</script>
             <con:targetType>srsnamelist</con:targetType>
             <con:targetStep>#Project#</con:targetStep>
             <con:targetPath xsi:nil="true"/>
-          </con:transfers>
+          <con:upgraded>true</con:upgraded></con:transfers>
           <con:transfers setNullOnMissingSource="false" transferTextContent="true" failOnError="false" ignoreEmpty="true" transferToAll="false" entitize="false" useXQuery="false" transferChildNodes="false">
             <con:name>excludeFeatureTypes</con:name>
             <con:sourceType>DS.excludeFeatureTypes</con:sourceType>
             <con:sourceStep>#Global#</con:sourceStep>
             <con:targetType>excludeFeatureTypes</con:targetType>
             <con:targetStep>#Project#</con:targetStep>
-          </con:transfers>
+          <con:upgraded>true</con:upgraded></con:transfers>
         </con:config>
       </con:testStep>
       <con:properties/>
     </con:testCase>
     <con:testCase failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="Update Credentials" searchProperties="true" id="2b3a4dcc-4f11-45d7-951b-ad32d5566eee">
       <con:settings/>
-      <con:testStep type="groovy" name="Update Credentials">
+      <con:testStep type="groovy" name="Update Credentials" id="37c246c4-97d2-4745-9096-2a1e93dba732">
         <con:settings/>
         <con:config>
           <script>import de.interactive_instruments.xtf.Util;
 
 /** Set the credentials only if a username is provided */
 def basicAuthUser = context.expand('${#Project#authUser}');
-if (basicAuthUser.length()&gt;0) {
+if (basicAuthUser.length()>0) {
 	log.info("Setting credentials for user: " + basicAuthUser);
 }
 Util.updateCredentials(testRunner);
@@ -1585,7 +1585,7 @@ Util.updateCredentials(testRunner);
     </con:testCase>
     <con:testCase failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="Update Query Params" searchProperties="true" id="f7699a08-ecb3-4f93-afc9-650448302524">
       <con:settings/>
-      <con:testStep type="groovy" name="UpdateQueryParams">
+      <con:testStep type="groovy" name="UpdateQueryParams" id="2636c7b9-c63a-4498-aef7-6a039288cb06">
         <con:settings/>
         <con:config>
           <script>// if any non-WFS parameters are found, add them to the GetCapabilities request
@@ -1614,7 +1614,7 @@ if (endpoint.getQuery()) {
 
     // For REST requests, add additional query parameters
     // Here for GetCapabilities only
-    if (queryParams.length &gt; 0) {
+    if (queryParams.length > 0) {
         // for GetCapabilities: update all requests with other parameters from the serviceEndpoint
         for( testSuite in testRunner.testCase.testSuite.project.getTestSuiteList() ) {
             for( testCase in testSuite.getTestCaseList() ) {
@@ -1666,14 +1666,14 @@ if (endpoint.getQuery()) {
     </con:testCase>
     <con:properties/>
   </con:testSuite>
-  <con:testSuite name="M-01 - PredefinedWFS">
+  <con:testSuite name="M-01 - PredefinedWFS" id="742e890d-fc44-43df-9062-26a1c056e87a">
     <con:settings/>
     <con:runType>SEQUENTIAL</con:runType>
     <con:testCase failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="SimpleWFS - HTTP GET - Mandatory" searchProperties="true" id="1863b227-0f7f-4d33-8c5b-09b674dc8020">
       <con:settings/>
-      <con:testStep type="properties" name="Properties">
+      <con:testStep type="properties" name="Properties" id="0f8e883b-fe1f-46e4-91a0-7a5800dc43a5">
         <con:settings/>
-        <con:config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="con:PropertiesStep" saveFirst="true">
+        <con:config xsi:type="con:PropertiesStep" saveFirst="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
           <con:properties>
             <con:property>
               <con:name>Capabilities</con:name>
@@ -1690,29 +1690,29 @@ if (endpoint.getQuery()) {
           </con:properties>
         </con:config>
       </con:testStep>
-      <con:testStep type="httprequest" name="GetCapabilities">
+      <con:testStep type="httprequest" name="GetCapabilities" id="fcb45020-0cfb-47f0-b976-f418711cbf19">
         <con:settings/>
-        <con:config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" method="GET" xsi:type="con:HttpRequest" name="GetCapabilities">
+        <con:config method="GET" xsi:type="con:HttpRequest" name="GetCapabilities" id="81841491-4575-481c-802b-6c68664f7eee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
           <con:settings/>
           <con:endpoint>${#Project#serviceEndpoint}</con:endpoint>
           <con:request/>
-          <con:assertion type="XQuery Match" name="WFS is version 2.0.0">
+          <con:assertion type="XQuery Match" name="WFS is version 2.0.0" id="63868104-f40c-4c2e-92cc-742fc84949f0">
             <con:configuration>
               <path>declare namespace wfs='http://www.opengis.net/wfs/2.0';
 
-&lt;result&gt;AssertionFailures: {
+&lt;result>AssertionFailures: {
 let $version:=//wfs:WFS_Capabilities[@version='2.0.0']
 return
 if (exists($version))
 then ""
 else "WFS is not version 2.0.0"
 }
-&lt;/result&gt;</path>
-              <content>&lt;result&gt;AssertionFailures: &lt;/result&gt;</content>
+&lt;/result></path>
+              <content>&lt;result>AssertionFailures: &lt;/result></content>
               <allowWildcards>false</allowWildcards>
             </con:configuration>
           </con:assertion>
-          <con:assertion type="XQuery Match" name="M-01##M-01-Warning-01: Check for featureTypes (warning)">
+          <con:assertion type="XQuery Match" name="M-01##M-01-Warning-01: Check for featureTypes (warning)" id="00c05855-3bf3-400b-8e41-69d430c16069">
             <con:configuration>
               <path>declare namespace wfs='http://www.opengis.net/wfs/2.0';
 declare namespace ows='http://www.opengis.net/ows/1.1';
@@ -1723,51 +1723,51 @@ declare namespace xsi='http://www.w3.org/2001/XMLSchema-instance';
 declare namespace inspire_dls='http://inspire.ec.europa.eu/schemas/inspire_dls/1.0';
 declare namespace inspire_common='http://inspire.ec.europa.eu/schemas/common/1.0';
 
-&lt;result&gt;AssertionFailures: {
+&lt;result>AssertionFailures: {
 let $featureTypes:=//wfs:FeatureTypeList/wfs:FeatureType
 return
-if (count($featureTypes) &gt; 0)
+if (count($featureTypes) > 0)
 then "The service offers featureTypes."
 else "The service does not seem to offer any featureType. Other tests will fail."
 }
-&lt;/result&gt;</path>
-              <content>&lt;result&gt;AssertionFailures: The service offers featureTypes.&lt;/result&gt;</content>
+&lt;/result></path>
+              <content>&lt;result>AssertionFailures: The service offers featureTypes.&lt;/result></content>
               <allowWildcards>false</allowWildcards>
             </con:configuration>
           </con:assertion>
-          <con:assertion type="XQuery Match" name="M-01##HTTPGET: HTTP GET Declared">
+          <con:assertion type="XQuery Match" name="M-01##HTTPGET: HTTP GET Declared" id="153bd942-d143-432c-80c5-7a438af1c765">
             <con:configuration>
               <path>declare namespace wfs='http://www.opengis.net/wfs/2.0';
 declare namespace gml='http://www.opengis.net/gml/3.2';
 declare namespace ows='http://www.opengis.net/ows/1.1';
 
-&lt;result&gt;AssertionFailures: {
+&lt;result>AssertionFailures: {
 let $httpget:=//ows:Constraint[@name='KVPEncoding' and ./ows:DefaultValue='TRUE']
 return
 if (exists($httpget))
 then "HTTP Get is declared."
 else "HTTP Get is NOT declared in the Capabilities."
 }
-&lt;/result&gt;</path>
-              <content>&lt;result&gt;AssertionFailures: HTTP Get is declared.&lt;/result&gt;</content>
+&lt;/result></path>
+              <content>&lt;result>AssertionFailures: HTTP Get is declared.&lt;/result></content>
               <allowWildcards>false</allowWildcards>
             </con:configuration>
           </con:assertion>
-          <con:assertion type="XQuery Match" name="M-01##M-01-GML32: WFS supports GML 3.2 outputformat &quot;application/gml+xml; version=3.2&quot;">
+          <con:assertion type="XQuery Match" name="M-01##M-01-GML32: WFS supports GML 3.2 outputformat &quot;application/gml+xml; version=3.2&quot;" id="357f2dbc-9b82-4740-8518-d29e7d967e60">
             <con:configuration>
               <path>declare namespace wfs='http://www.opengis.net/wfs/2.0';
 declare namespace gml='http://www.opengis.net/gml/3.2';
 declare namespace ows='http://www.opengis.net/ows/1.1';
 
-&lt;result&gt;AssertionFailures: {
+&lt;result>AssertionFailures: {
 let $gml32output:=//ows:Parameter[@name='outputFormat']/ows:AllowedValues/ows:Value[.='application/gml+xml; version=3.2']
 return
 if (exists($gml32output))
 then "The outputformat 'application/gml+xml; version=3.2' is declared in the Capabilities."
 else "The WFS does not seem to support GML 3.2 as outputformat. The Capabilities do NOT advertize support for 'application/gml+xml; version=3.2'."
 }
-&lt;/result&gt;</path>
-              <content>&lt;result&gt;AssertionFailures: The outputformat 'application/gml+xml; version=3.2' is declared in the Capabilities.&lt;/result&gt;</content>
+&lt;/result></path>
+              <content>&lt;result>AssertionFailures: The outputformat 'application/gml+xml; version=3.2' is declared in the Capabilities.&lt;/result></content>
               <allowWildcards>false</allowWildcards>
             </con:configuration>
           </con:assertion>
@@ -1795,9 +1795,9 @@ else "The WFS does not seem to support GML 3.2 as outputformat. The Capabilities
           </con:parameters>
         </con:config>
       </con:testStep>
-      <con:testStep type="transfer" name="Property Transfer">
+      <con:testStep type="transfer" name="Property Transfer" id="6e906df9-8799-47f7-a399-9ed1b92cd746">
         <con:settings/>
-        <con:config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="con:PropertyTransfersStep">
+        <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
           <con:transfers setNullOnMissingSource="true" transferTextContent="false" failOnError="true" ignoreEmpty="false" transferToAll="false" useXQuery="false" entitize="false" transferChildNodes="false">
             <con:name>Capabilities</con:name>
             <con:sourceType>ResponseAsXml</con:sourceType>
@@ -1805,7 +1805,7 @@ else "The WFS does not seem to support GML 3.2 as outputformat. The Capabilities
             <con:sourcePath/>
             <con:targetType>Capabilities</con:targetType>
             <con:targetStep>Properties</con:targetStep>
-          </con:transfers>
+          <con:upgraded>true</con:upgraded></con:transfers>
           <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" transferToAll="false" entitize="false" ignoreEmpty="false" useXQuery="false" transferChildNodes="false">
             <con:name>DescribeFeatureTypeURL</con:name>
             <con:sourceType>ResponseAsXml</con:sourceType>
@@ -1817,10 +1817,10 @@ declare namespace xlink='http://www.w3.org/1999/xlink';
 //ows:Operation[@name='DescribeFeatureType'][1]/ows:DCP/ows:HTTP/ows:Get/@xlink:href</con:sourcePath>
             <con:targetType>DescribeFeatureTypeURL</con:targetType>
             <con:targetStep>Properties</con:targetStep>
-          </con:transfers>
+          <con:upgraded>true</con:upgraded></con:transfers>
         </con:config>
       </con:testStep>
-      <con:testStep type="groovy" name="RunDescribeFeatureTypesForAllFeatureTypes">
+      <con:testStep type="groovy" name="RunDescribeFeatureTypesForAllFeatureTypes" id="9eeff9b2-4d2e-4c64-a540-708157ba94e0">
         <con:settings/>
         <con:config>
           <script>props = testRunner.testCase.testSteps['Properties']
@@ -1851,27 +1851,27 @@ testRunner.gotoStepByName("Property Transfer (Finish)");
 </script>
         </con:config>
       </con:testStep>
-      <con:testStep type="httprequest" name="DescribeFeatureType">
+      <con:testStep type="httprequest" name="DescribeFeatureType" id="f8fbe494-568f-47b4-bd24-f9671059df41">
         <con:settings/>
-        <con:config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" method="GET" xsi:type="con:HttpRequest" name="DescribeFeatureType">
+        <con:config method="GET" xsi:type="con:HttpRequest" name="DescribeFeatureType" id="803661cf-f7ca-4544-b818-f0288b20ce5e" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
           <con:settings>
-            <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/&gt;</con:setting>
+            <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
           </con:settings>
           <con:endpoint>${#DescribeFeatureTypeURL}</con:endpoint>
           <con:request/>
-          <con:assertion type="XQuery Match" name="M-01##M-01-DFT: Response contains XSD Schema element">
+          <con:assertion type="XQuery Match" name="M-01##M-01-DFT: Response contains XSD Schema element" id="515b5ff6-47f4-4d33-bc04-a75d1f49b544">
             <con:configuration>
               <path>declare namespace xsd='http://www.w3.org/2001/XMLSchema';
 
-&lt;result&gt;AssertionFailures: {
+&lt;result>AssertionFailures: {
 let $xsd:=/xsd:schema
 return
 if (exists($xsd))
 then "The DescribeFeatureType response is an XML Schema."
 else "The DescribeFeatureType response is NOT an XML Schema."
 }
-&lt;/result&gt;</path>
-              <content>&lt;result&gt;AssertionFailures: The DescribeFeatureType response is an XML Schema.&lt;/result&gt;</content>
+&lt;/result></path>
+              <content>&lt;result>AssertionFailures: The DescribeFeatureType response is an XML Schema.&lt;/result></content>
               <allowWildcards>false</allowWildcards>
             </con:configuration>
           </con:assertion>
@@ -1910,7 +1910,7 @@ else "The DescribeFeatureType response is NOT an XML Schema."
       </con:testStep>
       <con:testStep type="transfer" name="Property Transfer (Finish)" id="b527689a-39ef-470b-a2c0-3a27063c7d1c">
         <con:settings/>
-        <con:config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="con:PropertyTransfersStep"/>
+        <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
       </con:testStep>
       <con:properties>
         <con:property>
@@ -1933,9 +1933,9 @@ else "The DescribeFeatureType response is NOT an XML Schema."
     </con:testCase>
     <con:testCase failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="SimpleWFS GetFeatureById support - Mandatory" searchProperties="true" id="773034ad-93a2-4039-a314-106b0d7ace7b">
       <con:settings/>
-      <con:testStep type="properties" name="Properties">
+      <con:testStep type="properties" name="Properties" id="68f99ba6-5155-4c14-9095-368cac462c10">
         <con:settings/>
-        <con:config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="con:PropertiesStep" saveFirst="true">
+        <con:config xsi:type="con:PropertiesStep" saveFirst="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
           <con:properties>
             <con:property>
               <con:name>Capabilities</con:name>
@@ -1964,13 +1964,13 @@ else "The DescribeFeatureType response is NOT an XML Schema."
           </con:properties>
         </con:config>
       </con:testStep>
-      <con:testStep type="httprequest" name="GetCapabilities">
+      <con:testStep type="httprequest" name="GetCapabilities" id="7c403f0a-64a8-47e8-9974-60854e9ab85a">
         <con:settings/>
-        <con:config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" method="GET" xsi:type="con:HttpRequest" name="GetCapabilities">
+        <con:config method="GET" xsi:type="con:HttpRequest" name="GetCapabilities" id="86fcd7fe-eb74-439b-9f08-9425ef0f33b9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
           <con:settings/>
           <con:endpoint>${#Project#serviceEndpoint}</con:endpoint>
           <con:request/>
-          <con:assertion type="Response SLA Assertion" name="Timely reponse">
+          <con:assertion type="Response SLA Assertion" name="Timely reponse" id="aa30f50c-1eed-4527-bd0d-2b9eedb140f7">
             <con:configuration>
               <SLA>10000</SLA>
             </con:configuration>
@@ -1996,9 +1996,9 @@ else "The DescribeFeatureType response is NOT an XML Schema."
           </con:parameters>
         </con:config>
       </con:testStep>
-      <con:testStep type="transfer" name="Property Transfer">
+      <con:testStep type="transfer" name="Property Transfer" id="73105f6b-ebc5-4626-a7e3-298413e7dc6d">
         <con:settings/>
-        <con:config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="con:PropertyTransfersStep">
+        <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
           <con:transfers setNullOnMissingSource="true" transferTextContent="false" failOnError="true" ignoreEmpty="false" transferToAll="false" useXQuery="false" entitize="false" transferChildNodes="false">
             <con:name>Capabilities</con:name>
             <con:sourceType>ResponseAsXml</con:sourceType>
@@ -2006,7 +2006,7 @@ else "The DescribeFeatureType response is NOT an XML Schema."
             <con:sourcePath/>
             <con:targetType>Capabilities</con:targetType>
             <con:targetStep>Properties</con:targetStep>
-          </con:transfers>
+          <con:upgraded>true</con:upgraded></con:transfers>
           <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" useXQuery="false" entitize="false" transferChildNodes="false">
             <con:name>ListStoredQueriesURL</con:name>
             <con:sourceType>ResponseAsXml</con:sourceType>
@@ -2018,7 +2018,7 @@ declare namespace xlink='http://www.w3.org/1999/xlink';
 //ows:Operation[@name='ListStoredQueries'][1]/ows:DCP/ows:HTTP/ows:Get/@xlink:href</con:sourcePath>
             <con:targetType>ListStoredQueriesURL</con:targetType>
             <con:targetStep>Properties</con:targetStep>
-          </con:transfers>
+          <con:upgraded>true</con:upgraded></con:transfers>
           <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false">
             <con:name>GetFeatureURL</con:name>
             <con:sourceType>ResponseAsXml</con:sourceType>
@@ -2030,7 +2030,7 @@ declare namespace xlink='http://www.w3.org/1999/xlink';
 //ows:Operation[@name='GetFeature'][1]/ows:DCP/ows:HTTP/ows:Get/@xlink:href</con:sourcePath>
             <con:targetType>GetFeatureURL</con:targetType>
             <con:targetStep>#Project#</con:targetStep>
-          </con:transfers>
+          <con:upgraded>true</con:upgraded></con:transfers>
           <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" entitize="false" transferChildNodes="false" useXQuery="false" ignoreEmpty="false" transferToAll="false">
             <con:name>FiresFeatureTypeName</con:name>
             <con:sourceType>ResponseAsXml</con:sourceType>
@@ -2042,22 +2042,22 @@ declare namespace xlink='http://www.w3.org/1999/xlink';
 (//wfs:FeatureTypeList/wfs:FeatureType[not(contains(',${#Project#excludeFeatureTypes},',concat(',',./wfs:Name,',')))]/wfs:Name)[1]</con:sourcePath>
             <con:targetType>FirstFeatureTypeName</con:targetType>
             <con:targetStep>#Project#</con:targetStep>
-          </con:transfers>
+          <con:upgraded>true</con:upgraded></con:transfers>
         </con:config>
       </con:testStep>
-      <con:testStep type="httprequest" name="ListStoredQueries">
+      <con:testStep type="httprequest" name="ListStoredQueries" id="d49d60c6-8f52-4506-91ce-530c2def9aaa">
         <con:settings/>
-        <con:config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" method="GET" xsi:type="con:HttpRequest" name="ListStoredQueries">
+        <con:config method="GET" xsi:type="con:HttpRequest" name="ListStoredQueries" id="d0453433-e9a1-47b2-b79d-3a73b898e06d" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
           <con:settings/>
           <con:endpoint>${#ListStoredQueriesURL}</con:endpoint>
           <con:request/>
-          <con:assertion type="XQuery Match" name="M-01##M-01-GFI-Listed: ListStoredQueries advertizes GetFeatureById">
+          <con:assertion type="XQuery Match" name="M-01##M-01-GFI-Listed: ListStoredQueries advertizes GetFeatureById" id="5cad32d4-8cdb-451f-950c-6d89bc78e166">
             <con:configuration>
               <path>declare namespace wfs='http://www.opengis.net/wfs/2.0';
 declare namespace gml='http://www.opengis.net/gml/3.2';
 declare namespace ows='http://www.opengis.net/ows/1.1';
 
-&lt;result&gt;AssertionFailures: {
+&lt;result>AssertionFailures: {
 let $getFeatureById:=/wfs:ListStoredQueriesResponse/wfs:StoredQuery[@id='urn:ogc:def:query:OGC-WFS::GetFeatureById']
 let $ampersand := '&amp;#38;'
 return
@@ -2065,8 +2065,8 @@ if (exists($getFeatureById))
 then "The StoredQuery for GetFeatureById ('urn:ogc:def:query:OGC-WFS::GetFeatureById') is listed."
 else "The StoredQuery for GetFeatureById (with identifier 'urn:ogc:def:query:OGC-WFS::GetFeatureById') is NOT listed. Check the ListStoredQueries response."
 }
-&lt;/result&gt;</path>
-              <content>&lt;result&gt;AssertionFailures: The StoredQuery for GetFeatureById ('urn:ogc:def:query:OGC-WFS::GetFeatureById') is listed.&lt;/result&gt;</content>
+&lt;/result></path>
+              <content>&lt;result>AssertionFailures: The StoredQuery for GetFeatureById ('urn:ogc:def:query:OGC-WFS::GetFeatureById') is listed.&lt;/result></content>
               <allowWildcards>false</allowWildcards>
             </con:configuration>
           </con:assertion>
@@ -2094,27 +2094,27 @@ else "The StoredQuery for GetFeatureById (with identifier 'urn:ogc:def:query:OGC
           </con:parameters>
         </con:config>
       </con:testStep>
-      <con:testStep type="httprequest" name="GetFeatureFirstTypeName">
+      <con:testStep type="httprequest" name="GetFeatureFirstTypeName" id="e3531818-3b30-469b-b676-4ac0a8a81350">
         <con:settings/>
-        <con:config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" method="GET" xsi:type="con:HttpRequest" name="GetFeatureFirstTypeName">
+        <con:config method="GET" xsi:type="con:HttpRequest" name="GetFeatureFirstTypeName" id="09199973-af9c-4597-945b-1e42271658a0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
           <con:settings/>
           <con:endpoint>${#Project#GetFeatureURL}</con:endpoint>
           <con:request/>
-          <con:assertion type="XQuery Match" name="M-01##M-01-GetFeature: Result contains wfs_FeatureCollection">
+          <con:assertion type="XQuery Match" name="M-01##M-01-GetFeature: Result contains wfs_FeatureCollection" id="569436fe-7211-4527-bba6-7c2c44e345ab">
             <con:configuration>
               <path>declare namespace wfs='http://www.opengis.net/wfs/2.0';
 declare namespace gml='http://www.opengis.net/gml/3.2';
 declare namespace ows='http://www.opengis.net/ows/1.1';
 
-&lt;result&gt;AssertionFailures: {
+&lt;result>AssertionFailures: {
 let $fc:=//wfs:FeatureCollection
 return
 if (exists($fc))
 then "The result contains a wfs:FeatureCollection."
 else "The result does NOT contain a wfs:FeatureCollection."
 }
-&lt;/result&gt;</path>
-              <content>&lt;result&gt;AssertionFailures: The result contains a wfs:FeatureCollection.&lt;/result&gt;</content>
+&lt;/result></path>
+              <content>&lt;result>AssertionFailures: The result contains a wfs:FeatureCollection.&lt;/result></content>
               <allowWildcards>false</allowWildcards>
             </con:configuration>
           </con:assertion>
@@ -2147,9 +2147,9 @@ else "The result does NOT contain a wfs:FeatureCollection."
           </con:parameters>
         </con:config>
       </con:testStep>
-      <con:testStep type="transfer" name="Property Transfer Feature">
+      <con:testStep type="transfer" name="Property Transfer Feature" id="37fa8c4e-b6db-4663-bfde-7ab50a37d1f1">
         <con:settings/>
-        <con:config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="con:PropertyTransfersStep">
+        <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
           <con:transfers setNullOnMissingSource="true" transferTextContent="false" failOnError="true" ignoreEmpty="false" transferToAll="false" useXQuery="false" entitize="false" transferChildNodes="true">
             <con:name>FirstFeature</con:name>
             <con:sourceType>ResponseAsXml</con:sourceType>
@@ -2160,7 +2160,7 @@ declare namespace gml='http://www.opengis.net/gml/3.2';
 //wfs:member[1]/*</con:sourcePath>
             <con:targetType>FirstFeature</con:targetType>
             <con:targetStep>#Project#</con:targetStep>
-          </con:transfers>
+          <con:upgraded>true</con:upgraded></con:transfers>
           <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" transferChildNodes="false" useXQuery="false" ignoreEmpty="false" transferToAll="false" entitize="false">
             <con:name>FirstFeatureId</con:name>
             <con:sourceType>ResponseAsXml</con:sourceType>
@@ -2171,16 +2171,16 @@ declare namespace gml='http://www.opengis.net/gml/3.2';
 //wfs:member[1]/*/@gml:id</con:sourcePath>
             <con:targetType>FirstFeatureId</con:targetType>
             <con:targetStep>#Project#</con:targetStep>
-          </con:transfers>
+          <con:upgraded>true</con:upgraded></con:transfers>
         </con:config>
       </con:testStep>
-      <con:testStep type="httprequest" name="GetFeatureById">
+      <con:testStep type="httprequest" name="GetFeatureById" id="461dabbf-2e35-44b8-8d37-ffbf01b88b1e">
         <con:settings/>
-        <con:config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" method="GET" xsi:type="con:HttpRequest" name="GetFeatureById">
+        <con:config method="GET" xsi:type="con:HttpRequest" name="GetFeatureById" id="e867dd83-625e-4010-ba0c-86cf2755736d" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
           <con:settings/>
           <con:endpoint>${#Project#GetFeatureURL}</con:endpoint>
           <con:request/>
-          <con:assertion type="XPath Match" name="M-01##M-01-GFI-4: The gml:id of the Feature is the same for GetFeature and GetFeatureById">
+          <con:assertion type="XPath Match" name="M-01##M-01-GFI-4: The gml:id of the Feature is the same for GetFeature and GetFeatureById" id="4dc662bb-0dcf-4544-92f4-511ce17f28eb">
             <con:configuration>
               <path>declare namespace wfs='http://www.opengis.net/wfs/2.0';
 declare namespace gml='http://www.opengis.net/gml/3.2';
@@ -2250,9 +2250,9 @@ exists(//*[@gml:id='${#Project#FirstFeatureId}'])</path>
     </con:testCase>
     <con:testCase failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="Query support - Mandatory" searchProperties="true" id="49c1a71f-ee14-4270-b278-21be6dd956ea">
       <con:settings/>
-      <con:testStep type="properties" name="Properties">
+      <con:testStep type="properties" name="Properties" id="9caed29f-11ed-48f8-ba3e-27916afdcc3f">
         <con:settings/>
-        <con:config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="con:PropertiesStep" saveFirst="true">
+        <con:config xsi:type="con:PropertiesStep" saveFirst="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
           <con:properties>
             <con:property>
               <con:name>DescribeStoredQueriesURL</con:name>
@@ -2261,30 +2261,30 @@ exists(//*[@gml:id='${#Project#FirstFeatureId}'])</path>
           </con:properties>
         </con:config>
       </con:testStep>
-      <con:testStep type="httprequest" name="GetCapabilities">
+      <con:testStep type="httprequest" name="GetCapabilities" id="7489480c-0ece-4e66-9555-eabfd0a63013">
         <con:settings/>
-        <con:config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" method="GET" xsi:type="con:HttpRequest" name="GetCapabilities">
+        <con:config method="GET" xsi:type="con:HttpRequest" name="GetCapabilities" id="b28ddcfe-6fb1-4aa5-b850-62c27ce9a21d" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
           <con:settings>
-            <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/&gt;</con:setting>
+            <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
           </con:settings>
           <con:endpoint>${#Project#serviceEndpoint}</con:endpoint>
           <con:request/>
-          <con:assertion type="XQuery Match" name="M-01##M-01-ImplementsQuery: Capabilities advertizes ImplementsQuery (Query support)">
+          <con:assertion type="XQuery Match" name="M-01##M-01-ImplementsQuery: Capabilities advertizes ImplementsQuery (Query support)" id="8448166e-9e76-4237-ba37-677b53f4307e">
             <con:configuration>
               <path>declare namespace wfs='http://www.opengis.net/wfs/2.0';
 declare namespace gml='http://www.opengis.net/gml/3.2';
 declare namespace ows='http://www.opengis.net/ows/1.1';
 declare namespace fes='http://www.opengis.net/fes/2.0';
 
-&lt;result&gt;AssertionFailures: {
+&lt;result>AssertionFailures: {
 let $query:=//fes:Constraint[@name='ImplementsQuery' and ./ows:DefaultValue='TRUE']
 return
 if (exists($query))
 then "The Capabilities document advertizes support for ImplementsQuery (Query support)."
 else "The Capabilities document does NOT advertize support for ImplementsQuery (Query support). Check if the Constraint ImplementsQuery is present."
 }
-&lt;/result&gt;</path>
-              <content>&lt;result&gt;AssertionFailures: The Capabilities document advertizes support for ImplementsQuery (Query support).&lt;/result&gt;</content>
+&lt;/result></path>
+              <content>&lt;result>AssertionFailures: The Capabilities document advertizes support for ImplementsQuery (Query support).&lt;/result></content>
               <allowWildcards>false</allowWildcards>
             </con:configuration>
           </con:assertion>
@@ -2312,9 +2312,9 @@ else "The Capabilities document does NOT advertize support for ImplementsQuery (
           </con:parameters>
         </con:config>
       </con:testStep>
-      <con:testStep type="transfer" name="Property Transfer">
+      <con:testStep type="transfer" name="Property Transfer" id="1526bf2e-f70e-41b3-a7ba-d1eb55473860">
         <con:settings/>
-        <con:config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="con:PropertyTransfersStep">
+        <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
           <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" useXQuery="false" entitize="false" transferChildNodes="false">
             <con:name>DescribeStoredQueriesURL</con:name>
             <con:sourceType>ResponseAsXml</con:sourceType>
@@ -2326,33 +2326,33 @@ declare namespace xlink='http://www.w3.org/1999/xlink';
 //ows:Operation[@name='DescribeStoredQueries'][1]/ows:DCP/ows:HTTP/ows:Get/@xlink:href</con:sourcePath>
             <con:targetType>Endpoint</con:targetType>
             <con:targetStep>DescribeStoredQueries</con:targetStep>
-          </con:transfers>
+          <con:upgraded>true</con:upgraded></con:transfers>
         </con:config>
       </con:testStep>
-      <con:testStep type="httprequest" name="DescribeStoredQueries">
+      <con:testStep type="httprequest" name="DescribeStoredQueries" id="b2c66890-d00e-4006-95bc-570317366e93">
         <con:settings/>
-        <con:config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" method="GET" xsi:type="con:HttpRequest" name="DescribeStoredQueries">
+        <con:config method="GET" xsi:type="con:HttpRequest" name="DescribeStoredQueries" id="33fb69b8-1d8e-42fb-83a8-b2ec669eb079" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
           <con:settings>
-            <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/&gt;</con:setting>
+            <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
           </con:settings>
           <con:endpoint/>
           <con:request/>
-          <con:assertion type="XQuery Match" name="M-01##M-01-StoredQueryINSPIRE: DescribeStoredQueries contains more StoredQueries (with parameters CRS/DataSetID/Language) besides GetFeatureById">
+          <con:assertion type="XQuery Match" name="M-01##M-01-StoredQueryINSPIRE: DescribeStoredQueries contains more StoredQueries (with parameters CRS/DataSetID/Language) besides GetFeatureById" id="e10a12d2-2605-4827-8e3e-5ecf102d468b">
             <con:configuration>
               <path>declare namespace wfs='http://www.opengis.net/wfs/2.0';
 declare namespace gml='http://www.opengis.net/gml/3.2';
 declare namespace ows='http://www.opengis.net/ows/1.1';
 declare namespace fes='http://www.opengis.net/fes/2.0';
 
-&lt;result&gt;AssertionFailures: {
+&lt;result>AssertionFailures: {
 let $query:=/wfs:DescribeStoredQueriesResponse/wfs:StoredQueryDescription[@id!='urn:ogc:def:query:OGC-WFS::GetFeatureById'][exists(./wfs:Parameter/@name='CRS')][exists(./wfs:Parameter/@name='DataSetId') or (exists(./wfs:Parameter/@name='DataSetIdCode') and exists(./wfs:Parameter/@name='DataSetIdNamespace'))][exists(./wfs:Parameter/@name='Language')]
 return
 if (exists($query))
 then "DescribeStoredQueries contains more StoredQueries (with parameters CRS/DataSetID/Language) besides the StoredQuery GetFeatureById."
 else "DescribeStoredQueries does NOT contain a StoredQuery with parameters CRS/DataSetID/Language, to download the entire INSPIRE dataset. Check the DescribeStoredQueries response."
 }
-&lt;/result&gt;</path>
-              <content>&lt;result&gt;AssertionFailures: DescribeStoredQueries contains more StoredQueries (with parameters CRS/DataSetID/Language) besides the StoredQuery GetFeatureById.&lt;/result&gt;</content>
+&lt;/result></path>
+              <content>&lt;result>AssertionFailures: DescribeStoredQueries contains more StoredQueries (with parameters CRS/DataSetID/Language) besides the StoredQuery GetFeatureById.&lt;/result></content>
               <allowWildcards>false</allowWildcards>
             </con:configuration>
           </con:assertion>
@@ -2398,9 +2398,9 @@ else "DescribeStoredQueries does NOT contain a StoredQuery with parameters CRS/D
     </con:testCase>
     <con:testCase failOnError="false" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="Mandatory INSPIRE GetCapabilities" searchProperties="true" timeout="0" wsrmEnabled="false" wsrmVersion="1.0" wsrmAckTo="" amfAuthorisation="false" amfEndpoint="" amfLogin="" amfPassword="" id="1ce771c8-5f56-4a07-830e-4bb7369c7fce">
       <con:settings/>
-      <con:testStep type="properties" name="Transfer_Properties">
+      <con:testStep type="properties" name="Transfer_Properties" id="e9d2486c-6613-4a7f-be7d-e96007aaf181">
         <con:settings/>
-        <con:config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="con:PropertiesStep" saveFirst="true">
+        <con:config xsi:type="con:PropertiesStep" saveFirst="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
           <con:properties>
             <con:property>
               <con:name>Capabilities</con:name>
@@ -2417,29 +2417,29 @@ else "DescribeStoredQueries does NOT contain a StoredQuery with parameters CRS/D
           </con:properties>
         </con:config>
       </con:testStep>
-      <con:testStep type="httprequest" name="GetCapabilities">
+      <con:testStep type="httprequest" name="GetCapabilities" id="2301cb40-e091-4f20-b54a-1202be0b32e0">
         <con:settings/>
-        <con:config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" method="GET" xsi:type="con:HttpRequest" name="GetCapabilities">
+        <con:config method="GET" xsi:type="con:HttpRequest" name="GetCapabilities" id="1fd7a909-4f63-485b-87cd-19da3e937602" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
           <con:settings/>
           <con:endpoint>${#Project#serviceEndpoint}</con:endpoint>
           <con:request/>
-          <con:assertion type="Response SLA Assertion" name="Response SLA">
+          <con:assertion type="Response SLA Assertion" name="Response SLA" id="aeea7d3a-f798-44bc-a4d5-40f6582aef04">
             <con:configuration>
               <SLA>5000</SLA>
             </con:configuration>
           </con:assertion>
-          <con:assertion type="GroovyScriptAssertion" name="Timeout">
+          <con:assertion type="GroovyScriptAssertion" name="Timeout" id="4d94298c-bd46-4465-8871-18d9ef287a1f">
             <con:configuration>
               <scriptText>// check response time
 log.info( "time taken was :" + messageExchange.timeTaken );</scriptText>
             </con:configuration>
           </con:assertion>
-          <con:assertion type="Simple Schema Validator" name="M-01##INSPIRESchemaValid: Simple Schema Validator">
+          <con:assertion type="Simple Schema Validator" name="M-01##INSPIRESchemaValid: Simple Schema Validator" id="aedaff1f-0f7c-42ec-b276-6b3de611ab88">
             <con:configuration>
               <pathToXSD>xsi:schemaLocation</pathToXSD>
             </con:configuration>
           </con:assertion>
-          <con:assertion type="XQuery Match" name="M-01##INSPIRESchema: xsi:schemaLocation contains the INSPIRE Download Services schema">
+          <con:assertion type="XQuery Match" name="M-01##INSPIRESchema: xsi:schemaLocation contains the INSPIRE Download Services schema" id="e7322615-c57b-481b-8f5d-b2988a609f23">
             <con:configuration>
               <path>declare namespace wfs='http://www.opengis.net/wfs/2.0';
 declare namespace ows='http://www.opengis.net/ows/1.1';
@@ -2450,15 +2450,15 @@ declare namespace xsi='http://www.w3.org/2001/XMLSchema-instance';
 declare namespace inspire_dls='http://inspire.ec.europa.eu/schemas/inspire_dls/1.0';
 declare namespace inspire_common='http://inspire.ec.europa.eu/schemas/common/1.0';
 
-&lt;result&gt;AssertionFailures: {
+&lt;result>AssertionFailures: {
 let $inspireSchemLocation:=//*[contains(@xsi:schemaLocation,'http://inspire.ec.europa.eu/schemas/inspire_dls/1.0/inspire_dls.xsd')]
 return
 if (exists($inspireSchemLocation))
 then "The Capabilities contain a xsi:schemaLocation with the INSPIRE Download Services schema."
 else "The Capabilities do not contain a xsi:schemaLocation with the INSPIRE Download Services schema: 'http://inspire.ec.europa.eu/schemas/inspire_dls/1.0/inspire_dls.xsd'."
 }
-&lt;/result&gt;</path>
-              <content>&lt;result&gt;AssertionFailures: The Capabilities contain a xsi:schemaLocation with the INSPIRE Download Services schema.&lt;/result&gt;</content>
+&lt;/result></path>
+              <content>&lt;result>AssertionFailures: The Capabilities contain a xsi:schemaLocation with the INSPIRE Download Services schema.&lt;/result></content>
               <allowWildcards>false</allowWildcards>
             </con:configuration>
           </con:assertion>
@@ -2483,9 +2483,9 @@ else "The Capabilities do not contain a xsi:schemaLocation with the INSPIRE Down
           </con:parameters>
         </con:config>
       </con:testStep>
-      <con:testStep type="transfer" name="Property Transfer">
+      <con:testStep type="transfer" name="Property Transfer" id="49dc26d9-48e0-4c4a-aa82-bee1ff171edf">
         <con:settings/>
-        <con:config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="con:PropertyTransfersStep">
+        <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
           <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="false" ignoreEmpty="true" transferToAll="false" useXQuery="false" entitize="false" transferChildNodes="false">
             <con:name>INSPIREServiceMetadataUrl</con:name>
             <con:sourceType>ResponseAsXml</con:sourceType>
@@ -2501,7 +2501,7 @@ declare namespace inspire_common='http://inspire.ec.europa.eu/schemas/common/1.0
 //inspire_dls:ExtendedCapabilities[1]/inspire_common:MetadataUrl/inspire_common:URL</con:sourcePath>
             <con:targetType>Endpoint</con:targetType>
             <con:targetStep>Req 42 (Scenario 1) ExternalServiceMetadata</con:targetStep>
-          </con:transfers>
+          <con:upgraded>true</con:upgraded></con:transfers>
           <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false">
             <con:name>GetCapabilitiesURL from Capabilities</con:name>
             <con:sourceType>ResponseAsXml</con:sourceType>
@@ -2517,7 +2517,7 @@ declare namespace inspire_common='http://inspire.ec.europa.eu/schemas/common/1.0
 //ows:Operation[@name='GetCapabilities'][1]/ows:DCP/ows:HTTP/ows:Get/@xlink:href</con:sourcePath>
             <con:targetType>Endpoint</con:targetType>
             <con:targetStep>Req 42 (Scenario 2) CapabilitiesServiceMetadata</con:targetStep>
-          </con:transfers>
+          <con:upgraded>true</con:upgraded></con:transfers>
           <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false">
             <con:name>Capabilities</con:name>
             <con:sourceType>ResponseAsXml</con:sourceType>
@@ -2525,12 +2525,12 @@ declare namespace inspire_common='http://inspire.ec.europa.eu/schemas/common/1.0
             <con:sourcePath/>
             <con:targetType>Capabilities</con:targetType>
             <con:targetStep>Transfer_Properties</con:targetStep>
-          </con:transfers>
+          <con:upgraded>true</con:upgraded></con:transfers>
         </con:config>
       </con:testStep>
-      <con:testStep type="goto" name="Conditional Goto Scenario 1 ExternalServiceMetadata">
+      <con:testStep type="goto" name="Conditional Goto Scenario 1 ExternalServiceMetadata" id="f5878736-626f-493d-8638-ebc833f6d8ca">
         <con:settings/>
-        <con:config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="con:GotoStep">
+        <con:config xsi:type="con:GotoStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
           <con:condition>
             <con:name>ExternalServiceMetadata</con:name>
             <con:type>XPATH</con:type>
@@ -2542,20 +2542,20 @@ declare namespace xlink='http://www.w3.org/1999/xlink';
 declare namespace inspire_dls='http://inspire.ec.europa.eu/schemas/inspire_dls/1.0';
 declare namespace inspire_common='http://inspire.ec.europa.eu/schemas/common/1.0';
 
-string-length(//inspire_dls:ExtendedCapabilities/inspire_common:MetadataUrl/inspire_common:URL)&gt;0</con:expression>
+string-length(//inspire_dls:ExtendedCapabilities/inspire_common:MetadataUrl/inspire_common:URL)>0</con:expression>
             <con:targetStep>Req 42 (Scenario 1) ExternalServiceMetadata</con:targetStep>
           </con:condition>
         </con:config>
       </con:testStep>
-      <con:testStep type="httprequest" name="Req 42 (Scenario 2) CapabilitiesServiceMetadata">
+      <con:testStep type="httprequest" name="Req 42 (Scenario 2) CapabilitiesServiceMetadata" id="e1545e41-b926-412f-9f1c-42ab60f1c9b5">
         <con:settings/>
-        <con:config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" method="GET" xsi:type="con:HttpRequest" name="Req 42 (Scenario 2) CapabilitiesServiceMetadata">
+        <con:config method="GET" xsi:type="con:HttpRequest" name="Req 42 (Scenario 2) CapabilitiesServiceMetadata" id="18d0a160-6f15-489d-aee2-17ac23a2e6e3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
           <con:settings>
-            <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/&gt;</con:setting>
+            <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
           </con:settings>
           <con:endpoint>${#Project#getCapabilitiesURL}</con:endpoint>
           <con:request/>
-          <con:assertion type="XQuery Match" name="M-01##M-01-infoFeatureAccessService: INSPIRE Keyword infoFeatureAccessService exists">
+          <con:assertion type="XQuery Match" name="M-01##M-01-infoFeatureAccessService: INSPIRE Keyword infoFeatureAccessService exists" id="ee07fc7b-b526-43c7-b035-9bc1dda37cea">
             <con:configuration>
               <path>declare namespace wfs='http://www.opengis.net/wfs/2.0';
 declare namespace ows='http://www.opengis.net/ows/1.1';
@@ -2566,19 +2566,19 @@ declare namespace xsi='http://www.w3.org/2001/XMLSchema-instance';
 declare namespace inspire_dls='http://inspire.ec.europa.eu/schemas/inspire_dls/1.0';
 declare namespace inspire_common='http://inspire.ec.europa.eu/schemas/common/1.0';
 
-&lt;result&gt;AssertionFailures: {
+&lt;result>AssertionFailures: {
 let $infoFeatureAccessService:=/wfs:WFS_Capabilities/ows:ServiceIdentification/ows:Keywords[ows:Keyword='infoFeatureAccessService']
 return
 if (exists($infoFeatureAccessService))
 then "The INSPIRE keyword infoFeatureAccessService is advertized in the Capabilities."
 else "The INSPIRE keyword infoFeatureAccessService is NOT advertized in the Capabilities."
 }
-&lt;/result&gt;</path>
-              <content>&lt;result&gt;AssertionFailures: The INSPIRE keyword infoFeatureAccessService is advertized in the Capabilities.&lt;/result&gt;</content>
+&lt;/result></path>
+              <content>&lt;result>AssertionFailures: The INSPIRE keyword infoFeatureAccessService is advertized in the Capabilities.&lt;/result></content>
               <allowWildcards>false</allowWildcards>
             </con:configuration>
           </con:assertion>
-          <con:assertion type="XQuery Match" name="M-01##M-01-WFSTitle: WFS Title exists">
+          <con:assertion type="XQuery Match" name="M-01##M-01-WFSTitle: WFS Title exists" id="b27603aa-4e7b-46c8-b203-ee69e79c8fc8">
             <con:configuration>
               <path>declare namespace wfs='http://www.opengis.net/wfs/2.0';
 declare namespace ows='http://www.opengis.net/ows/1.1';
@@ -2589,19 +2589,19 @@ declare namespace xsi='http://www.w3.org/2001/XMLSchema-instance';
 declare namespace inspire_dls='http://inspire.ec.europa.eu/schemas/inspire_dls/1.0';
 declare namespace inspire_common='http://inspire.ec.europa.eu/schemas/common/1.0';
 
-&lt;result&gt;AssertionFailures: {
+&lt;result>AssertionFailures: {
 let $value:=/wfs:WFS_Capabilities/ows:ServiceIdentification/ows:Title
 return
 if (exists($value))
 then "The WFS Title exists."
 else "The WFS Title is not set in the Capabilities."
 }
-&lt;/result&gt;</path>
-              <content>&lt;result&gt;AssertionFailures: The WFS Title exists.&lt;/result&gt;</content>
+&lt;/result></path>
+              <content>&lt;result>AssertionFailures: The WFS Title exists.&lt;/result></content>
               <allowWildcards>false</allowWildcards>
             </con:configuration>
           </con:assertion>
-          <con:assertion type="XQuery Match" name="M-01##M-01-WFSAbstract: WFS Abstract exists">
+          <con:assertion type="XQuery Match" name="M-01##M-01-WFSAbstract: WFS Abstract exists" id="4e796ac0-f077-4e60-875a-30bf4fc257f4">
             <con:configuration>
               <path>declare namespace wfs='http://www.opengis.net/wfs/2.0';
 declare namespace ows='http://www.opengis.net/ows/1.1';
@@ -2612,19 +2612,19 @@ declare namespace xsi='http://www.w3.org/2001/XMLSchema-instance';
 declare namespace inspire_dls='http://inspire.ec.europa.eu/schemas/inspire_dls/1.0';
 declare namespace inspire_common='http://inspire.ec.europa.eu/schemas/common/1.0';
 
-&lt;result&gt;AssertionFailures: {
+&lt;result>AssertionFailures: {
 let $value:=/wfs:WFS_Capabilities/ows:ServiceIdentification/ows:Abstract
 return
 if (exists($value))
 then "The WFS Abstract exists."
 else "The WFS Abstract is not set in the Capabilities."
 }
-&lt;/result&gt;</path>
-              <content>&lt;result&gt;AssertionFailures: The WFS Abstract exists.&lt;/result&gt;</content>
+&lt;/result></path>
+              <content>&lt;result>AssertionFailures: The WFS Abstract exists.&lt;/result></content>
               <allowWildcards>false</allowWildcards>
             </con:configuration>
           </con:assertion>
-          <con:assertion type="XQuery Match" name="M-01##M-01-ResourceType: INSPIRE ResourceType exists">
+          <con:assertion type="XQuery Match" name="M-01##M-01-ResourceType: INSPIRE ResourceType exists" id="5c67dd89-6e29-4008-8230-58aca3f8c935">
             <con:configuration>
               <path>declare namespace wfs='http://www.opengis.net/wfs/2.0';
 declare namespace ows='http://www.opengis.net/ows/1.1';
@@ -2635,19 +2635,19 @@ declare namespace xsi='http://www.w3.org/2001/XMLSchema-instance';
 declare namespace inspire_dls='http://inspire.ec.europa.eu/schemas/inspire_dls/1.0';
 declare namespace inspire_common='http://inspire.ec.europa.eu/schemas/common/1.0';
 
-&lt;result&gt;AssertionFailures: {
+&lt;result>AssertionFailures: {
 let $value:=//inspire_dls:ExtendedCapabilities/inspire_common:ResourceType
 return
 if (exists($value))
 then "INSPIRE ResourceType exists."
 else "INSPIRE ResourceType is not set in the Capabilities. Check the INSPIRE ExtendedCapabilities."
 }
-&lt;/result&gt;</path>
-              <content>&lt;result&gt;AssertionFailures: INSPIRE ResourceType exists.&lt;/result&gt;</content>
+&lt;/result></path>
+              <content>&lt;result>AssertionFailures: INSPIRE ResourceType exists.&lt;/result></content>
               <allowWildcards>false</allowWildcards>
             </con:configuration>
           </con:assertion>
-          <con:assertion type="XQuery Match" name="M-01##M-01-ResourceLocator: INSPIRE ResourceLocator exists">
+          <con:assertion type="XQuery Match" name="M-01##M-01-ResourceLocator: INSPIRE ResourceLocator exists" id="761de766-039d-48a8-80a7-4c6b3f507ef9">
             <con:configuration>
               <path>declare namespace wfs='http://www.opengis.net/wfs/2.0';
 declare namespace ows='http://www.opengis.net/ows/1.1';
@@ -2658,19 +2658,19 @@ declare namespace xsi='http://www.w3.org/2001/XMLSchema-instance';
 declare namespace inspire_dls='http://inspire.ec.europa.eu/schemas/inspire_dls/1.0';
 declare namespace inspire_common='http://inspire.ec.europa.eu/schemas/common/1.0';
 
-&lt;result&gt;AssertionFailures: {
+&lt;result>AssertionFailures: {
 let $value:=//inspire_dls:ExtendedCapabilities/inspire_common:ResourceLocator
 return
 if (exists($value))
 then "INSPIRE ResourceLocator exists."
 else "INSPIRE ResourceLocator is not set in the Capabilities. Check the INSPIRE ExtendedCapabilities."
 }
-&lt;/result&gt;</path>
-              <content>&lt;result&gt;AssertionFailures: INSPIRE ResourceType exists.&lt;/result&gt;</content>
+&lt;/result></path>
+              <content>&lt;result>AssertionFailures: INSPIRE ResourceType exists.&lt;/result></content>
               <allowWildcards>false</allowWildcards>
             </con:configuration>
           </con:assertion>
-          <con:assertion type="XQuery Match" name="M-01##M-01-ft-MetadataURL: INSPIRE Each FeatureType has a MetadataURL">
+          <con:assertion type="XQuery Match" name="M-01##M-01-ft-MetadataURL: INSPIRE Each FeatureType has a MetadataURL" id="80f3ae2f-22f2-4acd-88e3-687270ad5d64">
             <con:configuration>
               <path>declare namespace wfs='http://www.opengis.net/wfs/2.0';
 declare namespace ows='http://www.opengis.net/ows/1.1';
@@ -2681,18 +2681,18 @@ declare namespace xsi='http://www.w3.org/2001/XMLSchema-instance';
 declare namespace inspire_dls='http://inspire.ec.europa.eu/schemas/inspire_dls/1.0';
 declare namespace inspire_common='http://inspire.ec.europa.eu/schemas/common/1.0';
 
-&lt;result&gt;AssertionFailures: {
+&lt;result>AssertionFailures: {
 for $featureType in //wfs:FeatureType
 where string-length($featureType/wfs:MetadataURL/@xlink:href)=0
 return
 concat ("FeatureType: ",$featureType/wfs:Name," has no MetadataURL.")
 }
-&lt;/result&gt;</path>
-              <content>&lt;result&gt;AssertionFailures: &lt;/result&gt;</content>
+&lt;/result></path>
+              <content>&lt;result>AssertionFailures: &lt;/result></content>
               <allowWildcards>false</allowWildcards>
             </con:configuration>
           </con:assertion>
-          <con:assertion type="XQuery Match" name="M-01##M-01-SpatialDataServiceType: INSPIRE SpatialDataServiceType is set at 'download'">
+          <con:assertion type="XQuery Match" name="M-01##M-01-SpatialDataServiceType: INSPIRE SpatialDataServiceType is set at 'download'" id="2b64dec9-a359-4a0f-a14b-eefde753be57">
             <con:configuration>
               <path>declare namespace wfs='http://www.opengis.net/wfs/2.0';
 declare namespace ows='http://www.opengis.net/ows/1.1';
@@ -2703,19 +2703,19 @@ declare namespace xsi='http://www.w3.org/2001/XMLSchema-instance';
 declare namespace inspire_dls='http://inspire.ec.europa.eu/schemas/inspire_dls/1.0';
 declare namespace inspire_common='http://inspire.ec.europa.eu/schemas/common/1.0';
 
-&lt;result&gt;AssertionFailures: {
+&lt;result>AssertionFailures: {
 let $value:=//inspire_dls:ExtendedCapabilities/inspire_common:SpatialDataServiceType[.='download']
 return
 if (exists($value))
 then "INSPIRE SpatialDataServiceType is set at 'download'."
 else "INSPIRE SpatialDataServiceType is NOT set at 'download'. Check the ExtendedCapabilities."
 }
-&lt;/result&gt;</path>
-              <content>&lt;result&gt;AssertionFailures: INSPIRE SpatialDataServiceType is set at 'download'.&lt;/result&gt;</content>
+&lt;/result></path>
+              <content>&lt;result>AssertionFailures: INSPIRE SpatialDataServiceType is set at 'download'.&lt;/result></content>
               <allowWildcards>false</allowWildcards>
             </con:configuration>
           </con:assertion>
-          <con:assertion type="XQuery Match" name="M-01##M-01-WGS84BoundingBox: WFS Each FeatureType has a WGS84BoundingBox">
+          <con:assertion type="XQuery Match" name="M-01##M-01-WGS84BoundingBox: WFS Each FeatureType has a WGS84BoundingBox" id="e6331482-cee0-4337-abf9-6112f16ea1b8">
             <con:configuration>
               <path>declare namespace wfs='http://www.opengis.net/wfs/2.0';
 declare namespace ows='http://www.opengis.net/ows/1.1';
@@ -2726,18 +2726,18 @@ declare namespace xsi='http://www.w3.org/2001/XMLSchema-instance';
 declare namespace inspire_dls='http://inspire.ec.europa.eu/schemas/inspire_dls/1.0';
 declare namespace inspire_common='http://inspire.ec.europa.eu/schemas/common/1.0';
 
-&lt;result&gt;AssertionFailures: {
+&lt;result>AssertionFailures: {
 for $featureType in //wfs:FeatureType
 where string-length($featureType/ows:WGS84BoundingBox/ows:LowerCorner)=0
 return
 concat ("FeatureType: ",$featureType/wfs:Name," has no WGS84BoundingBox.")
 }
-&lt;/result&gt;</path>
-              <content>&lt;result&gt;AssertionFailures: &lt;/result&gt;</content>
+&lt;/result></path>
+              <content>&lt;result>AssertionFailures: &lt;/result></content>
               <allowWildcards>false</allowWildcards>
             </con:configuration>
           </con:assertion>
-          <con:assertion type="XQuery Match" name="M-01##M-01-TemporalReference: INSPIRE TemporalReference exists">
+          <con:assertion type="XQuery Match" name="M-01##M-01-TemporalReference: INSPIRE TemporalReference exists" id="c3cb38a8-3476-4d68-89d3-bf8c0dbf07a2">
             <con:configuration>
               <path>declare namespace wfs='http://www.opengis.net/wfs/2.0';
 declare namespace ows='http://www.opengis.net/ows/1.1';
@@ -2748,19 +2748,19 @@ declare namespace xsi='http://www.w3.org/2001/XMLSchema-instance';
 declare namespace inspire_dls='http://inspire.ec.europa.eu/schemas/inspire_dls/1.0';
 declare namespace inspire_common='http://inspire.ec.europa.eu/schemas/common/1.0';
 
-&lt;result&gt;AssertionFailures: {
+&lt;result>AssertionFailures: {
 let $value:=//inspire_dls:ExtendedCapabilities/inspire_common:TemporalReference
 return
 if (exists($value))
 then "INSPIRE TemporalReference exists."
 else "INSPIRE TemporalReference does not exist.Check the ExtendedCapabilities for this element."
 }
-&lt;/result&gt;</path>
-              <content>&lt;result&gt;AssertionFailures: INSPIRE TemporalReference exists.&lt;/result&gt;</content>
+&lt;/result></path>
+              <content>&lt;result>AssertionFailures: INSPIRE TemporalReference exists.&lt;/result></content>
               <allowWildcards>false</allowWildcards>
             </con:configuration>
           </con:assertion>
-          <con:assertion type="XQuery Match" name="M-01##M-01-Conformity: INSPIRE Conformity exists">
+          <con:assertion type="XQuery Match" name="M-01##M-01-Conformity: INSPIRE Conformity exists" id="3b7dad7c-1f86-43a9-890b-03dc396a12b1">
             <con:configuration>
               <path>declare namespace wfs='http://www.opengis.net/wfs/2.0';
 declare namespace ows='http://www.opengis.net/ows/1.1';
@@ -2771,19 +2771,19 @@ declare namespace xsi='http://www.w3.org/2001/XMLSchema-instance';
 declare namespace inspire_dls='http://inspire.ec.europa.eu/schemas/inspire_dls/1.0';
 declare namespace inspire_common='http://inspire.ec.europa.eu/schemas/common/1.0';
 
-&lt;result&gt;AssertionFailures: {
+&lt;result>AssertionFailures: {
 let $value:=//inspire_dls:ExtendedCapabilities/inspire_common:Conformity
 return
 if (exists($value))
 then "INSPIRE Conformity exists."
 else "INSPIRE Conformity does not exist. Check the ExtendedCapabilities for this element."
 }
-&lt;/result&gt;</path>
-              <content>&lt;result&gt;AssertionFailures: INSPIRE Conformity exists.&lt;/result&gt;</content>
+&lt;/result></path>
+              <content>&lt;result>AssertionFailures: INSPIRE Conformity exists.&lt;/result></content>
               <allowWildcards>false</allowWildcards>
             </con:configuration>
           </con:assertion>
-          <con:assertion type="XQuery Match" name="M-01##M-01-Fees: WFS Fees exists">
+          <con:assertion type="XQuery Match" name="M-01##M-01-Fees: WFS Fees exists" id="4852ea33-cf36-4f5f-92b4-bd1c885aad6d">
             <con:configuration>
               <path>declare namespace wfs='http://www.opengis.net/wfs/2.0';
 declare namespace ows='http://www.opengis.net/ows/1.1';
@@ -2794,19 +2794,19 @@ declare namespace xsi='http://www.w3.org/2001/XMLSchema-instance';
 declare namespace inspire_dls='http://inspire.ec.europa.eu/schemas/inspire_dls/1.0';
 declare namespace inspire_common='http://inspire.ec.europa.eu/schemas/common/1.0';
 
-&lt;result&gt;AssertionFailures: {
+&lt;result>AssertionFailures: {
 let $value:=//ows:ServiceIdentification/ows:Fees
 return
 if (exists($value))
 then "WFS Fees exists."
 else "WFS Fees does not exist. Check the Capabilities for this element."
 }
-&lt;/result&gt;</path>
-              <content>&lt;result&gt;AssertionFailures: WFS Fees exists.&lt;/result&gt;</content>
+&lt;/result></path>
+              <content>&lt;result>AssertionFailures: WFS Fees exists.&lt;/result></content>
               <allowWildcards>false</allowWildcards>
             </con:configuration>
           </con:assertion>
-          <con:assertion type="XQuery Match" name="M-01##M-01-AccessConstraints: WFS AccessConstraints exists">
+          <con:assertion type="XQuery Match" name="M-01##M-01-AccessConstraints: WFS AccessConstraints exists" id="1193b992-1ae0-4b69-871d-70b8ea4bf8f8">
             <con:configuration>
               <path>declare namespace wfs='http://www.opengis.net/wfs/2.0';
 declare namespace ows='http://www.opengis.net/ows/1.1';
@@ -2817,19 +2817,19 @@ declare namespace xsi='http://www.w3.org/2001/XMLSchema-instance';
 declare namespace inspire_dls='http://inspire.ec.europa.eu/schemas/inspire_dls/1.0';
 declare namespace inspire_common='http://inspire.ec.europa.eu/schemas/common/1.0';
 
-&lt;result&gt;AssertionFailures: {
+&lt;result>AssertionFailures: {
 let $value:=//ows:ServiceIdentification/ows:AccessConstraints
 return
 if (exists($value))
 then "WFS AccessConstraints exists."
 else "WFS AccessConstraints does not exist. Check the Capabilities for this element."
 }
-&lt;/result&gt;</path>
-              <content>&lt;result&gt;AssertionFailures: WFS AccessConstraints exists.&lt;/result&gt;</content>
+&lt;/result></path>
+              <content>&lt;result>AssertionFailures: WFS AccessConstraints exists.&lt;/result></content>
               <allowWildcards>false</allowWildcards>
             </con:configuration>
           </con:assertion>
-          <con:assertion type="XQuery Match" name="M-01##M-01-ContactInfo: WFS ServiceProvider exists, at least a ServiceContact with ContactInfo">
+          <con:assertion type="XQuery Match" name="M-01##M-01-ContactInfo: WFS ServiceProvider exists, at least a ServiceContact with ContactInfo" id="fd4b8d80-1efa-49c7-a67a-3ae0124461db">
             <con:configuration>
               <path>declare namespace wfs='http://www.opengis.net/wfs/2.0';
 declare namespace ows='http://www.opengis.net/ows/1.1';
@@ -2840,19 +2840,19 @@ declare namespace xsi='http://www.w3.org/2001/XMLSchema-instance';
 declare namespace inspire_dls='http://inspire.ec.europa.eu/schemas/inspire_dls/1.0';
 declare namespace inspire_common='http://inspire.ec.europa.eu/schemas/common/1.0';
 
-&lt;result&gt;AssertionFailures: {
+&lt;result>AssertionFailures: {
 let $value:=//ows:ServiceProvider/ows:ServiceContact/ows:ContactInfo
 return
 if (exists($value))
 then "WFS ServiceProvider ContactInfo exists."
 else "WFS ServiceProvider ContactInfo does not exist. Check the Capabilities for this element."
 }
-&lt;/result&gt;</path>
-              <content>&lt;result&gt;AssertionFailures: WFS ServiceProvider ContactInfo exists.&lt;/result&gt;</content>
+&lt;/result></path>
+              <content>&lt;result>AssertionFailures: WFS ServiceProvider ContactInfo exists.&lt;/result></content>
               <allowWildcards>false</allowWildcards>
             </con:configuration>
           </con:assertion>
-          <con:assertion type="XQuery Match" name="M-01##M-01-ProviderName: WFS ServiceProvider exists, with ProviderName">
+          <con:assertion type="XQuery Match" name="M-01##M-01-ProviderName: WFS ServiceProvider exists, with ProviderName" id="b21637c1-c79f-4398-9176-fef5487f0dbc">
             <con:configuration>
               <path>declare namespace wfs='http://www.opengis.net/wfs/2.0';
 declare namespace ows='http://www.opengis.net/ows/1.1';
@@ -2863,19 +2863,19 @@ declare namespace xsi='http://www.w3.org/2001/XMLSchema-instance';
 declare namespace inspire_dls='http://inspire.ec.europa.eu/schemas/inspire_dls/1.0';
 declare namespace inspire_common='http://inspire.ec.europa.eu/schemas/common/1.0';
 
-&lt;result&gt;AssertionFailures: {
+&lt;result>AssertionFailures: {
 let $value:=//ows:ServiceProvider/ows:ProviderName
 return
 if (exists($value))
 then "WFS ServiceProvider ProviderName exists."
 else "WFS ServiceProvider ProviderName does not exist. Check the Capabilities for this element."
 }
-&lt;/result&gt;</path>
-              <content>&lt;result&gt;AssertionFailures: WFS ServiceProvider ProviderName exists.&lt;/result&gt;</content>
+&lt;/result></path>
+              <content>&lt;result>AssertionFailures: WFS ServiceProvider ProviderName exists.&lt;/result></content>
               <allowWildcards>false</allowWildcards>
             </con:configuration>
           </con:assertion>
-          <con:assertion type="XQuery Match" name="M-01##M-01-MetadataDate: INSPIRE MetadataDate exists">
+          <con:assertion type="XQuery Match" name="M-01##M-01-MetadataDate: INSPIRE MetadataDate exists" id="23bfb339-6724-45d7-8c86-8ab961627966">
             <con:configuration>
               <path>declare namespace wfs='http://www.opengis.net/wfs/2.0';
 declare namespace ows='http://www.opengis.net/ows/1.1';
@@ -2886,19 +2886,19 @@ declare namespace xsi='http://www.w3.org/2001/XMLSchema-instance';
 declare namespace inspire_dls='http://inspire.ec.europa.eu/schemas/inspire_dls/1.0';
 declare namespace inspire_common='http://inspire.ec.europa.eu/schemas/common/1.0';
 
-&lt;result&gt;AssertionFailures: {
+&lt;result>AssertionFailures: {
 let $value:=//inspire_dls:ExtendedCapabilities/inspire_common:MetadataDate
 return
 if (string-length($value)=0)
 then "INSPIRE MetadataDate exists."
 else "INSPIRE MetadataDate does not exist. Check the ExtendedCapabilities for this element."
 }
-&lt;/result&gt;</path>
-              <content>&lt;result&gt;AssertionFailures: INSPIRE MetadataDate exists.&lt;/result&gt;</content>
+&lt;/result></path>
+              <content>&lt;result>AssertionFailures: INSPIRE MetadataDate exists.&lt;/result></content>
               <allowWildcards>false</allowWildcards>
             </con:configuration>
           </con:assertion>
-          <con:assertion type="XQuery Match" name="M-01##M-01-MetadataPointOfContact: INSPIRE MetadataPointOfContact exists">
+          <con:assertion type="XQuery Match" name="M-01##M-01-MetadataPointOfContact: INSPIRE MetadataPointOfContact exists" id="aa2d4f80-550b-4b37-8f3d-65549b3833e2">
             <con:configuration>
               <path>declare namespace wfs='http://www.opengis.net/wfs/2.0';
 declare namespace ows='http://www.opengis.net/ows/1.1';
@@ -2909,19 +2909,19 @@ declare namespace xsi='http://www.w3.org/2001/XMLSchema-instance';
 declare namespace inspire_dls='http://inspire.ec.europa.eu/schemas/inspire_dls/1.0';
 declare namespace inspire_common='http://inspire.ec.europa.eu/schemas/common/1.0';
 
-&lt;result&gt;AssertionFailures: {
+&lt;result>AssertionFailures: {
 let $value:=//inspire_dls:ExtendedCapabilities/inspire_common:MetadataPointOfContact
 return
 if (exists($value))
 then "INSPIRE MetadataPointOfContact exists."
 else "INSPIRE MetadataPointOfContact does not exist. Check the ExtendedCapabilities for this element."
 }
-&lt;/result&gt;</path>
-              <content>&lt;result&gt;AssertionFailures: INSPIRE MetadataPointOfContact exists.&lt;/result&gt;</content>
+&lt;/result></path>
+              <content>&lt;result>AssertionFailures: INSPIRE MetadataPointOfContact exists.&lt;/result></content>
               <allowWildcards>false</allowWildcards>
             </con:configuration>
           </con:assertion>
-          <con:assertion type="XQuery Match" name="M-01##M-01-URI: INSPIRE Unique Resource Identifier exists">
+          <con:assertion type="XQuery Match" name="M-01##M-01-URI: INSPIRE Unique Resource Identifier exists" id="6e55845b-183f-40a1-a50b-02c1a42b707f">
             <con:configuration>
               <path>declare namespace wfs='http://www.opengis.net/wfs/2.0';
 declare namespace ows='http://www.opengis.net/ows/1.1';
@@ -2932,15 +2932,15 @@ declare namespace xsi='http://www.w3.org/2001/XMLSchema-instance';
 declare namespace inspire_dls='http://inspire.ec.europa.eu/schemas/inspire_dls/1.0';
 declare namespace inspire_common='http://inspire.ec.europa.eu/schemas/common/1.0';
 
-&lt;result&gt;AssertionFailures: {
+&lt;result>AssertionFailures: {
 let $value:=//inspire_dls:ExtendedCapabilities/inspire_common:SpatialDataSet/inspire_common:UniqueResourceIdentifier
 return
 if (exists($value))
 then "INSPIRE Unique Resource Identifier exists."
 else "INSPIRE Unique Resource Identifier does not exist for a SpatialDataSet. Check the ExtendedCapabilities for this element."
 }
-&lt;/result&gt;</path>
-              <content>&lt;result&gt;AssertionFailures: INSPIRE Unique Resource Identifier exists.&lt;/result&gt;</content>
+&lt;/result></path>
+              <content>&lt;result>AssertionFailures: INSPIRE Unique Resource Identifier exists.&lt;/result></content>
               <allowWildcards>false</allowWildcards>
             </con:configuration>
           </con:assertion>
@@ -2965,7 +2965,7 @@ else "INSPIRE Unique Resource Identifier does not exist for a SpatialDataSet. Ch
           </con:parameters>
         </con:config>
       </con:testStep>
-      <con:testStep type="groovy" name="RunMetadataDatasetTest">
+      <con:testStep type="groovy" name="RunMetadataDatasetTest" id="f9dee263-872e-4ed1-b4c2-8b86269b2ff3">
         <con:settings/>
         <con:config>
           <script>import de.interactive_instruments.xtf.*;
@@ -2988,11 +2988,11 @@ for( url in metadataUrlNodes ) {
 }</script>
         </con:config>
       </con:testStep>
-      <con:testStep type="httprequest" name="GetMetadata">
+      <con:testStep type="httprequest" name="GetMetadata" id="e129ab43-b8a0-4b8e-9834-076aa3e03968">
         <con:settings/>
-        <con:config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" method="GET" xsi:type="con:HttpRequest" name="GetMetadata">
+        <con:config method="GET" xsi:type="con:HttpRequest" name="GetMetadata" id="d1cf278e-790e-438c-a5e7-cc691bc369b5" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
           <con:settings>
-            <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/&gt;</con:setting>
+            <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
           </con:settings>
           <con:endpoint>${#urlToTest}</con:endpoint>
           <con:request/>
@@ -3009,7 +3009,7 @@ contains('${#Project#MdIdentifiersList}',//gmd:MD_DataIdentification/gmd:citatio
               <acceptValidXPath>false</acceptValidXPath>
             </con:configuration>
           </con:assertion>
-          <con:assertion type="XQuery Match" name="M-01##M-01-MD_Metadata: Metadata has root element MD_Metadata">
+          <con:assertion type="XQuery Match" name="M-01##M-01-MD_Metadata: Metadata has root element MD_Metadata" id="36547ba5-9518-4d10-aa79-89dc8e4f4acf">
             <con:configuration>
               <path><![CDATA[declare namespace gmd='http://www.isotc211.org/2005/gmd';
 declare namespace csw='http://www.opengis.net/cat/csw/2.0.2';
@@ -3022,23 +3022,23 @@ then "the dataset metadata has an ISO Metadata root element (gmd:Metadata exists
 else "the referred dataset Metadata document does not seem to be ISO Metadata. It does not have an XML element gmd:Metadata. Check the URL in the MetadataURL of the layer. URL: '${#urlToTes.replace("&","&amp;")}'"
 }
 </result>]]></path>
-              <content>&lt;result&gt;AssertionFailures: the dataset metadata has an ISO Metadata root element (gmd:Metadata exists). URL: '${#urlToTest.replace("&amp;","&amp;amp;")}'&lt;/result&gt;</content>
+              <content>&lt;result>AssertionFailures: the dataset metadata has an ISO Metadata root element (gmd:Metadata exists). URL: '${#urlToTest.replace("&amp;","&amp;amp;")}'&lt;/result></content>
               <allowWildcards>false</allowWildcards>
             </con:configuration>
           </con:assertion>
-          <con:assertion type="XQuery Match" name="M-01##M-01-MD_fileIdentifier: Metadata fileIdentifier exists">
+          <con:assertion type="XQuery Match" name="M-01##M-01-MD_fileIdentifier: Metadata fileIdentifier exists" id="8fc6d4ef-7b02-49d2-b005-420f17a7ee7a">
             <con:configuration>
               <path>declare namespace gmd='http://www.isotc211.org/2005/gmd';
 
-&lt;result&gt;AssertionFailures: {
+&lt;result>AssertionFailures: {
 let $fileIdentifier:=//gmd:MD_Metadata/gmd:fileIdentifier
 return
 if (string-length($fileIdentifier)=0)
 then "there is no fileIdentifier defined in the Metadata."
 else "the Metadata contains a fileIdentifier."
 }
-&lt;/result&gt;</path>
-              <content>&lt;result&gt;AssertionFailures: the Metadata contains a fileIdentifier.&lt;/result&gt;</content>
+&lt;/result></path>
+              <content>&lt;result>AssertionFailures: the Metadata contains a fileIdentifier.&lt;/result></content>
               <allowWildcards>false</allowWildcards>
             </con:configuration>
           </con:assertion>
@@ -3050,9 +3050,9 @@ else "the Metadata contains a fileIdentifier."
           <con:parameters/>
         </con:config>
       </con:testStep>
-      <con:testStep type="goto" name="Conditional Goto Skip Scenario 1">
+      <con:testStep type="goto" name="Conditional Goto Skip Scenario 1" id="1bbc8947-8a58-4488-b8fe-5414ef2d66c2">
         <con:settings/>
-        <con:config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="con:GotoStep">
+        <con:config xsi:type="con:GotoStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
           <con:condition>
             <con:name>SkipScenario1</con:name>
             <con:type>XPATH</con:type>
@@ -3069,20 +3069,20 @@ empty(//inspire_dls:ExtendedCapabilities/inspire_common:MetadataUrl/inspire_comm
           </con:condition>
         </con:config>
       </con:testStep>
-      <con:testStep type="httprequest" name="Req 42 (Scenario 1) ExternalServiceMetadata">
+      <con:testStep type="httprequest" name="Req 42 (Scenario 1) ExternalServiceMetadata" id="82975352-cb2b-44ec-b974-efda201f09a0">
         <con:settings/>
-        <con:config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" method="GET" xsi:type="con:HttpRequest" name="Req 42 (Scenario 1) ExternalServiceMetadata">
+        <con:config method="GET" xsi:type="con:HttpRequest" name="Req 42 (Scenario 1) ExternalServiceMetadata" id="3aaf5017-4781-4220-a4ce-0ff5090c2d80" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
           <con:settings>
-            <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/&gt;</con:setting>
+            <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
           </con:settings>
           <con:endpoint xsi:nil="true"/>
           <con:request/>
-          <con:assertion type="Simple Schema Validator" name="M-01##M-01-ServiceMD-validates: ISO Metadata XSD validation" disabled="true">
+          <con:assertion type="Simple Schema Validator" name="M-01##M-01-ServiceMD-validates: ISO Metadata XSD validation" disabled="true" id="ac239f77-4ab4-4703-ba87-c52d15b901a4">
             <con:configuration>
               <pathToXSD>http://www.opengis.net/cat/csw/2.0.2 http://schemas.opengis.net/csw/2.0.2/CSW-discovery.xsd http://www.isotc211.org/2005/gmd http://schemas.opengis.net/iso/19139/20060504/gmd/gmd.xsd http://www.isotc211.org/2005/srv http://schemas.opengis.net/iso/19139/20060504/srv/srv.xsd</pathToXSD>
             </con:configuration>
           </con:assertion>
-          <con:assertion type="XQuery Match" name="M-01##M-01-ServiceMD_MD_Metadata: Metadata has ISO Metadata Root element (gmd_MD_Metadata exists)">
+          <con:assertion type="XQuery Match" name="M-01##M-01-ServiceMD_MD_Metadata: Metadata has ISO Metadata Root element (gmd_MD_Metadata exists)" id="ca0a90bd-7d1e-46fb-93c3-5607c047e249">
             <con:configuration>
               <path><![CDATA[declare namespace gmd='http://www.isotc211.org/2005/gmd';
 declare namespace csw='http://www.opengis.net/cat/csw/2.0.2';
@@ -3095,43 +3095,43 @@ then "the dataset metadata has an ISO Metadata root element (gmd:Metadata exists
 else "the referred dataset Metadata document does not seem to be ISO Metadata. It does not have an XML element gmd:Metadata. Check the URL in the MetadataURL of the layer. URL: '${#urlToTes.replace("&","&amp;")}'"
 }
 </result>]]></path>
-              <content>&lt;result&gt;AssertionFailures: the dataset metadata has an ISO Metadata root element (gmd:Metadata exists). URL: '${#urlToTest.replace("&amp;","&amp;amp;")}'&lt;/result&gt;</content>
+              <content>&lt;result>AssertionFailures: the dataset metadata has an ISO Metadata root element (gmd:Metadata exists). URL: '${#urlToTest.replace("&amp;","&amp;amp;")}'&lt;/result></content>
               <allowWildcards>false</allowWildcards>
             </con:configuration>
           </con:assertion>
-          <con:assertion type="XQuery Match" name="M-01##M-01-ServiceMD_coupledResource: Metadata contains a coupled resource (srv:operatesOn)">
+          <con:assertion type="XQuery Match" name="M-01##M-01-ServiceMD_coupledResource: Metadata contains a coupled resource (srv:operatesOn)" id="cef2abfe-77a5-4e98-91cf-d78465bf2f87">
             <con:configuration>
               <path>declare namespace gmd='http://www.isotc211.org/2005/gmd';
 declare namespace csw='http://www.opengis.net/cat/csw/2.0.2';
 declare namespace srv='http://www.isotc211.org/2005/srv';
 
-&lt;result&gt;AssertionFailures: {
+&lt;result>AssertionFailures: {
 let $value:=//gmd:MD_Metadata/gmd:identificationInfo/srv:SV_ServiceIdentification/srv:operatesOn
 return
 if (exists($value))
 then ""
 else "The metadata of the WFS does not contain any coupled resource (srv:operatesOn)"
 }
-&lt;/result&gt;</path>
-              <content>&lt;result&gt;AssertionFailures: &lt;/result&gt;</content>
+&lt;/result></path>
+              <content>&lt;result>AssertionFailures: &lt;/result></content>
               <allowWildcards>false</allowWildcards>
             </con:configuration>
           </con:assertion>
-          <con:assertion type="XQuery Match" name="M-01##M-01-ServiceMD_coupledResourceHref: srv:operatesOn contains a reference to a metadata document">
+          <con:assertion type="XQuery Match" name="M-01##M-01-ServiceMD_coupledResourceHref: srv:operatesOn contains a reference to a metadata document" id="e86dc95a-c3bd-4cd7-836f-6d9c1ad12233">
             <con:configuration>
               <path>declare namespace gmd='http://www.isotc211.org/2005/gmd';
 declare namespace csw='http://www.opengis.net/cat/csw/2.0.2';
 declare namespace srv='http://www.isotc211.org/2005/srv';
 declare namespace xlink='http://www.w3.org/1999/xlink';
 
-&lt;result&gt;AssertionFailures: {
+&lt;result>AssertionFailures: {
 for $operatesOn in //gmd:MD_Metadata/gmd:identificationInfo/srv:SV_ServiceIdentification/srv:operatesOn
 where (empty($operatesOn/@xlink:href))
 return
 concat ("The element srv:operatesOn with the attribute uuidref: ", $operatesOn/@uuidref, " in the metadata of the WFS has no xlink:href attribute. It does not refer to a metadata document.")
 }
-&lt;/result&gt;</path>
-              <content>&lt;result&gt;AssertionFailures: &lt;/result&gt;</content>
+&lt;/result></path>
+              <content>&lt;result>AssertionFailures: &lt;/result></content>
               <allowWildcards>false</allowWildcards>
             </con:configuration>
           </con:assertion>
@@ -3143,9 +3143,9 @@ concat ("The element srv:operatesOn with the attribute uuidref: ", $operatesOn/@
           <con:parameters/>
         </con:config>
       </con:testStep>
-      <con:testStep type="transfer" name="Property Transfer Metadata Identifiers">
+      <con:testStep type="transfer" name="Property Transfer Metadata Identifiers" id="7e049b2b-5e07-49a5-bc67-73aad4e7c6d1">
         <con:settings/>
-        <con:config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="con:PropertyTransfersStep">
+        <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
           <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="false" ignoreEmpty="true" transferToAll="false" useXQuery="false" entitize="false" transferChildNodes="false">
             <con:name>datasetIdentifiersOperatesOn</con:name>
             <con:sourceType>ResponseAsXml</con:sourceType>
@@ -3156,7 +3156,7 @@ declare namespace gco='http://www.isotc211.org/2005/gco';
 string-join(//srv:operatesOn/@uuidref,',')</con:sourcePath>
             <con:targetType>datasetIdentifiersList</con:targetType>
             <con:targetStep>#Project#</con:targetStep>
-          </con:transfers>
+          <con:upgraded>true</con:upgraded></con:transfers>
           <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false">
             <con:name>ServiceMetadataRecord</con:name>
             <con:sourceType>ResponseAsXml</con:sourceType>
@@ -3164,10 +3164,10 @@ string-join(//srv:operatesOn/@uuidref,',')</con:sourcePath>
             <con:sourcePath/>
             <con:targetType>ServiceMetadataRecord</con:targetType>
             <con:targetStep>Transfer_Properties</con:targetStep>
-          </con:transfers>
+          <con:upgraded>true</con:upgraded></con:transfers>
         </con:config>
       </con:testStep>
-      <con:testStep type="groovy" name="RunMetadataDatasetFromServiceMetadata">
+      <con:testStep type="groovy" name="RunMetadataDatasetFromServiceMetadata" id="44fea6a3-4f7a-49fe-b90b-fb2857586789">
         <con:settings/>
         <con:config>
           <script>import de.interactive_instruments.xtf.*;
@@ -3197,15 +3197,15 @@ testRunner.gotoStepByName("Property Transfer (Finish Goto)");
 </script>
         </con:config>
       </con:testStep>
-      <con:testStep type="httprequest" name="GetMetadataDatasetFromServiceMetadata">
+      <con:testStep type="httprequest" name="GetMetadataDatasetFromServiceMetadata" id="ab536774-7b74-46eb-afed-e9bb81f9a204">
         <con:settings/>
-        <con:config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" method="GET" xsi:type="con:HttpRequest" name="GetMetadataDatasetFromServiceMetadata">
+        <con:config method="GET" xsi:type="con:HttpRequest" name="GetMetadataDatasetFromServiceMetadata" id="d2b90ae5-761f-482b-b231-3f638a34959b" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
           <con:settings>
-            <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/&gt;</con:setting>
+            <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
           </con:settings>
           <con:endpoint>${#urlToTest}</con:endpoint>
           <con:request/>
-          <con:assertion type="XQuery Match" name="M-01##M-01-MD_Metadata2: Metadata has root element MD_Metadata">
+          <con:assertion type="XQuery Match" name="M-01##M-01-MD_Metadata2: Metadata has root element MD_Metadata" id="40b9c1ef-90c2-4014-9b03-7783a87646a1">
             <con:configuration>
               <path><![CDATA[declare namespace gmd='http://www.isotc211.org/2005/gmd';
 declare namespace csw='http://www.opengis.net/cat/csw/2.0.2';
@@ -3218,40 +3218,40 @@ then "the dataset metadata has an ISO Metadata root element (gmd:Metadata exists
 else "the referred dataset Metadata document does not seem to be ISO Metadata. It does not have an XML element gmd:Metadata. Check the URL in the MetadataURL of the layer. URL: '${#urlToTes.replace("&","&amp;")}'"
 }
 </result>]]></path>
-              <content>&lt;result&gt;AssertionFailures: the dataset metadata has an ISO Metadata root element (gmd:Metadata exists). URL: '${#urlToTest.replace("&amp;","&amp;amp;")}'&lt;/result&gt;</content>
+              <content>&lt;result>AssertionFailures: the dataset metadata has an ISO Metadata root element (gmd:Metadata exists). URL: '${#urlToTest.replace("&amp;","&amp;amp;")}'&lt;/result></content>
               <allowWildcards>false</allowWildcards>
             </con:configuration>
           </con:assertion>
-          <con:assertion type="XQuery Match" name="M-01##M-01-MD_fileIdentifier2: Metadata fileIdentifier exists">
+          <con:assertion type="XQuery Match" name="M-01##M-01-MD_fileIdentifier2: Metadata fileIdentifier exists" id="c0f9f663-59b2-4491-8f5e-3d0c922f6e52">
             <con:configuration>
               <path>declare namespace gmd='http://www.isotc211.org/2005/gmd';
 
-&lt;result&gt;AssertionFailures: {
+&lt;result>AssertionFailures: {
 let $fileIdentifier:=//gmd:MD_Metadata/gmd:fileIdentifier
 return
 if (exists($fileIdentifier))
 then "the Metadata contains a fileIdentifier."
 else "there is no fileIdentifier defined in the Metadata."
 }
-&lt;/result&gt;</path>
-              <content>&lt;result&gt;AssertionFailures: the Metadata contains a fileIdentifier.&lt;/result&gt;</content>
+&lt;/result></path>
+              <content>&lt;result>AssertionFailures: the Metadata contains a fileIdentifier.&lt;/result></content>
               <allowWildcards>false</allowWildcards>
             </con:configuration>
           </con:assertion>
-          <con:assertion type="XQuery Match" name="M-01##M-01-MD_identifierInServiceMD: The MD_Identifier exists in the ServiceMetadata">
+          <con:assertion type="XQuery Match" name="M-01##M-01-MD_identifierInServiceMD: The MD_Identifier exists in the ServiceMetadata" id="c95f7acf-dea5-4b8b-afdf-ad3f88dbfb92">
             <con:configuration>
               <path>declare namespace gmd='http://www.isotc211.org/2005/gmd';
 declare namespace gco='http://www.isotc211.org/2005/gco';
 
-&lt;result&gt;AssertionFailures: {
+&lt;result>AssertionFailures: {
 let $id:=//gmd:MD_DataIdentification/gmd:citation/gmd:CI_Citation/gmd:identifier/gmd:MD_Identifier/gmd:code/gco:CharacterString
 return
 if (contains('${#Project#datasetIdentifiersList}', $id))
 then "the MD_Identifier exists in the Service metadata."
 else concat("the MD_Identifier ",$id," does not exist in the service metadata. The MD_identifier is found in the metadata document at URL: '${#urlToTest.replace("&amp;","&amp;amp;")}'. The service metadata refers to these identifiers: '${#Project#datasetIdentifiersList}'")
 }
-&lt;/result&gt;</path>
-              <content>&lt;result&gt;AssertionFailures: the MD_Identifier exists in the Service metadata.&lt;/result&gt;</content>
+&lt;/result></path>
+              <content>&lt;result>AssertionFailures: the MD_Identifier exists in the Service metadata.&lt;/result></content>
               <allowWildcards>false</allowWildcards>
             </con:configuration>
           </con:assertion>
@@ -3263,9 +3263,9 @@ else concat("the MD_Identifier ",$id," does not exist in the service metadata. T
           <con:parameters/>
         </con:config>
       </con:testStep>
-      <con:testStep type="transfer" name="Property Transfer (Finish Goto)">
+      <con:testStep type="transfer" name="Property Transfer (Finish Goto)" id="bfd4c07b-cc5c-4f5f-aeed-acc070b8826a">
         <con:settings/>
-        <con:config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="con:PropertyTransfersStep"/>
+        <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
       </con:testStep>
       <con:properties>
         <con:property>
@@ -3288,14 +3288,14 @@ else concat("the MD_Identifier ",$id," does not exist in the service metadata. T
     </con:testCase>
     <con:properties/>
   </con:testSuite>
-  <con:testSuite name="O-02 - DirectAccessWFS">
+  <con:testSuite name="O-02 - DirectAccessWFS" id="8c33be8c-f902-4faa-b174-ea04662ec37b">
     <con:settings/>
     <con:runType>SEQUENTIAL</con:runType>
     <con:testCase failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="BasicWFS - GetFeature and GetPropertyValue- Optional" searchProperties="true" id="2f38ce68-97d2-4426-a8eb-f12fafcf60dd">
       <con:settings/>
-      <con:testStep type="properties" name="Properties">
+      <con:testStep type="properties" name="Properties" id="7a9da0a0-f4cf-4880-baa4-f2c778423c8c">
         <con:settings/>
-        <con:config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="con:PropertiesStep" saveFirst="true">
+        <con:config xsi:type="con:PropertiesStep" saveFirst="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
           <con:properties>
             <con:property>
               <con:name>typeNames</con:name>
@@ -3312,29 +3312,29 @@ else concat("the MD_Identifier ",$id," does not exist in the service metadata. T
           </con:properties>
         </con:config>
       </con:testStep>
-      <con:testStep type="httprequest" name="GetCapabilities">
+      <con:testStep type="httprequest" name="GetCapabilities" id="fb4ded48-42d1-401a-8f1c-8518c022ada0">
         <con:settings/>
-        <con:config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" method="GET" xsi:type="con:HttpRequest" name="GetCapabilities">
+        <con:config method="GET" xsi:type="con:HttpRequest" name="GetCapabilities" id="7cacc448-a59e-4203-9932-e7732e0baa22" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
           <con:settings>
-            <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/&gt;</con:setting>
+            <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
           </con:settings>
           <con:endpoint>${#Project#serviceEndpoint}</con:endpoint>
           <con:request/>
-          <con:assertion type="XQuery Match" name="O-02##O-02-ImplementsBasicWFS: ImplementsBasicWFS Declared">
+          <con:assertion type="XQuery Match" name="O-02##O-02-ImplementsBasicWFS: ImplementsBasicWFS Declared" id="7717ea3c-96ce-4e04-9ebb-4b8020628050">
             <con:configuration>
               <path>declare namespace wfs='http://www.opengis.net/wfs/2.0';
 declare namespace gml='http://www.opengis.net/gml/3.2';
 declare namespace ows='http://www.opengis.net/ows/1.1';
 
-&lt;result&gt;AssertionFailures: {
+&lt;result>AssertionFailures: {
 let $value:=//ows:Constraint[@name='ImplementsBasicWFS' and ./ows:DefaultValue='TRUE']
 return
 if (exists($value))
 then "ImplementsBasicWFS is declared."
 else "The ows:Constraint ImplementsBasicWFS is not advertized in the Capabilities."
 }
-&lt;/result&gt;</path>
-              <content>&lt;result&gt;AssertionFailures: ImplementsBasicWFS is declared.&lt;/result&gt;</content>
+&lt;/result></path>
+              <content>&lt;result>AssertionFailures: ImplementsBasicWFS is declared.&lt;/result></content>
               <allowWildcards>false</allowWildcards>
             </con:configuration>
           </con:assertion>
@@ -3359,9 +3359,9 @@ else "The ows:Constraint ImplementsBasicWFS is not advertized in the Capabilitie
           </con:parameters>
         </con:config>
       </con:testStep>
-      <con:testStep type="transfer" name="Property Transfer">
+      <con:testStep type="transfer" name="Property Transfer" id="a6802a00-b50e-40d9-981f-7369f0913c7a">
         <con:settings/>
-        <con:config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="con:PropertyTransfersStep">
+        <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
           <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" useXQuery="false" entitize="false" transferChildNodes="false">
             <con:name>typeNames</con:name>
             <con:sourceType>ResponseAsXml</con:sourceType>
@@ -3373,7 +3373,7 @@ declare namespace xlink='http://www.w3.org/1999/xlink';
 (//wfs:FeatureTypeList/wfs:FeatureType[not(contains(',${#Project#excludeFeatureTypes},',concat(',',./wfs:Name,',')))]/wfs:Name)[1]</con:sourcePath>
             <con:targetType>typeNames</con:targetType>
             <con:targetStep>#TestSuite#</con:targetStep>
-          </con:transfers>
+          <con:upgraded>true</con:upgraded></con:transfers>
           <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" entitize="false" transferToAll="false" ignoreEmpty="false">
             <con:name>GetFeatureURL</con:name>
             <con:sourceType>ResponseAsXml</con:sourceType>
@@ -3385,7 +3385,7 @@ declare namespace xlink='http://www.w3.org/1999/xlink';
 //ows:Operation[@name='GetFeature'][1]/ows:DCP/ows:HTTP/ows:Get/@xlink:href</con:sourcePath>
             <con:targetType>GetFeatureURL</con:targetType>
             <con:targetStep>#Project#</con:targetStep>
-          </con:transfers>
+          <con:upgraded>true</con:upgraded></con:transfers>
           <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" disabled="false" entitize="false" ignoreEmpty="false" transferChildNodes="false" transferToAll="false" useXQuery="false">
             <con:name>PropertyValueURL</con:name>
             <con:sourceType>ResponseAsXml</con:sourceType>
@@ -3398,18 +3398,18 @@ declare namespace xlink='http://www.w3.org/1999/xlink';
             <con:targetType>GetPropertyValueURL</con:targetType>
             <con:targetStep>#TestSuite#</con:targetStep>
             <con:targetPath xsi:nil="true"/>
-          </con:transfers>
+          <con:upgraded>true</con:upgraded></con:transfers>
         </con:config>
       </con:testStep>
-      <con:testStep type="httprequest" name="GetFeature">
+      <con:testStep type="httprequest" name="GetFeature" id="135e2a81-5086-422e-a035-c1a216178946">
         <con:settings/>
-        <con:config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" method="GET" xsi:type="con:HttpRequest" name="GetFeature">
+        <con:config method="GET" xsi:type="con:HttpRequest" name="GetFeature" id="a60a5da2-4c1f-43ab-8d6c-869c38662818" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
           <con:settings>
-            <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/&gt;</con:setting>
+            <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
           </con:settings>
           <con:endpoint>${#Project#GetFeatureURL}</con:endpoint>
           <con:request/>
-          <con:assertion type="Response SLA Assertion" name="Response SLA">
+          <con:assertion type="Response SLA Assertion" name="Response SLA" id="3079a922-b705-4cb2-8e9a-5adcbd0e7d52">
             <con:configuration>
               <SLA>30000</SLA>
             </con:configuration>
@@ -3451,9 +3451,9 @@ declare namespace xlink='http://www.w3.org/1999/xlink';
           </con:parameters>
         </con:config>
       </con:testStep>
-      <con:testStep type="transfer" name="Property Transfer Valuereference">
+      <con:testStep type="transfer" name="Property Transfer Valuereference" id="4cec0686-c676-4b2f-99a6-dddb60e69808">
         <con:settings/>
-        <con:config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="con:PropertyTransfersStep">
+        <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
           <con:transfers disabled="true" setNullOnMissingSource="true" transferTextContent="true" failOnError="true" entitize="false" ignoreEmpty="false" useXQuery="false" transferChildNodes="false" transferToAll="false">
             <con:name>ValueReferenceFromFeature</con:name>
             <con:sourceType>ResponseAsXml</con:sourceType>
@@ -3463,11 +3463,11 @@ declare namespace ows='http://www.opengis.net/ows/1.1';
 declare namespace xlink='http://www.w3.org/1999/xlink';
 declare namespace gml='http://www.opengis.net/gml/3.2';
 
-local-name((//*[namespace-uri(.)!='http://www.opengis.net/gml/3.2' and namespace-uri(.)!='urn:x-inspire:specification:gmlas:BaseTypes:3.2' and string-length(.)&gt;0 and not(./*)])[1])
+local-name((//*[namespace-uri(.)!='http://www.opengis.net/gml/3.2' and namespace-uri(.)!='urn:x-inspire:specification:gmlas:BaseTypes:3.2' and string-length(.)>0 and not(./*)])[1])
 </con:sourcePath>
             <con:targetType>valuereference</con:targetType>
             <con:targetStep>GetPropertyValue</con:targetStep>
-          </con:transfers>
+          <con:upgraded>true</con:upgraded></con:transfers>
           <con:transfers disabled="true" setNullOnMissingSource="true" transferTextContent="true" failOnError="true" entitize="false" transferToAll="false" transferChildNodes="false" useXQuery="false" ignoreEmpty="false">
             <con:name>Namespaces</con:name>
             <con:sourceType>ResponseAsXml</con:sourceType>
@@ -3477,11 +3477,11 @@ declare namespace ows='http://www.opengis.net/ows/1.1';
 declare namespace xlink='http://www.w3.org/1999/xlink';
 declare namespace gml='http://www.opengis.net/gml/3.2';
 
-concat('xmlns(',substring-before(name((//*[namespace-uri(.)!='http://www.opengis.net/gml/3.2' and namespace-uri(.)!='urn:x-inspire:specification:gmlas:BaseTypes:3.2' and string-length(.)&gt;0 and not(./*)])[1]),concat(':',local-name((//*[namespace-uri(.)!='http://www.opengis.net/gml/3.2' and namespace-uri(.)!='urn:x-inspire:specification:gmlas:BaseTypes:3.2' and string-length(.)&gt;0 and not(./*)])[1]))),',',namespace-uri((//*[namespace-uri(.)!='http://www.opengis.net/gml/3.2' and namespace-uri(.)!='urn:x-inspire:specification:gmlas:BaseTypes:3.2' and string-length(.)&gt;0 and not(./*)])[1]),')')
+concat('xmlns(',substring-before(name((//*[namespace-uri(.)!='http://www.opengis.net/gml/3.2' and namespace-uri(.)!='urn:x-inspire:specification:gmlas:BaseTypes:3.2' and string-length(.)>0 and not(./*)])[1]),concat(':',local-name((//*[namespace-uri(.)!='http://www.opengis.net/gml/3.2' and namespace-uri(.)!='urn:x-inspire:specification:gmlas:BaseTypes:3.2' and string-length(.)>0 and not(./*)])[1]))),',',namespace-uri((//*[namespace-uri(.)!='http://www.opengis.net/gml/3.2' and namespace-uri(.)!='urn:x-inspire:specification:gmlas:BaseTypes:3.2' and string-length(.)>0 and not(./*)])[1]),')')
 </con:sourcePath>
             <con:targetType>namespaces</con:targetType>
             <con:targetStep>GetPropertyValue</con:targetStep>
-          </con:transfers>
+          <con:upgraded>true</con:upgraded></con:transfers>
           <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" entitize="false" transferToAll="false">
             <con:name>FirstTextualProperty</con:name>
             <con:sourceType>ResponseAsXml</con:sourceType>
@@ -3491,10 +3491,10 @@ declare namespace ows='http://www.opengis.net/ows/1.1';
 declare namespace xlink='http://www.w3.org/1999/xlink';
 declare namespace gml='http://www.opengis.net/gml/3.2';
 
-local-name((//*[namespace-uri(.)!='http://www.opengis.net/gml/3.2' and namespace-uri(.)!='urn:x-inspire:specification:gmlas:BaseTypes:3.2' and string-length(.)&gt;0 and not(./*)])[1])</con:sourcePath>
+local-name((//*[namespace-uri(.)!='http://www.opengis.net/gml/3.2' and namespace-uri(.)!='urn:x-inspire:specification:gmlas:BaseTypes:3.2' and string-length(.)>0 and not(./*)])[1])</con:sourcePath>
             <con:targetType>FirstTextualProperty</con:targetType>
             <con:targetStep>#TestSuite#</con:targetStep>
-          </con:transfers>
+          <con:upgraded>true</con:upgraded></con:transfers>
           <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" disabled="false" entitize="false" ignoreEmpty="false" transferChildNodes="false" transferToAll="false" useXQuery="false">
             <con:name>NamespacesAssertion</con:name>
             <con:sourceType>ResponseAsXml</con:sourceType>
@@ -3504,11 +3504,11 @@ declare namespace ows='http://www.opengis.net/ows/1.1';
 declare namespace xlink='http://www.w3.org/1999/xlink';
 declare namespace gml='http://www.opengis.net/gml/3.2';
 
-namespace-uri((//*[namespace-uri(.)!='http://www.opengis.net/gml/3.2' and namespace-uri(.)!='urn:x-inspire:specification:gmlas:BaseTypes:3.2' and string-length(.)&gt;0 and not(./*)])[1])</con:sourcePath>
+namespace-uri((//*[namespace-uri(.)!='http://www.opengis.net/gml/3.2' and namespace-uri(.)!='urn:x-inspire:specification:gmlas:BaseTypes:3.2' and string-length(.)>0 and not(./*)])[1])</con:sourcePath>
             <con:targetType>FeatureTypeNamespace</con:targetType>
             <con:targetStep>#TestSuite#</con:targetStep>
             <con:targetPath xsi:nil="true"/>
-          </con:transfers>
+          <con:upgraded>true</con:upgraded></con:transfers>
           <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" disabled="false" entitize="false" ignoreEmpty="false" transferChildNodes="false" transferToAll="false" useXQuery="false">
             <con:name>NamespacePrefix</con:name>
             <con:sourceType>ResponseAsXml</con:sourceType>
@@ -3518,11 +3518,11 @@ declare namespace ows='http://www.opengis.net/ows/1.1';
 declare namespace xlink='http://www.w3.org/1999/xlink';
 declare namespace gml='http://www.opengis.net/gml/3.2';
 
-substring-before(name((//*[namespace-uri(.)!='http://www.opengis.net/gml/3.2' and namespace-uri(.)!='urn:x-inspire:specification:gmlas:BaseTypes:3.2' and string-length(.)&gt;0 and not(./*)])[1]),concat(':',local-name((//*[namespace-uri(.)!='http://www.opengis.net/gml/3.2' and namespace-uri(.)!='urn:x-inspire:specification:gmlas:BaseTypes:3.2' and string-length(.)&gt;0 and not(./*)])[1])))</con:sourcePath>
+substring-before(name((//*[namespace-uri(.)!='http://www.opengis.net/gml/3.2' and namespace-uri(.)!='urn:x-inspire:specification:gmlas:BaseTypes:3.2' and string-length(.)>0 and not(./*)])[1]),concat(':',local-name((//*[namespace-uri(.)!='http://www.opengis.net/gml/3.2' and namespace-uri(.)!='urn:x-inspire:specification:gmlas:BaseTypes:3.2' and string-length(.)>0 and not(./*)])[1])))</con:sourcePath>
             <con:targetType>FeatureTypeNamespacePrefix</con:targetType>
             <con:targetStep>#TestSuite#</con:targetStep>
             <con:targetPath xsi:nil="true"/>
-          </con:transfers>
+          <con:upgraded>true</con:upgraded></con:transfers>
         </con:config>
       </con:testStep>
 -      <!-- <con:testStep type="httprequest" name="GetPropertyValue">
@@ -3618,9 +3618,9 @@ else "The GetPropertyValue response does not contain a ValueCollection."
     <con:testCase failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="BasicWFS - Minimum Spatial Filter - Optional" searchProperties="true" id="167cf4ae-ca58-4597-8976-6eb5f70114d6">
       <con:description>This test checks if the BBOX filter is advertized in the Capabilities. A more profound test, checking correctness of the execution of a BBOX filter, is out of scope. This requires knowledge of the data offered by the WFS</con:description>
       <con:settings/>
-      <con:testStep type="properties" name="Properties">
+      <con:testStep type="properties" name="Properties" id="61e8a370-6a13-4eb1-9fb6-8c933aac17f2">
         <con:settings/>
-        <con:config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="con:PropertiesStep" saveFirst="true">
+        <con:config xsi:type="con:PropertiesStep" saveFirst="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
           <con:properties>
             <con:property>
               <con:name>Capabilities</con:name>
@@ -3645,30 +3645,30 @@ else "The GetPropertyValue response does not contain a ValueCollection."
           </con:properties>
         </con:config>
       </con:testStep>
-      <con:testStep type="httprequest" name="GetCapabilities">
+      <con:testStep type="httprequest" name="GetCapabilities" id="b3df6c96-6bde-4906-8078-6b74fd1c30da">
         <con:settings/>
-        <con:config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" method="GET" xsi:type="con:HttpRequest" name="GetCapabilities">
+        <con:config method="GET" xsi:type="con:HttpRequest" name="GetCapabilities" id="9f753ea4-16fe-4183-9f1f-69da93c48a01" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
           <con:settings>
-            <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/&gt;</con:setting>
+            <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
           </con:settings>
           <con:endpoint>${#Project#serviceEndpoint}</con:endpoint>
           <con:request/>
-          <con:assertion type="XQuery Match" name="O-02##O-02-SpatialOperatorBBOX: SpatialOperator BBOX Declared">
+          <con:assertion type="XQuery Match" name="O-02##O-02-SpatialOperatorBBOX: SpatialOperator BBOX Declared" id="8cd1dc97-b073-47b5-a8a4-175f60fe0da1">
             <con:configuration>
               <path>declare namespace wfs='http://www.opengis.net/wfs/2.0';
 declare namespace gml='http://www.opengis.net/gml/3.2';
 declare namespace ows='http://www.opengis.net/ows/1.1';
 declare namespace fes='http://www.opengis.net/fes/2.0';
 
-&lt;result&gt;AssertionFailures: {
+&lt;result>AssertionFailures: {
 let $value:=//fes:SpatialOperator[@name='BBOX']
 return
 if (exists($value))
 then "SpatialOperator BBOX is declared."
 else "The SpatialOperator BBOX is not declared in the Capabilities."
 }
-&lt;/result&gt;</path>
-              <content>&lt;result&gt;AssertionFailures: SpatialOperator BBOX is declared.&lt;/result&gt;</content>
+&lt;/result></path>
+              <content>&lt;result>AssertionFailures: SpatialOperator BBOX is declared.&lt;/result></content>
               <allowWildcards>false</allowWildcards>
             </con:configuration>
           </con:assertion>
@@ -3714,30 +3714,30 @@ else "The SpatialOperator BBOX is not declared in the Capabilities."
     </con:testCase>
     <con:testCase failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="Resource Identification and Ad Hoc Query - Optional" searchProperties="true" id="52d57777-f3b8-417f-b360-82321014a96a">
       <con:settings/>
-      <con:testStep type="httprequest" name="GetCapabilities">
+      <con:testStep type="httprequest" name="GetCapabilities" id="8c801864-f195-4e26-8515-f53292475000">
         <con:settings/>
-        <con:config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" method="GET" xsi:type="con:HttpRequest" name="GetCapabilities">
+        <con:config method="GET" xsi:type="con:HttpRequest" name="GetCapabilities" id="1552afbf-fa15-45c8-bf86-231bcfb0775a" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
           <con:settings>
-            <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/&gt;</con:setting>
+            <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
           </con:settings>
           <con:endpoint>${#Project#serviceEndpoint}</con:endpoint>
           <con:request/>
-          <con:assertion type="XQuery Match" name="O-02##O-02-ResourceIdentification: Capabilities advertizes fes:ResourceId (ResourceIdentification)">
+          <con:assertion type="XQuery Match" name="O-02##O-02-ResourceIdentification: Capabilities advertizes fes:ResourceId (ResourceIdentification)" id="4adb5a5b-538b-4a24-9738-d5099d5ec417">
             <con:configuration>
               <path>declare namespace wfs='http://www.opengis.net/wfs/2.0';
 declare namespace gml='http://www.opengis.net/gml/3.2';
 declare namespace ows='http://www.opengis.net/ows/1.1';
 declare namespace fes='http://www.opengis.net/fes/2.0';
 
-&lt;result&gt;AssertionFailures: {
+&lt;result>AssertionFailures: {
 let $value:=//fes:Id_Capabilities/fes:ResourceIdentifier[@name='fes:ResourceId']
 return
 if (exists($value))
 then "Capabilities advertizes fes:ResourceId (ResourceIdentification)."
 else "The Capabilities does not advertize fes:ResourceId for ResourceIdentification"
 }
-&lt;/result&gt;</path>
-              <content>&lt;result&gt;AssertionFailures: Capabilities advertizes fes:ResourceId (ResourceIdentification).&lt;/result&gt;</content>
+&lt;/result></path>
+              <content>&lt;result>AssertionFailures: Capabilities advertizes fes:ResourceId (ResourceIdentification).&lt;/result></content>
               <allowWildcards>false</allowWildcards>
             </con:configuration>
           </con:assertion>
@@ -3765,16 +3765,16 @@ else "The Capabilities does not advertize fes:ResourceId for ResourceIdentificat
           </con:parameters>
         </con:config>
       </con:testStep>
-      <con:testStep type="restrequest" name="GetFeatureWithResourceId" disabled="true">
+      <con:testStep type="restrequest" name="GetFeatureWithResourceId" disabled="true" id="d63c92e5-e4e3-43b3-9ac2-8dc26628cb81">
         <con:settings/>
-        <con:config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" service="service" resourcePath="" methodName="GetFeature" xsi:type="con:RestRequestStep">
-          <con:restRequest name="GetFeatureWithResourceId" mediaType="application/xml">
+        <con:config service="service" resourcePath="" methodName="GetFeature" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:restRequest name="GetFeatureWithResourceId" mediaType="application/xml" id="efdb027f-6cba-4660-a7f7-424e5feea32e">
             <con:settings>
-              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/&gt;</con:setting>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
             </con:settings>
             <con:endpoint>${#Project#GetFeatureURL}</con:endpoint>
             <con:request/>
-            <con:assertion type="XPath Match" name="Response contains Feature with an id identical to the requested ResourceId">
+            <con:assertion type="XPath Match" name="Response contains Feature with an id identical to the requested ResourceId" id="2867cc95-036a-4a3c-943c-3a3aa92ce53c">
               <con:configuration>
                 <path>declare namespace wfs='http://www.opengis.net/wfs/2.0';
 declare namespace gml='http://www.opengis.net/gml/3.2';
@@ -3787,7 +3787,7 @@ exists(//wfs:member/*[@gml:id='${#Project#FirstFeatureId}'])</path>
                 <acceptValidXPath>false</acceptValidXPath>
               </con:configuration>
             </con:assertion>
-            <con:assertion type="XPath Match" name="Response contains exactly 1 feature (wfs:member)">
+            <con:assertion type="XPath Match" name="Response contains exactly 1 feature (wfs:member)" id="e3592360-fa9a-433a-a44e-c924677d5fc9">
               <con:configuration>
                 <path>declare namespace wfs='http://www.opengis.net/wfs/2.0';
 declare namespace gml='http://www.opengis.net/gml/3.2';
@@ -3839,16 +3839,16 @@ count(//wfs:member)</path>
           </con:restRequest>
         </con:config>
       </con:testStep>
-      <con:testStep type="restrequest" name="GetFeatureWithResourceIdXMLFilter" disabled="true">
+      <con:testStep type="restrequest" name="GetFeatureWithResourceIdXMLFilter" disabled="true" id="4ac145a1-d875-4edf-ac29-773373e5aaf5">
         <con:settings/>
-        <con:config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" service="service" resourcePath="" methodName="GetFeature" xsi:type="con:RestRequestStep">
-          <con:restRequest name="GetFeatureWithResourceIdXMLFilter" mediaType="application/xml">
+        <con:config service="service" resourcePath="" methodName="GetFeature" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:restRequest name="GetFeatureWithResourceIdXMLFilter" mediaType="application/xml" id="d4ddfbd7-57c1-4bff-8fc3-f6981d301c98">
             <con:settings>
-              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/&gt;</con:setting>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
             </con:settings>
             <con:endpoint>${#Project#GetFeatureURL}</con:endpoint>
             <con:request/>
-            <con:assertion type="XPath Match" name="Response contains Feature with an id identical to the requested ResourceId">
+            <con:assertion type="XPath Match" name="Response contains Feature with an id identical to the requested ResourceId" id="45f97bfe-9424-4e16-973c-45ceee9457ec">
               <con:configuration>
                 <path>declare namespace wfs='http://www.opengis.net/wfs/2.0';
 declare namespace gml='http://www.opengis.net/gml/3.2';
@@ -3861,7 +3861,7 @@ exists(//wfs:member/*[@gml:id='${#Project#FirstFeatureId}'])</path>
                 <acceptValidXPath>false</acceptValidXPath>
               </con:configuration>
             </con:assertion>
-            <con:assertion type="XPath Match" name="Response contains exactly 1 feature (wfs:member)">
+            <con:assertion type="XPath Match" name="Response contains exactly 1 feature (wfs:member)" id="a5bd9bea-0d2d-4f27-964f-35473e93065c">
               <con:configuration>
                 <path>declare namespace wfs='http://www.opengis.net/wfs/2.0';
 declare namespace gml='http://www.opengis.net/gml/3.2';
@@ -3880,7 +3880,7 @@ count(//wfs:member)</path>
             <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
             <con:jmsPropertyConfig/>
             <con:parameters>
-              <con:entry key="filter" value="&lt;fes:Filter xmlns:fes=&quot;http://www.opengis.net/fes/2.0&quot;&gt;&lt;fes:ResourceId rid=&quot;${#Project#FirstFeatureId}&quot;/&gt;&lt;/fes:Filter&gt;"/>
+              <con:entry key="filter" value="&lt;fes:Filter xmlns:fes=&quot;http://www.opengis.net/fes/2.0&quot;>&lt;fes:ResourceId rid=&quot;${#Project#FirstFeatureId}&quot;/>&lt;/fes:Filter>"/>
               <con:entry key="typeNames" value="${#TestSuite#typeNames}"/>
               <con:entry key="REQUEST" value="GetFeature"/>
               <con:entry key="count" value="2"/>
@@ -3913,30 +3913,30 @@ count(//wfs:member)</path>
           </con:restRequest>
         </con:config>
       </con:testStep>
-      <con:testStep type="httprequest" name="GetFeatureWithNon-ExistingResourceId">
+      <con:testStep type="httprequest" name="GetFeatureWithNon-ExistingResourceId" id="16283e07-61c3-40bb-9378-89f5da0f1067">
         <con:settings/>
-        <con:config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" method="GET" xsi:type="con:HttpRequest" name="GetFeatureWithNon-ExistingResourceId">
+        <con:config method="GET" xsi:type="con:HttpRequest" name="GetFeatureWithNon-ExistingResourceId" id="d41fdffc-a03e-4340-ab74-a5f8148a7f26" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
           <con:settings>
-            <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/&gt;</con:setting>
+            <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
           </con:settings>
           <con:endpoint>${#Project#GetFeatureURL}</con:endpoint>
           <con:request/>
-          <con:assertion type="XQuery Match" name="O-02##O-02-GetFeatureFalseID: Response with non-existing identifier does not contain any Features (wfs:member)">
+          <con:assertion type="XQuery Match" name="O-02##O-02-GetFeatureFalseID: Response with non-existing identifier does not contain any Features (wfs:member)" id="adbb41a3-204e-4a94-95ba-fd25469573f9">
             <con:configuration>
               <path>declare namespace wfs='http://www.opengis.net/wfs/2.0';
 declare namespace gml='http://www.opengis.net/gml/3.2';
 declare namespace ows='http://www.opengis.net/ows/1.1';
 declare namespace fes='http://www.opengis.net/fes/2.0';
 
-&lt;result&gt;AssertionFailures: {
+&lt;result>AssertionFailures: {
 let $value:=count(//wfs:member)
 return
 if ($value=0)
 then "Response with non-existing identifier does not contain any Features (wfs:member)."
 else "The response of a GetFeature request with a non-existing identifier returns a wfs:member. It should hev been empty."
 }
-&lt;/result&gt;</path>
-              <content>&lt;result&gt;AssertionFailures: Response with non-existing identifier does not contain any Features (wfs:member).&lt;/result&gt;</content>
+&lt;/result></path>
+              <content>&lt;result>AssertionFailures: Response with non-existing identifier does not contain any Features (wfs:member).&lt;/result></content>
               <allowWildcards>false</allowWildcards>
             </con:configuration>
           </con:assertion>
@@ -3994,68 +3994,68 @@ else "The response of a GetFeature request with a non-existing identifier return
     </con:testCase>
     <con:testCase failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="Minimum Standard Filter - Optional" searchProperties="true" id="2868fd59-7315-491c-b3da-54927a7c338e">
       <con:settings/>
-      <con:testStep type="httprequest" name="GetCapabilities">
+      <con:testStep type="httprequest" name="GetCapabilities" id="1c19c37c-4936-4212-b0d0-b381c9f04fb8">
         <con:settings/>
-        <con:config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" method="GET" xsi:type="con:HttpRequest" name="GetCapabilities">
+        <con:config method="GET" xsi:type="con:HttpRequest" name="GetCapabilities" id="4961a65a-ad35-4274-80a6-099c5ea46c56" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
           <con:settings>
-            <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/&gt;</con:setting>
+            <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
           </con:settings>
           <con:endpoint>${#Project#serviceEndpoint}</con:endpoint>
           <con:request/>
-          <con:assertion type="XQuery Match" name="O-02##O-02-ImplementsMinStandardFilter: Capabilities advertize ImplementsMinStandardFilter">
+          <con:assertion type="XQuery Match" name="O-02##O-02-ImplementsMinStandardFilter: Capabilities advertize ImplementsMinStandardFilter" id="e64118b3-a739-4c72-b513-d50eb683a32f">
             <con:configuration>
               <path>declare namespace wfs='http://www.opengis.net/wfs/2.0';
 declare namespace gml='http://www.opengis.net/gml/3.2';
 declare namespace ows='http://www.opengis.net/ows/1.1';
 declare namespace fes='http://www.opengis.net/fes/2.0';
 
-&lt;result&gt;AssertionFailures: {
+&lt;result>AssertionFailures: {
 let $value:=//fes:Constraint[@name='ImplementsMinStandardFilter']/ows:DefaultValue[.='TRUE']
 return
 if (exists($value))
 then "Capabilities advertizes ImplementsMinStandardFilter."
 else "Capabilities does NOT advertize ImplementsMinStandardFilter."
 }
-&lt;/result&gt;</path>
-              <content>&lt;result&gt;AssertionFailures: Capabilities advertizes ImplementsMinStandardFilter.&lt;/result&gt;</content>
+&lt;/result></path>
+              <content>&lt;result>AssertionFailures: Capabilities advertizes ImplementsMinStandardFilter.&lt;/result></content>
               <allowWildcards>false</allowWildcards>
             </con:configuration>
           </con:assertion>
-          <con:assertion type="XQuery Match" name="O-02##O-02-ComparisonOperators: Capabilities advertize all ComparisonOperators: PropertyIsEqualTo, PropertyIsNotEqualTo, PropertyIsLessThan, PropertyIsGreaterThan, PropertyIsLessThanOrEqualTo, PropertyIsGreaterThanOrEqualTo">
+          <con:assertion type="XQuery Match" name="O-02##O-02-ComparisonOperators: Capabilities advertize all ComparisonOperators: PropertyIsEqualTo, PropertyIsNotEqualTo, PropertyIsLessThan, PropertyIsGreaterThan, PropertyIsLessThanOrEqualTo, PropertyIsGreaterThanOrEqualTo" id="259520b1-a221-43e7-ab18-ed4c208147db">
             <con:configuration>
               <path>declare namespace wfs='http://www.opengis.net/wfs/2.0';
 declare namespace gml='http://www.opengis.net/gml/3.2';
 declare namespace ows='http://www.opengis.net/ows/1.1';
 declare namespace fes='http://www.opengis.net/fes/2.0';
 
-&lt;result&gt;AssertionFailures: {
+&lt;result>AssertionFailures: {
 let $mandatoryOperators := ('PropertyIsEqualTo','PropertyIsNotEqualTo','PropertyIsLessThan','PropertyIsGreaterThan','PropertyIsLessThanOrEqualTo','PropertyIsGreaterThanOrEqualTo')
 for $comparisonOperator in $mandatoryOperators
 where empty(//fes:Scalar_Capabilities/fes:ComparisonOperators/fes:ComparisonOperator[@name=$comparisonOperator])
 return
 concat("Operator ",$comparisonOperator," is not advertized.")
 }
-&lt;/result&gt;</path>
-              <content>&lt;result&gt;AssertionFailures: &lt;/result&gt;</content>
+&lt;/result></path>
+              <content>&lt;result>AssertionFailures: &lt;/result></content>
               <allowWildcards>false</allowWildcards>
             </con:configuration>
           </con:assertion>
-          <con:assertion type="XQuery Match" name="O-02##O-02-LogicalOperators: Capabilities advertize logical operators">
+          <con:assertion type="XQuery Match" name="O-02##O-02-LogicalOperators: Capabilities advertize logical operators" id="62ba2f09-4be2-40c8-a050-e3ddc3e643dc">
             <con:configuration>
               <path>declare namespace wfs='http://www.opengis.net/wfs/2.0';
 declare namespace gml='http://www.opengis.net/gml/3.2';
 declare namespace ows='http://www.opengis.net/ows/1.1';
 declare namespace fes='http://www.opengis.net/fes/2.0';
 
-&lt;result&gt;AssertionFailures: {
+&lt;result>AssertionFailures: {
 let $value:=//fes:Scalar_Capabilities/fes:LogicalOperators
 return
 if (exists($value))
 then "Capabilities advertizes LogicalOperators."
 else "Capabilities does NOT advertize LogicalOperators."
 }
-&lt;/result&gt;</path>
-              <content>&lt;result&gt;AssertionFailures: Capabilities advertizes LogicalOperators.&lt;/result&gt;</content>
+&lt;/result></path>
+              <content>&lt;result>AssertionFailures: Capabilities advertizes LogicalOperators.&lt;/result></content>
               <allowWildcards>false</allowWildcards>
             </con:configuration>
           </con:assertion>
@@ -4261,30 +4261,30 @@ else "PropertyIsEqualTo does not work correctly: the response contains features 
     </con:testCase>
     <con:testCase failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="Minimum Temporal Filter - Optional" searchProperties="true" id="315a4fbb-7970-42b4-a7d4-404a7fd5e54e">
       <con:settings/>
-      <con:testStep type="httprequest" name="GetCapabilities">
+      <con:testStep type="httprequest" name="GetCapabilities" id="d3a51d1b-d4b4-4bbd-abaf-0ec6b29573ab">
         <con:settings/>
-        <con:config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" method="GET" xsi:type="con:HttpRequest" name="GetCapabilities">
+        <con:config method="GET" xsi:type="con:HttpRequest" name="GetCapabilities" id="f36a2bb3-5e00-4cf1-908e-c7e8e8a205ea" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
           <con:settings>
-            <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/&gt;</con:setting>
+            <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
           </con:settings>
           <con:endpoint>${#Project#serviceEndpoint}</con:endpoint>
           <con:request/>
-          <con:assertion type="XQuery Match" name="O-02##O-02-MinTemporalFilter: Capabilities advertize ImplementsMinTemporalFilter">
+          <con:assertion type="XQuery Match" name="O-02##O-02-MinTemporalFilter: Capabilities advertize ImplementsMinTemporalFilter" id="ac9cc5d9-4352-4cce-8140-9bb2e9a6a99d">
             <con:configuration>
               <path>declare namespace wfs='http://www.opengis.net/wfs/2.0';
 declare namespace gml='http://www.opengis.net/gml/3.2';
 declare namespace ows='http://www.opengis.net/ows/1.1';
 declare namespace fes='http://www.opengis.net/fes/2.0';
 
-&lt;result&gt;AssertionFailures: {
+&lt;result>AssertionFailures: {
 let $value:=//fes:Constraint[@name='ImplementsMinTemporalFilter']/ows:DefaultValue[.='TRUE']
 return
 if (exists($value))
 then "Capabilities advertizes ImplementsMinTemporalFilter."
 else "Capabilities does NOT advertize ImplementsMinTemporalFilter."
 }
-&lt;/result&gt;</path>
-              <content>&lt;result&gt;AssertionFailures: Capabilities advertizes ImplementsMinTemporalFilter.&lt;/result&gt;</content>
+&lt;/result></path>
+              <content>&lt;result>AssertionFailures: Capabilities advertizes ImplementsMinTemporalFilter.&lt;/result></content>
               <allowWildcards>false</allowWildcards>
             </con:configuration>
           </con:assertion>
@@ -4333,30 +4333,30 @@ else "Capabilities does NOT advertize ImplementsMinTemporalFilter."
     </con:testCase>
     <con:testCase failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="Minimum XPath - Optional" searchProperties="true" id="dde630c5-f517-4dd6-9674-11638a37d6a6">
       <con:settings/>
-      <con:testStep type="httprequest" name="GetCapabilities">
+      <con:testStep type="httprequest" name="GetCapabilities" id="8bfda63c-90ec-4f60-8c08-85f8b2ce0721">
         <con:settings/>
-        <con:config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" method="GET" xsi:type="con:HttpRequest" name="GetCapabilities">
+        <con:config method="GET" xsi:type="con:HttpRequest" name="GetCapabilities" id="88ee1954-30e6-4406-9439-a8818472d8b2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
           <con:settings>
-            <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/&gt;</con:setting>
+            <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
           </con:settings>
           <con:endpoint>${#Project#serviceEndpoint}</con:endpoint>
           <con:request/>
-          <con:assertion type="XQuery Match" name="O-02##XPathAdvertized: Capabilities advertize ImplementsMinimumXPath">
+          <con:assertion type="XQuery Match" name="O-02##XPathAdvertized: Capabilities advertize ImplementsMinimumXPath" id="0640a837-d8ad-4217-b88b-c6a9431db5ee">
             <con:configuration>
               <path>declare namespace wfs='http://www.opengis.net/wfs/2.0';
 declare namespace gml='http://www.opengis.net/gml/3.2';
 declare namespace ows='http://www.opengis.net/ows/1.1';
 declare namespace fes='http://www.opengis.net/fes/2.0';
 
-&lt;result&gt;AssertionFailures: {
+&lt;result>AssertionFailures: {
 let $value:=//fes:Constraint[@name='ImplementsMinimumXPath']/ows:DefaultValue[.='TRUE']
 return
 if (exists($value))
 then "Capabilities advertizes ImplementsMinimumXPath."
 else "Capabilities does NOT advertize ImplementsMinimumXPath."
 }
-&lt;/result&gt;</path>
-              <content>&lt;result&gt;AssertionFailures: Capabilities advertizes ImplementsMinimumXPath.&lt;/result&gt;</content>
+&lt;/result></path>
+              <content>&lt;result>AssertionFailures: Capabilities advertizes ImplementsMinimumXPath.&lt;/result></content>
               <allowWildcards>false</allowWildcards>
             </con:configuration>
           </con:assertion>
@@ -4550,7 +4550,7 @@ else "XPath number predicate (./ns:property[1]) does not work correctly in Filte
   <con:afterLoadScript>
  </con:afterLoadScript>
   <con:wssContainer/>
-  <con:afterRunScript>import com.eviware.soapui.impl.wsdl.teststeps.HttpTestRequestStep;
+  <con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/><con:afterRunScript>import com.eviware.soapui.impl.wsdl.teststeps.HttpTestRequestStep;
 import com.eviware.soapui.impl.wsdl.teststeps.RestTestRequestStep
 import com.eviware.soapui.model.testsuite.TestStepResult;
 
@@ -4569,7 +4569,7 @@ for( testSuiteR in runner?.getResults() ) {
 					testStepR.testStep.testRequest.assertionList.each{
 						// Extract ID which is seperated with a whitespace and a doublecolon
 						String assertionName = it.name;
-						if (assertionName.indexOf(": ") &gt; -1) {
+						if (assertionName.indexOf(": ") > -1) {
 							String id = assertionName?.substring( 0, assertionName.indexOf(": ") );
 							if(it.valid) {
 								log.info("Assertion "+assertionName+" passed");
