@@ -2222,10 +2222,10 @@ exists(//*[@gml:id='${#Project#FirstFeatureId}'])</path>
               <con:name>id</con:name>
               <con:value>${#Project#FirstFeatureId}</con:value>
             </con:parameter>
-            <con:parameter>
+            <!-- <con:parameter>
               <con:name>typenames</con:name>
               <con:value>${#Project#FirstFeatureTypeName}</con:value>
-            </con:parameter>
+            </con:parameter> -->
           </con:parameters>
         </con:config>
       </con:testStep>
@@ -3077,11 +3077,11 @@ empty(//inspire_dls:ExtendedCapabilities/inspire_common:MetadataUrl/inspire_comm
           </con:settings>
           <con:endpoint xsi:nil="true"/>
           <con:request/>
-          <con:assertion type="Simple Schema Validator" name="M-01##M-01-ServiceMD-validates: ISO Metadata XSD validation" disabled="true">
+          <!-- <con:assertion type="Simple Schema Validator" name="M-01##M-01-ServiceMD-validates: ISO Metadata XSD validation" disabled="true">
             <con:configuration>
               <pathToXSD>http://www.opengis.net/cat/csw/2.0.2 http://schemas.opengis.net/csw/2.0.2/CSW-discovery.xsd http://www.isotc211.org/2005/gmd http://schemas.opengis.net/iso/19139/20060504/gmd/gmd.xsd http://www.isotc211.org/2005/srv http://schemas.opengis.net/iso/19139/20060504/srv/srv.xsd</pathToXSD>
             </con:configuration>
-          </con:assertion>
+          </con:assertion> -->
           <con:assertion type="XQuery Match" name="M-01##M-01-ServiceMD_MD_Metadata: Metadata has ISO Metadata Root element (gmd_MD_Metadata exists)">
             <con:configuration>
               <path><![CDATA[declare namespace gmd='http://www.isotc211.org/2005/gmd';
