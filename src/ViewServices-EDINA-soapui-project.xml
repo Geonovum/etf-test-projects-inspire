@@ -528,6 +528,8 @@ let $harmonizedLayers:=string-join(//wms:Layer[wms:Name='AD.Address' or wms:Name
  or wms:Name='ER.RenewableAndWasteResource'
  or wms:Name='ER.RenewableAndWastePotentialCoverage'
  or wms:Name='ER.EnergyStatisticalUnit'
+ or wms:Name='HB.Habitat'
+ or wms:Name='HB.HabitatDistribution'
  or wms:Name='LC.LandCoverPoints'
  or wms:Name='LC.LandCoverSurfaces'
  or wms:Name='LC.LandCoverRaster'
